@@ -1,0 +1,32 @@
+{
+  "name": "goit-team-project-filmoteka",
+  "version": "2.0.0",
+  "description": "",
+  "homepage": "https://github.com/DonKanElion/Filmoteka",
+  "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /Filmoteka.git/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DonKanElion/Filmoteka.git"
+  },
+  "keywords": [],
+  "author": "Team works",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1leha/goit-team-project-filmoteka/issues"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0"
+  },
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.6.0",
+    "@parcel/transformer-sass": "^2.6.0",
+    "@parcel/transformer-webmanifest": "^2.6.0",
+    "parcel": "^2.6.0",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "posthtml-include": "^1.7.4"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
+}

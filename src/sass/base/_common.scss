@@ -1,0 +1,23 @@
+// modern-normalize
+
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
+// body
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.76;
+  letter-spacing: 0.04em;
+  background: var(--body-bg-color);
+  color: var(--body-text-color);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+body.menu-open {
+  overflow: hidden;
+}

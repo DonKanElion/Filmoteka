@@ -1,0 +1,127 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 1500;
+
+  overflow-y: auto;
+
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  padding-left: calc((100vw - 280px) / 2);
+  background-color: var(--color-backdrop-overlay);
+
+  @include projTransitions((opacity, visibility));
+}
+
+.modal {
+  position: absolute;
+
+  width: calc(100% - 30px);
+  max-width: 280px;
+  height: calc(100% - 30px);
+
+  border-radius: 20px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+
+  overflow: hidden;
+
+  background-color: var(--bg-modal);
+
+  @include projTransitions(transform);
+
+  transform: translateX(0);
+
+  .backdrop.is-hidden & {
+    // transform: translate(100%, -50%);
+
+    transform: translateX(100%);
+  }
+
+  @include tablet {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    max-width: 650px;
+    height: 550px;
+    padding-bottom: 15px;
+
+    .backdrop.is-hidden & {
+      transform: translate(100%, -50%);
+    }
+  }
+}
+
+.modal__close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1;
+}
+
+.close-button {
+  width: 14px;
+  height: 14px;
+
+  // border-radius: 50%;
+
+  outline: none;
+  border: none;
+
+  background-color: transparent;
+
+  color: var(--secondary-text-color);
+
+  @include projTransitions(color);
+
+  &:hover,
+  &:focus {
+    color: var(--secondary-accent-color);
+    background-color: transparent;
+  }
+}
+
+.modals-content {
+  position: relative;
+  display: block;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  // height: calc(100% - 15px);
+}
+
+.all-modals__item {
+  position: absolute;
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // height: calc(100% - 15px);
+
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    //background-color: white;
+    background-color: var(--secondary-bg-heror);
+    width: 5px;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    //background-color: white;
+    background-color: var(--primary-bg-hero);
+    border-radius: 3px;
+  }
+}
+
+.content-franchise {
+  overflow-y: auto;
+}

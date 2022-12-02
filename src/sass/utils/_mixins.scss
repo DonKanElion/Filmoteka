@@ -1,0 +1,97 @@
+// flex-box (display , justify-content, align-items)
+// @mixin flex-settings(flex, center, center) --- variant
+
+@mixin flex($type: flex, $align: center, $justify: center) {
+  display: $type;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+// Retina
+@mixin retina {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+// break points
+
+@mixin mobile {
+  @media screen and (min-width: 320px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+// Миксин Font. Принимает значения fontSize, lineHeight, fontWeight, letterSpacing.
+// line-height расчитывается как относительная величина lineHeight/fontSize
+
+@mixin font(
+  $fontSize: 16,
+  $lineHeight: 29,
+  $fontWeight: 500,
+  $letterSpacing: 0.04
+) {
+  font-size: #{$fontSize}px;
+  line-height: calc(#{$lineHeight} / #{$fontSize});
+  font-weight: $fontWeight;
+  letter-spacing: #{$letterSpacing}em;
+}
+
+@mixin testomonials(
+  $fontSize: 16,
+  $lineHeight: 29,
+  $fontWeight: 500,
+  $letterSpacing: 0.04
+) {
+  font-size: #{$fontSize}px;
+  line-height: calc(#{$lineHeight} / #{$fontSize});
+  font-weight: $fontWeight;
+  letter-spacing: #{$letterSpacing}em;
+
+  &::after {
+    content: '';
+    position: absolute;
+
+    z-index: -1;
+    width: 54px;
+    height: 40px;
+
+    bottom: calc(100% - #{$lineHeight}px + 4px);
+    left: 0;
+
+    background-image: url('../images/svg/customer-reviews/comma-comma.svg');
+  }
+
+  background-image: repeating-linear-gradient(
+    to top,
+    #e1e1e1 1px,
+    transparent 2px,
+    transparent calc(#{$lineHeight}px + 1px) /* Опеределяет размер градиента */
+  );
+}
+
+@mixin projTransitions($property) {
+  transition-property: $property;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--timing-function);
+}
+
+// bg-imageSettings - from png advantages section
+@mixin bg-imageSettings($width, $height) {
+        background-size: $width $height;
+        height: 50px;
+        background-repeat: no-repeat;
+        display: block;
+}
