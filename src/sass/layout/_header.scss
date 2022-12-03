@@ -78,6 +78,11 @@
 .navigation__link {
   color: var(--secondaryColor);
   text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: var(--thirdColor);
+  }
 }
 
 // .navigation__link--active {
@@ -93,10 +98,12 @@
   outline: 2px solid var(--secondaryColor);
   border-radius: 50%;
   overflow: hidden;
-}
 
-// .visually-hidden {
-// }
+  &:hover,
+  &:focus {
+    color: var(--thirdColor);
+  }
+}
 
 // .login__icon {
 // }
@@ -105,17 +112,54 @@
 // }
 
 .form {
+  position: relative;
+  width: 100%;
   margin-top: 60px;
 }
 
 // .form__input {
+
 // }
 
-// .input {
-// }
+.input {
+  width: 100%;
+  padding-right: 16px;
 
-// .header__message {
-// }
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--secondaryColor);
+
+  color: var(--secondaryColor);
+
+  background-color: transparent;
+}
+
+.form__button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  @include flex();
+  border: none;
+  outline: none;
+  padding: 10px 0 10px 10px;
+  color: var(--secondaryColor);
+  background-color: transparent;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--thirdColor);
+  }
+}
+
+.header__error-message {
+  margin-top: 16px;
+
+  @include font(14, 16.41, 400, 0);
+  color: var(--activeColor);
+}
 
 // .visually-hidden1 {
 // }
