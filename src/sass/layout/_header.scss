@@ -95,9 +95,6 @@
   overflow: hidden;
 }
 
-// .visually-hidden {
-// }
-
 // .login__icon {
 // }
 
@@ -105,14 +102,46 @@
 // }
 
 .form {
+  position: relative;
+  width: 100%;
   margin-top: 60px;
 }
 
 // .form__input {
+
 // }
 
-// .input {
-// }
+.input {
+  width: 100%;
+  padding-right: 16px;
+
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--secondaryColor);
+
+  color: var(--secondaryColor);
+
+  background-color: transparent;
+}
+
+.form__button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  @include flex();
+  border: none;
+  outline: none;
+  padding: 10px 0 10px 10px;
+  color: var(--secondaryColor);
+  background-color: transparent;
+
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+  }
+}
 
 // .header__message {
 // }
