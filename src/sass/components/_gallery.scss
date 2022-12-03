@@ -1,0 +1,36 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.card {
+
+    border-radius: 5px;
+   
+}
+.card__poster {
+        width: 280px;
+        height: 398px;
+}
+
+.card__info {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.info__title {
+    text-transform: uppercase;
+        color: #000000;
+}
+
+.info__genre .info__release-date {
+
+    color: #FF6B08;
+
+}

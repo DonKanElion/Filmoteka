@@ -1,3 +1,165 @@
 .header {
-  background-color: rgb(22, 155, 67);
+  height: 230px;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.56) 100%
+    ),
+    url('./../images/header/mob_abstract-background-with-red-lines@1x.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  @include retina {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56) 0%,
+        rgba(0, 0, 0, 0.56) 100%
+      ),
+      url('./../images/header/mob_abstract-background-with-red-lines@2x.jpg');
+  }
 }
+
+.header__menu {
+  padding-top: 34px;
+
+  @include flex($justify: space-between);
+}
+
+// .header__navigation {
+// }
+
+.navigation {
+  // background-color: #fff;
+  @include flex($justify: space-between);
+}
+
+// .navigation__logo {
+// }
+
+.logo {
+  @include flex($justify: space-between);
+
+  color: var(--secondaryColor);
+}
+
+// .logo__icon {
+// }
+
+// .logo__text {
+// }
+
+.navigation__list {
+  @include flex($justify: space-between);
+  @include font(12, 14, 500, 0);
+  margin-left: 82px;
+}
+
+.navigation__item {
+  position: relative;
+
+  &:not(:last-child) {
+    margin-right: 18px;
+  }
+
+  &--active {
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      top: 100%;
+      left: 0;
+      background-color: var(--activeColor);
+    }
+  }
+}
+
+.navigation__link {
+  color: var(--secondaryColor);
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: var(--thirdColor);
+  }
+}
+
+// .navigation__link--active {
+// }
+
+.login {
+  @include flex();
+  margin-left: 17px;
+
+  color: var(--inactiveUser);
+
+  border: none;
+  outline: 2px solid var(--secondaryColor);
+  border-radius: 50%;
+  overflow: hidden;
+
+  &:hover,
+  &:focus {
+    color: var(--thirdColor);
+  }
+}
+
+// .login__icon {
+// }
+
+// .header__form {
+// }
+
+.form {
+  position: relative;
+  width: 100%;
+  margin-top: 60px;
+}
+
+// .form__input {
+
+// }
+
+.input {
+  width: 100%;
+  padding-right: 16px;
+
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--secondaryColor);
+
+  color: var(--secondaryColor);
+
+  background-color: transparent;
+}
+
+.form__button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  @include flex();
+  border: none;
+  outline: none;
+  padding: 10px 0 10px 10px;
+  color: var(--secondaryColor);
+  background-color: transparent;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--thirdColor);
+  }
+}
+
+.header__error-message {
+  margin-top: 16px;
+
+  @include font(14, 16.41, 400, 0);
+  color: var(--activeColor);
+}
+
+// .visually-hidden1 {
+// }
