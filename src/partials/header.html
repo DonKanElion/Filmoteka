@@ -2,19 +2,19 @@
   <div class="container">
     <div class="header__menu">
       <nav class="header__navigation navigation">
-        <div class="navigation__logo logo">
+        <a class="navigation__logo logo" href="./index.html">
           <svg class="logo__icon" width="24" height="24">
             <use href="./images/svg/sprite.svg#film"></use>
           </svg>
           <span class="logo__text visually-hidden">Filmoteka </span>
-        </div>
+        </a>
 
         <ul class="navigation__list">
           <li class="navigation__item navigation__item--active">
-            <a class="navigation__link navigation__link" href="#">Home</a>
+            <a class="navigation__link" href="#">Home</a>
           </li>
           <li class="navigation__item">
-            <a class="navigation__link" href="#">my library</a>
+            <a class="navigation__link" href="#">My library</a>
           </li>
         </ul>
       </nav>
@@ -39,7 +39,7 @@
         </svg>
       </button>
     </form>
-    <div id="errorMessage" class="header__message visually-hidden1">
+    <div id="errorMessage" class="header__error-message visually-hidden1">
       Search result not successful. Enter the correct movie name and
     </div>
   </div>

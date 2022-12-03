@@ -78,6 +78,11 @@
 .navigation__link {
   color: var(--secondaryColor);
   text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: var(--thirdColor);
+  }
 }
 
 // .navigation__link--active {
@@ -93,6 +98,11 @@
   outline: 2px solid var(--secondaryColor);
   border-radius: 50%;
   overflow: hidden;
+
+  &:hover,
+  &:focus {
+    color: var(--thirdColor);
+  }
 }
 
 // .login__icon {
@@ -138,13 +148,18 @@
 
   cursor: pointer;
 
-  &:hover {
-    color: red;
+  &:hover,
+  &:focus {
+    color: var(--thirdColor);
   }
 }
 
-// .header__message {
-// }
+.header__error-message {
+  margin-top: 16px;
+
+  @include font(14, 16.41, 400, 0);
+  color: var(--activeColor);
+}
 
 // .visually-hidden1 {
 // }
