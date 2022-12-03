@@ -1,0 +1,59 @@
+$color-1: #FF6B08;
+$color-2: #b3cbb9;
+$color-3: #84a9c0;
+$color-4: #6a66a3;
+$color-5: #58548e;
+
+// $color: $color-1, $color-2, $color-3, $color-4, $color-5;
+$color: #FF6B08;
+
+@mixin anim($i) {
+  $y: ($i + 5) * 10;
+
+  @keyframes right-#{$i} {
+    0% {
+      transform: translateY(#{-$y}px);
+    }
+    100% {
+      transform: translateY(#{$y}px);
+    }
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.loader__block {display: flex;
+  width: 30px;
+  height: 30px;
+  margin: 15px;
+  border-radius: 20%;
+  list-style-type: none;
+  transition: 0.5s all ease;
+}
+
+@for $i from 1 through 5 {
+  .loader__block:nth-child(#{$i}) {
+    @include anim($i);
+    animation: right-#{$i} 1s infinite alternate;
+    background-color: $color;
+    animation-delay: 100ms * $i;
+  }
+}
+
+.loader__icon {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    fill: var(--secondaryColor);
+}
+
+.hide-loader {
+    display: none;
+  }
+  
