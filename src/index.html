@@ -39,19 +39,26 @@
   </head>
 
   <body>
-    <header>
-      <p>Header Filmoteka</p>
-    </header>
+ <!-- ❗️❗️❗️ Add partials like so for every page -->
 
-    <main>
-      <p>Body</p>
-      <!-- <include src="./partials/loader.html"></include> -->
-      <script src="index.js" type="module"></script>
-    </main>
+ <div class="wrapper">
+  <!-- <include src="./partials/header.html"></include> -->
 
-    <footer>
-      <p>Footer</p>
-    </footer>
+  <main>
+      <h2  class="h2-hiddenXX is-hiddenXX" >Filmoteka main page</h2>
+    <include src="./partials/containerMainPage.html"></include>
+    
+    <include src="./partials/movieCardModal.html"></include>
+
+    <include src="./partials/modalTeam.html"></include>
+ -->
+  </main>
+
+  <include src="./partials/footer.html"></include>
+</div>
+
+<script type="module" src="./index.js"></script>
+
 
   </body>
 </html>
