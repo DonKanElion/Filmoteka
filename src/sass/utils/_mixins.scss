@@ -49,39 +49,6 @@
   letter-spacing: #{$letterSpacing}em;
 }
 
-@mixin testomonials(
-  $fontSize: 16,
-  $lineHeight: 29,
-  $fontWeight: 500,
-  $letterSpacing: 0.04
-) {
-  font-size: #{$fontSize}px;
-  line-height: calc(#{$lineHeight} / #{$fontSize});
-  font-weight: $fontWeight;
-  letter-spacing: #{$letterSpacing}em;
-
-  &::after {
-    content: '';
-    position: absolute;
-
-    z-index: -1;
-    width: 54px;
-    height: 40px;
-
-    bottom: calc(100% - #{$lineHeight}px + 4px);
-    left: 0;
-
-    background-image: url('../images/svg/customer-reviews/comma-comma.svg');
-  }
-
-  background-image: repeating-linear-gradient(
-    to top,
-    #e1e1e1 1px,
-    transparent 2px,
-    transparent calc(#{$lineHeight}px + 1px) /* Опеределяет размер градиента */
-  );
-}
-
 @mixin projTransitions($property) {
   transition-property: $property;
   transition-duration: var(--transition-time);
@@ -90,8 +57,8 @@
 
 // bg-imageSettings - from png advantages section
 @mixin bg-imageSettings($width, $height) {
-        background-size: $width $height;
-        height: 50px;
-        background-repeat: no-repeat;
-        display: block;
+  background-size: $width $height;
+  height: 50px;
+  background-repeat: no-repeat;
+  display: block;
 }

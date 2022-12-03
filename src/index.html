@@ -5,60 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-     <!-- favIcon -->
-     <link
-     rel="apple-touch-icon"
-     sizes="180x180"
-     href="./images/favicon/apple-touch-icon.png"
-   />
-   <link
-     rel="icon"
-     type="image/png"
-     sizes="32x32"
-     href="./images/favicon/favicon-32x32.png"
-   />
-   <link
-     rel="icon"
-     type="image/png"
-     sizes="16x16"
-     href="./images/favicon/favicon-16x16.png"
-   />
-   <link rel="manifest" href="./images/favicon/site.webmanifest" />
-   <link
-     rel="mask-icon"
-     href="./images/favicon/safari-pinned-tab.svg"
-     color="#5bbad5"
-   />
-   <meta name="msapplication-TileColor" content="#da532c" />
-   <meta name="theme-color" content="#ffffff" />
-   <!-- favIcon -->
+    <!-- favIcon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./images/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./images/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- favIcon -->
 
-   <link rel="stylesheet" href="./sass/index.scss" />
-   <script type="module" src="./index.js"></script>
+    <link rel="stylesheet" href="./sass/index.scss" />
+    <script type="module" src="./index.js"></script>
     <title>Filmoteka</title>
   </head>
 
   <body>
- <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <div class="wrapper">
+      <include src="./partials/header.html"></include>
 
- <div class="wrapper">
-  <!-- <include src="./partials/header.html"></include> -->
+      <main>
+        <h2 class="h2-hiddenXX is-hiddenXX">Filmoteka main page</h2>
+        <include src="./partials/containerMainPage.html"></include>
 
-  <main>
-      <h2  class="h2-hiddenXX is-hiddenXX" >Filmoteka main page</h2>
-    <include src="./partials/containerMainPage.html"></include>
-    
-    <include src="./partials/movieCardModal.html"></include>
+        <include src="./partials/movieCardModal.html"></include>
 
-    <include src="./partials/modalTeam.html"></include>
- -->
-  </main>
+        <include src="./partials/modalTeam.html"></include>
+      </main>
 
-  <include src="./partials/footer.html"></include>
-</div>
+      <include src="./partials/footer.html"></include>
+    </div>
 
-<script type="module" src="./index.js"></script>
-
-
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
