@@ -1,5 +1,6 @@
 .header {
   height: 230px;
+  padding-top: 34px;
 
   background-image: linear-gradient(
       to right,
@@ -18,12 +19,38 @@
       ),
       url('./../images/header/mob_abstract-background-with-red-lines@2x.jpg');
   }
+
+  @include tablet() {
+    height: 216px;
+    padding-top: 41px;
+
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56) 0%,
+        rgba(0, 0, 0, 0.56) 100%
+      ),
+      url('./../images/header/tab_abstract-background-with-red-lines@1x.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    @include retina {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56) 0%,
+          rgba(0, 0, 0, 0.56) 100%
+        ),
+        url('./../images/header/tab_abstract-background-with-red-lines@2x.jpg');
+    }
+  }
 }
 
 .header__menu {
-  padding-top: 34px;
-
   @include flex($justify: space-between);
+  gap: 16px;
+
+  // @include tablet() {
+  //   gap: 0px;
+  // }
 }
 
 // .header__navigation {
@@ -32,27 +59,41 @@
 .navigation {
   // background-color: #fff;
   @include flex($justify: space-between);
+  width: 100%;
+  flex: 1 1 80%;
 }
 
 // .navigation__logo {
-// }
+//
 
 .logo {
   @include flex($justify: space-between);
-
   color: var(--secondaryColor);
 }
 
 // .logo__icon {
 // }
 
-// .logo__text {
-// }
+.logo__text {
+  display: none;
+
+  @include tablet() {
+    display: inline-block;
+    @include font(30, 35.16, 500, 0);
+    margin-left: 10px;
+  }
+}
 
 .navigation__list {
   @include flex($justify: space-between);
   @include font(12, 14, 500, 0);
   margin-left: 82px;
+
+  @include tablet() {
+    flex: 0 0 auto;
+
+    margin-left: auto;
+  }
 }
 
 .navigation__item {
@@ -87,10 +128,18 @@
 
 // .navigation__link--active {
 // }
-
 .login {
+  // display: none;
+  @include flex($justify: right);
+  flex-direction: row-reverse;
+
+  @include tablet() {
+    flex: 1 0 20%;
+  }
+}
+
+.login__button {
   @include flex();
-  margin-left: 17px;
 
   color: var(--inactiveUser);
 
@@ -105,6 +154,20 @@
   }
 }
 
+.login__user-name {
+  display: none;
+
+  @include tablet() {
+    display: inline-block;
+
+    @include font(12, 14, 500, 0);
+
+    margin-right: 10px;
+
+    color: var(--secondaryColor);
+  }
+}
+
 // .login__icon {
 // }
 
@@ -115,6 +178,14 @@
   position: relative;
   width: 100%;
   margin-top: 60px;
+
+  @include tablet() {
+    width: 336px;
+
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 // .form__input {
@@ -159,6 +230,11 @@
 
   @include font(14, 16.41, 400, 0);
   color: var(--activeColor);
+
+  @include tablet() {
+    margin-top: 20px;
+    text-align: center;
+  }
 }
 
 // .visually-hidden1 {

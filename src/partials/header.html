@@ -6,7 +6,7 @@
           <svg class="logo__icon" width="24" height="24">
             <use href="./images/svg/sprite.svg#film"></use>
           </svg>
-          <span class="logo__text visually-hidden">Filmoteka </span>
+          <span class="logo__text">Filmoteka</span>
         </a>
 
         <ul class="navigation__list">
@@ -18,11 +18,15 @@
           </li>
         </ul>
       </nav>
-      <button class="login visually-hidden1" type="button">
-        <svg class="login__icon" width="30" height="30">
-          <use href="./images/svg/sprite.svg#user"></use>
-        </svg>
-      </button>
+
+      <div class="login">
+        <button class="login__button" type="button" data-loginButton>
+          <svg class="login__icon" width="30" height="30">
+            <use href="./images/svg/sprite.svg#user"></use>
+          </svg>
+        </button>
+        <span class="login__user-name">User Name</span>
+      </div>
     </div>
 
     <!-- Search form -->
