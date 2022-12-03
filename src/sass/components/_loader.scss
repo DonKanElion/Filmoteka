@@ -1,10 +1,3 @@
-$color-1: #FF6B08;
-$color-2: #b3cbb9;
-$color-3: #84a9c0;
-$color-4: #6a66a3;
-$color-5: #58548e;
-
-// $color: $color-1, $color-2, $color-3, $color-4, $color-5;
 $color: #FF6B08;
 
 @mixin anim($i) {
@@ -52,8 +45,3 @@ $color: #FF6B08;
     margin-right: auto;
     fill: var(--secondaryColor);
 }
-
-.hide-loader {
-    display: none;
-  }
-  
