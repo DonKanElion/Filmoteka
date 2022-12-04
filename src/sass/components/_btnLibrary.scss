@@ -1,0 +1,39 @@
+.user-lib-btn {
+    cursor: pointer;
+
+    background-color: transparent;
+    border-color: #ffffff;
+    border-radius: 5px;
+    border-style: solid;
+
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1, 33;
+
+    &:hover, &:focus {
+        background-color: #ff6b01;
+        border: none;
+    }
+}
+
+@include mobile {
+    .user-lib-btn{
+    width: 130px;
+    height: 45px;
+    }
+}
+
+@include tablet {
+    .user-lib-btn {
+        width: 150px;
+        height: 45px;
+    }
+}
+
+@include desktop {
+    .user-lib-btn{
+        width: 150px;
+        height: 40px;
+    }
+}
