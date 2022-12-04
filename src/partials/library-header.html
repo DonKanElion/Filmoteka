@@ -1,31 +1,40 @@
-<header class="header library-background">
-  <div class="header__container">
-    <a class="header__logo" href="../index.html">
-      <svg class="header__logo-icon">
-        <use></use>
-      </svg>
-      <span class="header__logo-name">Filmoteka</span>
-    </a>
+<header class="library-background">
+  <div class="container">
+    <div class="header__menu">
+      <nav class="header__navigation navigation">
+        <a class="navigation__logo logo" href="./index.html">
+          <svg class="logo__icon" width="24" height="24">
+            <use href="./images/svg/sprite.svg#film"></use>
+          </svg>
+          <span class="logo__text visually-hidden">Filmoteka</span>
+        </a>
 
-    <nav class="header__navigation">
-      <ul class="header__navigation-list">
-        <li class="header__navigation-item">
-          <a class="header__navigation-link" href="../index.html">Home</a>
-        </li>
-        <li class="header__navigation-item">
-          <a class="header__navigation-link current" href="">My library</a>
-        </li>
-      </ul>
-    </nav>
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a class="navigation__link" href="./index.html">Home</a>
+          </li>
+          <li class="navigation__item">
+            <a
+              class="navigation__link navigation__item--active"
+              href="./library.html"
+              >My library</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <button class="login visually-hidden1" type="button">
+        <svg class="login__icon" width="30" height="30">
+          <use href="./images/svg/sprite.svg#user"></use>
+        </svg>
+      </button>
+    </div>
 
-    <ul class="header__user-list">
+    <ul class="user-lib-btns">
       <li class="header__user-item">
-        <button class="header__user-button watched" type="button">
-          Watched
-        </button>
+        <button class="user-lib-btn watched" type="button">Watched</button>
       </li>
       <li class="header__user-item">
-        <button class="header__user-button queue" type="button">Queue</button>
+        <button class="user-lib-btn queue" type="button">Queue</button>
       </li>
     </ul>
   </div>
