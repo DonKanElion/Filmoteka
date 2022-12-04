@@ -1,21 +1,21 @@
 {
-  "name": "goit-team-project-filmoteka",
+  "name": "Filmoteka",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://donkanelion.github.io/Filmoteka/",
+  "homepage": "https://DonKanElion.github.io/Filmoteka/",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /Filmoteka.git/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DonKanElion/Filmoteka.git"
+    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
   },
   "keywords": [],
-  "author": "Team works",
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/1leha/goit-team-project-filmoteka/issues"
+    "url": "https://github.com/DonKanElion/Filmoteka/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"
