@@ -1,0 +1,169 @@
+.modal {
+	position: relative;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1);
+	padding: 46px 20px;
+	background-color: #fff;
+	transition: transform 0.3s ease;
+
+	@include tablet {
+		padding: 40px;
+	}
+	@media screen and (min-width: 1024px) {
+		padding: 40px 12px;
+	}
+
+	&__close {
+		height: 26;
+		position: absolute;
+		top: 8px;
+		right: 8px;
+	}
+
+	&__close-icon {
+	}
+
+	&__content {
+		overflow: auto;
+		display: grid;
+		gap: 16px;
+
+		@include tablet {
+			grid-template-columns: 241px 1fr;
+			gap: 65px;
+		}
+		@media screen and (min-width: 1024px) {
+			grid-template-columns: 341px 1fr;
+			gap: 16px;
+		}
+	}
+}
+
+.content-card {
+	&__img {
+		max-width: 100%;
+	}
+
+	&__info {
+	}
+
+	&__title {
+		text-transform: uppercase;
+		font-size: 20px;
+		margin-bottom: 20px;
+
+		@media screen and (min-width: 1024px) {
+			font-size: 30px;
+		}
+	}
+
+	&__characteristics {
+		margin-bottom: 20px;
+		li {
+			display: flex;
+			column-gap: 50px;
+			font-size: 12px;
+
+			&:not(:last-child) {
+				margin-bottom: 8px;
+			}
+
+			@media screen and (min-width: 1024px) {
+				column-gap: 80px;
+			}
+		}
+	}
+
+	&__category {
+		color: var(--modal-text-color);
+		width: 70px;
+		white-space: nowrap;
+	}
+
+	&__meaning {
+		white-space: nowrap;
+		span {
+			display: inline-block;
+			text-align: center;
+			width: 36px;
+			border-radius: 5px;
+
+			&:first-child {
+				background-color: var(--active-btn-color);
+				color: var(--secondary-text-color);
+			}
+			&:last-child {
+				background-color: #f7f7f7;
+			}
+		}
+	}
+
+	&__about {
+		display: block;
+		text-transform: uppercase;
+		font-size: 12px;
+		margin-bottom: 8px;
+		letter-spacing: 0.02em;
+	}
+
+	&__about-text {
+		font-size: 12px;
+		line-height: 20px;
+		letter-spacing: 0.02em;
+
+		@media screen and (min-width: 1024px) {
+			width: 390px;
+		}
+	}
+
+	&__btn-group {
+		display: flex;
+		column-gap: 16px;
+		margin-top: 20px;
+	}
+
+	&__btn {
+		border-radius: 5px;
+		border: 1px solid #000;
+		color: var(--primary-text-color);
+		text-transform: uppercase;
+		font-size: 12px;
+		width: 110px;
+		height: 40px;
+
+		&:hover,
+		&:focus {
+			background-color: #ff6b01;
+			color: #fff;
+			border: none;
+		}
+
+		@include tablet {
+			width: 125px;
+		}
+		@media screen and (min-width: 1024px) {
+			width: 135px;
+			height: 45px;
+		}
+	}
+}
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.2);
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.is-hidden-modal {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+	transform: translate(-50%, -50%) scale(0.3);
+}
