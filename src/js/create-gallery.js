@@ -1,26 +1,28 @@
+
 import ApiService from './apiService';
 
 const newApiServiсe = new ApiService();
 
-const refs = {
-    gallery: document.querySelector('.gallery'),
-};
-console.log(refs.gallery);
+// const refs = {
+//   gallery: document.querySelector('.gallery'),
+// };
+// console.log(refs.gallery);
 
 newApiServiсe.fetchTrendingFilms().then(data => {
   const imagesArray = data.results;
   const markup = createGalleryMarkup(imagesArray);
-  refs.gallery.innerHTML = markup;
+  //   refs.gallery.innerHTML = markup;
 });
 
-
-
 export default function createGalleryMarkup(imagesArray) {
-    return imagesArray
-        .map(image => {
-            const {poster_path, title, genre_ids, release_date} = image;
- const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
-            return `
+  const refs = {
+    gallery: document.querySelector('.gallery'),
+  };
+  refs.gallery.innerHTML = imagesArray
+    .map(image => {
+      const { poster_path, title, genre_ids, release_date } = image;
+      const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
+      return `
                 <div class="card">
                 
                     <img class="card__poster" src="https://image.tmdb.org/t/p/w500${poster_path}" alt=""  loading="lazy" width="320px" height="210px"/>
@@ -35,7 +37,7 @@ export default function createGalleryMarkup(imagesArray) {
                         
                     </div>
                 </div>
-            `
-        })
-        .join('');
-} 
+            `;
+    })
+    .join('');
+}
