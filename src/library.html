@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filmoteka</title>
+    <title>My Library</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
     <link
@@ -42,32 +42,31 @@
     <meta name="theme-color" content="#ffffff" />
     <!-- favIcon -->
 
+    <!-- >>>>>ПЕРЕНЕСІТЬ ВСІ СВОЇ СТИЛІ З index в library !!!!  <<<< -->
     <link rel="stylesheet" href="./sass/index.scss" />
+    <link rel="stylesheet" href="./sass/library.scss" />
 
   </head>
 
   <body>
     
-      <include src="./partials/header.html"></include>
-      <!-- <include src="./partials/modal-form.html"></include> -->
+    <include src="./partials/library-header.html"></include>
+     <!-- <include src="./partials/modal-form.html"></include> -->
+ 
+      <div class="container">
+        <main>
+          <h2 class="h2-hiddenXX is-hiddenXX">Library page</h2>
 
-      <main>
-        <h2 class="h2-hiddenXX is-hiddenXX">Filmoteka main page</h2>
+          <img src="./images/test2.jpeg" alt="test images" width="1200" />
 
-        <img src="./images/test.jpeg" alt="test images" width="1200" />
+          
+          <include src="./partials/loader.html"></include>
+          
+          </main>
+      </div>
 
-        <include src="./partials/containerMainPage.html"></include>
-        <include src="./partials/loader.html"></include>
-        <include src="./partials/movieCardModal.html"></include>
+     <include src="./partials/footer.html"></include>
 
-        <include src="./partials/modalTeam.html"></include>
-      </main>
-
-      <include src="./partials/footer.html"></include>
-    </div>
-
-         <include src="./partials/footer.html"></include>
-   
-    <script type="module" src="./index.js"></script>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>

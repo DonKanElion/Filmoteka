@@ -1,0 +1,30 @@
+:root {
+  --current-color: currentColor;
+
+  --heder-btn-bg: rgba(0, 0, 0, 0.56);
+  --heder-gradient: to right, rgba(0, 0, 0, 0.56) 0%, rgba(0, 0, 0, 0.56) 100%;
+  --body-bg-color: #e5e5e5;
+
+  --primary-text-color: #000000;
+  --secondary-text-color: #ffffff;
+  --third-text-color: #ff6b08;
+
+  --modal-text-color: #8c8c8c;
+  --active-btn-color: #ff6b01;
+
+  --heder-btn-bg: rgba(0, 0, 0, 0.56);
+
+  --mobile-btn-border: 1px solid #000000;
+  --heder-btn-border: 1px solid #ffffff;
+
+  --activeColor: #ff001b;
+
+  --inactiveUser: #8c8c8c;
+  --activeUser: #ff001b;
+
+  --footer-text-color: #545454;
+  --bg-footer: #f7f7f7;
+
+  --transition-time: 0.3s;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
