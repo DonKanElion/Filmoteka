@@ -65,7 +65,7 @@ export default class ApiService {
     return response.data.genres; // Повертає проміс із жанрами
   }
 
-  incrementPage() {
+    incrementPage() {
     this.page += 1;
   }
 
@@ -81,6 +81,7 @@ export default class ApiService {
     this.inputValue = newInputValue;
   }
 }
+
 
 // Імпортуємо собі в файл
 // import ApiService from './js/apiService';
