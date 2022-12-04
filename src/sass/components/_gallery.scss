@@ -1,36 +1,42 @@
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 20px;
     justify-content: center;
     align-items: center;
     margin-bottom: 24px;
 }
 
 .card {
-
-    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    width: 280px;
+    // height: 440px;
+    
    
 }
 .card__poster {
         width: 280px;
-        height: 398px;
+        height: 402px;
+        border-radius: 5px;
 }
 
 .card__info {
-    display: flex;
-    justify-content: space-around;
-    font-size: 20px;
-    line-height: 1.2;
+    // display: flex; 
+    // justify-content: space-around;
+    margin-top: 10px;
+    font-size: 12px;
+   
 }
 
 .info__title {
+    line-height: 1.17;
     text-transform: uppercase;
         color: #000000;
 }
 
-.info__genre .info__release-date {
-
+.info__genre, .info__release-date, .info__span {
+line-height: 1.33;
     color: #FF6B08;
 
 }

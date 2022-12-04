@@ -1,3 +1,1 @@
-
-
-import createGallery from './create-gallery';
+import createGalleryMarkup from './js/create-gallery.js';
