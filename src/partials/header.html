@@ -6,7 +6,7 @@
           <svg class="logo__icon" width="24" height="24">
             <use href="./images/svg/sprite.svg#film"></use>
           </svg>
-          <span class="logo__text visually-hidden">Filmoteka </span>
+          <span class="logo__text">Filmoteka</span>
         </a>
 
         <ul class="navigation__list">
@@ -14,15 +14,19 @@
             <a class="navigation__link" href="#">Home</a>
           </li>
           <li class="navigation__item">
-            <a class="navigation__link" href="#">My library</a>
+            <a class="navigation__link" href="./library.html">My library</a>
           </li>
         </ul>
       </nav>
-      <button class="login visually-hidden1" type="button">
-        <svg class="login__icon" width="30" height="30">
-          <use href="./images/svg/sprite.svg#user"></use>
-        </svg>
-      </button>
+
+      <div class="login login--is-logined">
+        <button class="login__button" type="button" data-loginButton>
+          <svg class="login__icon" width="30" height="30">
+            <use href="./images/svg/sprite.svg#user"></use>
+          </svg>
+        </button>
+        <span class="login__user-name">User Name</span>
+      </div>
     </div>
 
     <!-- Search form -->
@@ -40,7 +44,8 @@
       </button>
     </form>
     <div id="errorMessage" class="header__error-message visually-hidden1">
-      Search result not successful. Enter the correct movie name and
+      Search result not successful. Enter the correct movie name and try
+      again...
     </div>
   </div>
 </header>
