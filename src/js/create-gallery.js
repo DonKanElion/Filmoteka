@@ -13,13 +13,9 @@ newApiServiсe.fetchTrendingFilms().then(data => {
   refs.gallery.innerHTML = markup;
 });
 
-// function createGallery(arrayForGallery) {
-//     const galleryMarkup = createGalleryMarkup(arrayForGallery);
 
-//     gallery.insertAdjacentHTML('beforeend', galleryMarkup);
-// };
 
-function createGalleryMarkup(imagesArray) {
+export default function createGalleryMarkup(imagesArray) {
     return imagesArray
         .map(image => {
             const {poster_path, title, genre_ids, release_date} = image;
@@ -42,4 +38,4 @@ function createGalleryMarkup(imagesArray) {
             `
         })
         .join('');
-};
+} 

@@ -5,13 +5,20 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 24px;
+    @include tablet() {
+            gap: 32px;
+        }
+                 @include desktop() {
+                    gap: 16px;
+                    
+                 }
 }
 
 .card {
     margin: 0;
     padding: 0;
     width: 280px;
-    // height: 440px;
+    // height: 440px; 
     
    
 }
@@ -19,24 +26,44 @@
         width: 280px;
         height: 402px;
         border-radius: 5px;
+ @include tablet() {
+        width: 336px;
+        // height: 455px;
+        }
+                @include desktop() {
+                    width: 395px;
+                        // height: 574px;
+                        font-size: 20px;
+                            line-height: 1.2;
+                }
 }
 
 .card__info {
     // display: flex; 
-    // justify-content: space-around;
-    margin-top: 10px;
+    // flex-direction: column;
+    // justify-content: flex-start; 
+    margin-top: 15px;
     font-size: 12px;
+    @include desktop() {
+            
+            font-size: 20px;
+            line-height: 1.2;
+        }
    
 }
 
 .info__title {
+    margin-bottom: 10px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
     line-height: 1.17;
     text-transform: uppercase;
-        color: #000000;
+      color: var (--primary-text-color);
 }
 
 .info__genre, .info__release-date, .info__span {
-line-height: 1.33;
-    color: #FF6B08;
+margin-top: 10px;
+    line-height: 1.33;
+    color: var (--third-text-color);
 
 }
