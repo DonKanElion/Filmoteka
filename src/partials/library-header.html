@@ -1,4 +1,4 @@
-<header class="library-background">
+<header class="header header__library">
   <div class="container">
     <div class="header__menu">
       <nav class="header__navigation navigation">
@@ -6,7 +6,7 @@
           <svg class="logo__icon" width="24" height="24">
             <use href="./images/svg/sprite.svg#film"></use>
           </svg>
-          <span class="logo__text visually-hidden">Filmoteka</span>
+          <span class="logo__text">Filmoteka</span>
         </a>
 
         <ul class="navigation__list">
@@ -22,11 +22,14 @@
           </li>
         </ul>
       </nav>
-      <button class="login visually-hidden1" type="button">
-        <svg class="login__icon" width="30" height="30">
-          <use href="./images/svg/sprite.svg#user"></use>
-        </svg>
-      </button>
+      <div class="login login--is-logined">
+        <button class="login__button" type="button" data-loginButton>
+          <svg class="login__icon" width="30" height="30">
+            <use href="./images/svg/sprite.svg#user"></use>
+          </svg>
+        </button>
+        <span class="login__user-name">User Name</span>
+      </div>
     </div>
 
     <ul class="user-lib-btns">
