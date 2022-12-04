@@ -254,7 +254,10 @@
   margin-top: 16px;
 
   @include font(14, 16.41, 400, 0);
+
   color: var(--activeColor);
+
+  @include projTransitions(color);
 
   @include tablet() {
     margin-top: 20px;
