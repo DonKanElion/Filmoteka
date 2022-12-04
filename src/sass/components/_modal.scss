@@ -1,127 +1,137 @@
 .backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-
-  z-index: 1500;
-
-  overflow-y: auto;
-
   width: 100%;
   height: 100%;
-  padding: 15px;
-  padding-left: calc((100vw - 280px) / 2);
-  background-color: var(--color-backdrop-overlay);
-
-  @include projTransitions((opacity, visibility));
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
 }
 
 .modal {
-  position: absolute;
-
-  width: calc(100% - 30px);
-  max-width: 280px;
-  height: calc(100% - 30px);
-
-  border-radius: 20px;
-  padding-top: 40px;
-  padding-bottom: 20px;
-
-  overflow: hidden;
-
-  background-color: var(--bg-modal);
-
-  @include projTransitions(transform);
-
-  transform: translateX(0);
-
-  .backdrop.is-hidden & {
-    // transform: translate(100%, -50%);
-
-    transform: translateX(100%);
-  }
-
-  @include tablet {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    max-width: 650px;
-    height: 550px;
-    padding-bottom: 15px;
-
-    .backdrop.is-hidden & {
-      transform: translate(100%, -50%);
-    }
-  }
-}
-
-.modal__close-button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 1;
-}
-
-.close-button {
-  width: 14px;
-  height: 14px;
-
-  // border-radius: 50%;
-
-  outline: none;
-  border: none;
-
-  background-color: transparent;
-
-  color: var(--secondary-text-color);
-
-  @include projTransitions(color);
-
-  &:hover,
-  &:focus {
-    color: var(--secondary-accent-color);
-    background-color: transparent;
-  }
-}
-
-.modals-content {
   position: relative;
-  display: block;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  // height: calc(100% - 15px);
+  margin: 20px auto;
+  width: 280px;
+  max-height: 940px;
+  background-color: white;
+  color: black;
 }
 
-.all-modals__item {
+.modal__movie-content {
+  padding: 48px 20px;
+}
+.modal__button-close{
   position: absolute;
-  display: block;
-  padding-left: 15px;
-  padding-right: 15px;
-
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  // height: calc(100% - 15px);
-
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    //background-color: white;
-    background-color: var(--secondary-bg-heror);
-    width: 5px;
-    border-radius: 3px;
-  }
-  &::-webkit-scrollbar-thumb {
-    //background-color: white;
-    background-color: var(--primary-bg-hero);
-    border-radius: 3px;
-  }
+  right: 8px;
+  top: 8px;
 }
 
-.content-franchise {
-  overflow-y: auto;
+.modal__movie-backdrop{
+  border-radius: 5px;
+
+  // margin-bottom: 20px;
+}
+.modal__movie-overview {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  color: #000000;
+}
+
+.modal__movie-backdrop{
+  width: 240px;
+  height: 357px; 
+
+  margin-bottom: 20px;
+}
+
+.modal__movie-info {
+  width: 215px;
+
+  margin-bottom: 20px;
+}
+
+.modal__movie-title {
+font-family: 'Roboto';
+
+font-weight: bold;
+font-size: 20px;
+line-height: 1.15;
+color: #000000;
+text-align: left;
+
+margin-bottom: 20px;
+}
+
+.modal__movie-info tr th {
+  text-align: left;
+  width: 50%;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8C8C8C;
+}
+
+.modal__movie-info tr td {
+  text-align: left;
+  width: 50%;
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+}
+
+.modal__movie-text {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: #000000;
+
+  margin-bottom: 8px;
+}
+
+.modal__movie-overview {
+  font-family: 'Roboto';
+
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.67;
+  color: #000000;
+
+  margin-bottom: 20px;
+}
+
+.modal__movie-btn {
+  display: flex;	
+  justify-content: space-between;
+}
+
+.btn-watched,
+.btn-queue {
+ 
+  width: 110px;
+  height: 44px;
+
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: 1px solid #000000;
+
+  color: #000000;
+  background: #FFFFFF;
+}
+
+.btn-watched:hover,
+.btn-queue:hover {
+  background: #FF6B01;
+  color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0);
 }
