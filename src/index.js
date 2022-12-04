@@ -1,5 +1,8 @@
-import createGallery from './create-gallery';
+
+import './js/create-gallery.js';
+
 import './js/startSearch';
 
 // тут підчистив 
+
 
