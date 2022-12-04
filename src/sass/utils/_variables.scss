@@ -25,6 +25,7 @@
   --footer-text-color: #545454;
   --bg-footer: #f7f7f7;
 
-  --transition-time: 0.3s;
-  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-time: 250ms;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1); // видалю пізніше(ТімЛід)
+  --trans-prop: cubic-bezier(0.4, 0, 0.2, 1); // актуальна змінна(ТімЛід)
 }
