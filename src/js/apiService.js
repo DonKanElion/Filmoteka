@@ -4,12 +4,12 @@ const API_KEY = 'api_key=9790c9e061754f8ee983e30effe6feec';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const TRENDING_URL = 'trending/movie/week?';
 const SEARCH = `search/movie?`;
+const GENRES_LIST = `genre/movie/list?`;
 
 export default class ApiService {
   constructor() {
     this.inputValue = ' ';
     this.page = 1;
-    this.movieId = null;
   }
 
   // колекція популярних фільмів
@@ -35,7 +35,7 @@ export default class ApiService {
     const responce = await axios.get(
       `${BASE_URL}movie/${this.movieId}?${API_KEY}`
     );
-    return responce.data;
+    return responce;
   }
 
   // трейлер до фільму
@@ -43,13 +43,32 @@ export default class ApiService {
     const responce = await axios.get(
       `${BASE_URL}movie/${this.movieId}/videos?${API_KEY}`
     );
-    return responce.data;
+    return responce;
+    }
+    
+  //   повертає обєкт з масивом жанрів, масивом фильмів, total_pages, total_results
+  async dataMovies() {
+    const genres = await this.getGenres(); // Повертає жанри з АРІ
+    let data = null;
+    if (this.query) {
+      data = await this.fetchSearchFilms();
+    } else {
+      data = await this.fetchTrendingFilms(); // Повертає масив фільмів з АРІ
+    }
+    const { results, total_pages, total_results } = data;
+    return { genres, results, total_pages, total_results };
+  }
+
+  async getGenres() {
+    const url = `${BASE_URL}${GENRES_LIST}${API_KEY}`; //
+    const response = await axios.get(url); // Запит на АРІ за жанрами
+    return response.data.genres; // Повертає проміс із жанрами
   }
 
   incrementPage() {
     this.page += 1;
-    }
-    
+  }
+
   resetPage() {
     this.page = 1;
   }
@@ -62,7 +81,6 @@ export default class ApiService {
     this.inputValue = newInputValue;
   }
 }
-
 
 // Імпортуємо собі в файл
 // import ApiService from './js/apiService';
@@ -86,3 +104,6 @@ export default class ApiService {
 // приклад movieId - число;
 // newApiServiсe.movieId = 94671;
 // console.log(newApiServiсe.fetchTrailerFilm());
+
+// повертає обєкт з масивом жанрів, масивом фильмів, total_pages, total_results
+// newApiServiсe.dataMovies().then(data => console.log(data));
