@@ -1,1 +1,8 @@
-import createGalleryMarkup from './js/create-gallery.js';
+
+import './js/create-gallery.js';
+
+import './js/startSearch';
+
+// тут підчистив 
+
+
