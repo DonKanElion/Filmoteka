@@ -17,11 +17,12 @@ $color: #FF6B08;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  // height: 100vh; (ТімЛід - тимчасово приховав, щоб не заважало)
   overflow: hidden;
 }
 
-.loader__block {display: flex;
+.loader__block {
+  display: flex;
   width: 30px;
   height: 30px;
   margin: 15px;

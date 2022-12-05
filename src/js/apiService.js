@@ -44,8 +44,8 @@ export default class ApiService {
       `${BASE_URL}movie/${this.movieId}/videos?${API_KEY}`
     );
     return responce;
-    }
-    
+  }
+
   //   повертає обєкт з масивом жанрів, масивом фильмів, total_pages, total_results
   async dataMovies() {
     const genres = await this.getGenres(); // Повертає жанри з АРІ
@@ -65,7 +65,7 @@ export default class ApiService {
     return response.data.genres; // Повертає проміс із жанрами
   }
 
-    incrementPage() {
+  incrementPage() {
     this.page += 1;
   }
 
@@ -82,13 +82,12 @@ export default class ApiService {
   }
 }
 
-
 // Імпортуємо собі в файл
 // import ApiService from './js/apiService';
 
 // const newApiServiсe = new ApiService();
 
- // колекція популярних фільмів
+// колекція популярних фільмів
 // console.log(newApiServiсe.fetchTrendingFilms());
 
 // колекція по ключевому слову

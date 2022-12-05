@@ -58,12 +58,12 @@
     flex-wrap: nowrap;
     line-height: 1.17;
     text-transform: uppercase;
-      color: var (--primary-text-color);
+      color: var(--primary-text-color);
 }
 
 .info__genre, .info__release-date, .info__span {
 margin-top: 10px;
     line-height: 1.33;
-    color: var (--third-text-color);
+    color: var(--third-text-color);
 
 }
