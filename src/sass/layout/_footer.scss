@@ -4,9 +4,26 @@
 }
 
 .footer__list{
-display: block;
-text-align: center;
+display: flex;
+flex-direction: column;
 align-items: center;
+
+// @media screen and (max-width: 767px) {
+//   flex-direction: row;
+//         flex-wrap: wrap;
+//         align-items: baseline;  
+//         justify-content: space-around;
+//   }
+}
+
+@media screen and (max-width: 767px) {
+
+  .footer__list{
+         flex-direction: row;
+        flex-wrap: wrap;
+        align-items: baseline;  
+        justify-content: space-around;
+  }
 }
 
 .footer__list__item{
