@@ -12,6 +12,34 @@
       url('./../images/header/mob_abstract-background-with-red-lines@2x.jpg');
   }
 
+  &__library {
+    height: 230px;
+
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56) 0%,
+        rgba(0, 0, 0, 0.56) 100%
+      ),
+      url('../images/library/mobile-lib@1x.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    @include retina {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56) 0%,
+          rgba(0, 0, 0, 0.56) 100%
+        ),
+        url('../images/library/mobile-lib@2x.jpg');
+    }
+  }
+
+  .user-lib-btns {
+    @include flex();
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+
   @include tablet() {
     height: 216px;
     padding-top: 41px;
@@ -24,6 +52,38 @@
     @include retina {
       background-image: linear-gradient(var(--heder-gradient)),
         url('./../images/header/tab_abstract-background-with-red-lines@2x.jpg');
+    }
+
+    &__library {
+      height: 216px;
+
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56) 0%,
+          rgba(0, 0, 0, 0.56) 100%
+        ),
+        url('../images/library/tablet-lib@1x.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+
+      @include retina {
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.56) 0%,
+            rgba(0, 0, 0, 0.56) 100%
+          ),
+          url('../images/library/tablet-lib@2x.jpg');
+      }
+    }
+
+    .user-lib-btns {
+      @include flex();
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .watched {
+      margin-right: 20px;
     }
   }
 
@@ -39,6 +99,37 @@
     @include retina {
       background-image: linear-gradient(var(--heder-gradient)),
         url('./../images/header/desk_abstract-background-with-red-lines@2x.jpg');
+    }
+
+    &__library {
+      height: 216px;
+
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56) 0%,
+          rgba(0, 0, 0, 0.56) 100%
+        ),
+        url('../images/library/desktop-lib@1x.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+
+      @include retina {
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.56) 0%,
+            rgba(0, 0, 0, 0.56) 100%
+          ),
+          url('../images/library/desktop-lib@2x.jpg');
+      }
+    }
+    .user-lib-btns {
+      @include flex();
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .watched {
+      margin-right: 16px;
     }
   }
 }
