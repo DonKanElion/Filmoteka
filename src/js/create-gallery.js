@@ -14,7 +14,7 @@ const locStorage = {
 newApiServiсe.fetchTrendingFilms().then(data => {
   const imagesArray = data.results;
   const markup = createGalleryMarkup(imagesArray);
-  //   refs.gallery.innerHTML = markup;
+    // refs.gallery.innerHTML = markup;
 });
 setGenresNames(newApiServiсe);
 
@@ -82,7 +82,7 @@ async function setGenresNames(apiService){
     for (let i = 0; i < genreIDs.length; i++) {
         const genreID = genreIDs[i];
                
-        parsedGenres.map(genre=>{
+        parsedGenres.map(genre => {
            
             if(genreID === genre.id){
                 genresNames += genre.name + ", ";
