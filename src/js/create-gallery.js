@@ -41,7 +41,7 @@ export default function createGalleryMarkup(imagesArray) {
         })
         .join('');
 } 
-/** Функція записує до локального сховища 
+/** Функція записує жанри до локального сховища 
  *
  */
 async function setGenresNames(apiService){
