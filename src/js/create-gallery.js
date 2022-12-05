@@ -48,6 +48,7 @@ export default function createGalleryMarkup(imagesArray) {
  *
  */
 async function setGenresNames(apiService){
+    let promices;
     const genre = {
         id: 0,
         name: "",
