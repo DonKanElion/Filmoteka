@@ -1,7 +1,9 @@
 
 import ApiService from './apiService';
 const newApiServiсe = new ApiService();
-
+const locStorage = {
+  genres: "genres"
+}
 const refs = {
     gallery: document.querySelector('.gallery'),
 };
@@ -10,16 +12,13 @@ console.log(refs.gallery);
 newApiServiсe.fetchTrendingFilms().then(data => {
   const imagesArray = data.results;
   const markup = createGalleryMarkup(imagesArray);
-  //   refs.gallery.innerHTML = markup;
+    refs.gallery.innerHTML = markup;
 });
 
-
+setGenresNames(newApiServiсe);
 
 export default function createGalleryMarkup(imagesArray) {
-  const refs = {
-    gallery: document.querySelector('.gallery'),
-  };
-  refs.gallery.innerHTML = imagesArray
+  return imagesArray
     .map(image => {
       const { poster_path, title, genre_ids, release_date } = image;
       const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
@@ -42,3 +41,49 @@ export default function createGalleryMarkup(imagesArray) {
         })
         .join('');
 } 
+/** Функція записує до локального сховища 
+ *
+ */
+async function setGenresNames(apiService){
+    const genre = {
+        id: 0,
+        name: "",
+    }
+    try {
+        promices = await apiService.dataMovies();
+        const genresArray = promices.genres;
+        let genresStr = "";
+
+        genresStr += JSON.stringify(genresArray);    
+
+        localStorage.setItem(locStorage.genres, JSON.stringify(genresArray)); 
+    }
+    catch(error){
+        console.log("setGenresNames() error: ", error.message);
+    }
+}
+
+ function getGenreNames(genreIDs){
+    let genres ;
+    let parsedGenres;
+    try {
+        genres = localStorage.getItem(locStorage.genres);
+        parsedGenres = JSON.parse(genres);        
+    }
+    catch(error){
+        console.log("getGenreNames() error: ", error.message);
+    }
+    
+    let genresNames = "";
+    for (let i = 0; i < genreIDs.length; i++) {
+        const genreID = genreIDs[i];
+               
+        parsedGenres.map(genre=>{
+           
+            if(genreID === genre.id){
+                genresNames += genre.name + ", ";
+            }
+        })
+    }
+    return genresNames.slice(0,-2);    
+}
