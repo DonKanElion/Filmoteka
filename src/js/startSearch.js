@@ -1,17 +1,18 @@
 import ApiService from './apiService';
+import createGalleryMarkup from './create-gallery';
 
 // колекція по ключевому слову
 // newApiServiсe.value = e.target.searchQuery.value.trim();
 // newApiServiсe.value = 'dog'
 // console.log(newApiServiсe.fetchSearchFilms());
 
-// const galleryListEl = document.querySelector('body');
 // Refs
 const refs = {
   form: document.querySelector('.form'),
   errorMessage: document.getElementById('errorMessage'),
 };
 const api = new ApiService();
+let totalPages = 0;
 
 refs.form.addEventListener('submit', onSearch);
 
@@ -21,75 +22,112 @@ async function onSearch(e) {
     children: { searchQuery },
   } = e.currentTarget;
 
-  const query = searchQuery.value.trim();
-  api.value = query;
+  api.value = searchQuery.value.trim();
 
   console.log('searching:', api.value);
 
   try {
-    const response = await api.fetchSearchFilms();
-    const data = await response.results;
-    const totalPages = await response.total_pages;
-    const totalResults = await response.total_results;
-    const emptyData = !data.length;
+    const serchResponse = await api.fetchSearchFilms();
+    const serchData = await serchResponse.results;
 
-    console.log('response :>> ', response);
-    console.log('data :>> ', data);
-    console.log('totalPages :>> ', totalPages);
-    console.log('totalResults :>> ', totalResults);
+    totalPages = await serchResponse.total_pages;
+    console.log('totalPages of search:>> ', totalPages);
 
-    showErrorMsg(emptyData);
+    // const totalResults = await response.total_results;
+    const emptyData = !serchData.length;
+
+    // console.log('serchResponse :>> ', serchResponse);
+    // console.log('data :>> ', data);
+    // console.log('totalPages :>> ', totalPages);
+    // console.log('totalResults :>> ', totalResults);
+    onSearchError(emptyData);
 
     if (totalPages > 1) {
-      console.log('Рендерим Пагинацию');
+      console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
     }
     //? Render films
-    // createGallery(data);
+    createGalleryMarkup(serchData);
 
     //   console.log('response :>> ', response);
   } catch (error) {
     console.log('error :>> ', error.code);
-    showErrorMsg(error);
+    onSearchError(error);
   }
 }
 
-function showErrorMsg(showConditions) {
+async function onSearchError(showConditions) {
   if (showConditions) {
     refs.errorMessage.classList.remove('is-hidden');
-    return;
+
+    const trendingResponse = await api.fetchTrendingFilms();
+    const trendingData = await trendingResponse.results;
+    totalPages = await trendingResponse.total_pages;
+    console.log('totalPages on error :>> ', totalPages);
+
+    createGalleryMarkup(trendingData);
   } else {
     refs.errorMessage.classList.contains('is-hidden') ||
       refs.errorMessage.classList.add('is-hidden');
   }
 }
+//TODO -----
+// 1 если есть запрос - рендер даты, эррор фолс, тотал пейджес
+// 2 если запрос не верный - эррор тру и рендер популярной даты, тотал пейджес, эррор МСГ
+// 3 геттер сеттер на пейдж
+// 4 метод рендер принимает  квери и пейдж
+//-----------
+class SearchMachine {
+  constructor() {
+    this.query = '';
+    this.totalPages = 0;
+    this.page = 1;
 
-// function createGallery(arrayForGallery) {
-//   const galleryMarkup = createGalleryMarkup(arrayForGallery);
+    this.isPaginationNeed = false;
+    this.isError = false;
+    this.errorMsg = '';
 
-//   galleryListEl.insertAdjacentHTML('beforeend', galleryMarkup);
-// }
+    this.render = createGalleryMarkup;
+  }
 
-// function createGalleryMarkup(imagesArray) {
-//   return imagesArray
-//     .map(image => {
-//       const { backdrop_path, title, genre_ids, release_date } = image;
+  init = async () => {
+    console.log('this.render :>> ', this.render);
+  };
 
-//       return `
-//                 <div class="card">
+  search = async newQuery => {
+    this.query = newQuery;
 
-//                     <img class="card__poster" src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt=""  loading="lazy" width="320px" height="210px"/>
+    try {
+      const serchResponse = await api.fetchSearchFilms();
+      const serchData = await serchResponse.results;
 
-//                     <div  class="card__info">
-//                         <p class="info__title"><b>${title}</b><br/>
-//                         </p>
-//                         <p class="info__genre"><b>${genre_ids}</b>
-//                         </p>
-//                         <p class="info__release-date"><b>${release_date}</b>
-//                         </p>
+      this.totalPages = await serchResponse.total_pages;
+      console.log('totalPages of search:>> ', totalPages);
 
-//                     </div>
-//                 </div>
-//             `;
-//     })
-//     .join('');
-// }
+      // const totalResults = await response.total_results;
+      const emptyData = !serchData.length;
+
+      // console.log('serchResponse :>> ', serchResponse);
+      // console.log('data :>> ', data);
+      // console.log('totalPages :>> ', totalPages);
+      // console.log('totalResults :>> ', totalResults);
+      onSearchError(emptyData);
+
+      if (totalPages > 1) {
+        console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+      }
+      //? Render films
+      createGalleryMarkup(serchData);
+
+      //   console.log('response :>> ', response);
+    } catch (error) {
+      console.log('error :>> ', error.code);
+      onSearchError(error);
+    }
+  };
+
+  onSearchError;
+}
+
+const search = new SearchMachine();
+
+search.init();
