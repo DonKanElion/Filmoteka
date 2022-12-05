@@ -84,6 +84,7 @@ async function onSearch(e) {
       });
     }
     //? Render films
+    //? Render films
 
     createGalleryMarkup(serchData);
 
