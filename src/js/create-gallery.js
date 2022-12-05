@@ -1,7 +1,8 @@
 import ApiService from './apiService';
-
 const newApiServiсe = new ApiService();
-
+const locStorage = {
+    genres: "genres"
+}
 const refs = {
     gallery: document.querySelector('.gallery'),
 };
@@ -13,7 +14,10 @@ newApiServiсe.fetchTrendingFilms().then(data => {
   refs.gallery.innerHTML = markup;
 });
 
-
+setGenresNames(newApiServiсe);
+    let genresNames = getGenreNames([28, 12]);
+    console.log("Genres: " + genresNames);
+  
 
 export default function createGalleryMarkup(imagesArray) {
     return imagesArray
@@ -28,7 +32,7 @@ export default function createGalleryMarkup(imagesArray) {
                     <div  class="card__info">
                         <p class="info__title"><b>${title}</b><br/>
                         </p>
-                        <p ><b class="info__genre">${genre_ids}</b>
+                        <p ><b class="info__genre">${getGenreNames(genre_ids)}</b>
                        <span class="info__span"> | </span>
                         <b class="info__release-date">${releaseYear}</b>
                         </p>
@@ -39,3 +43,49 @@ export default function createGalleryMarkup(imagesArray) {
         })
         .join('');
 } 
+
+//  Функція записує жанри до локального сховища 
+
+async function setGenresNames(apiService){
+    const genre = {
+        id: 0,
+        name: "",
+    }
+    try {
+        promices = await apiService.dataMovies();
+        const genresArray = promices.genres;
+        let genresStr = "";
+
+        genresStr += JSON.stringify(genresArray);    
+
+        localStorage.setItem(locStorage.genres, JSON.stringify(genresArray)); 
+    }
+    catch(error){
+        console.log("setGenresNames() error: ", error.message);
+    }
+}
+
+ function getGenreNames(genreIDs){
+    let genres ;
+    let parsedGenres;
+    try {
+        genres = localStorage.getItem(locStorage.genres);
+        parsedGenres = JSON.parse(genres);        
+    }
+    catch(error){
+        console.log("getGenreNames() error: ", error.message);
+    }
+    
+    let genresNames = "";
+    for (let i = 0; i < genreIDs.length; i++) {
+        const genreID = genreIDs[i];
+               
+        parsedGenres.map(genre=>{
+           
+            if(genreID === genre.id){
+                genresNames += genre.name + ", ";
+            }
+        })
+    }
+    return genresNames.slice(0,-2);    
+}
