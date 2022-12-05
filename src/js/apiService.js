@@ -17,7 +17,7 @@ export default class ApiService {
     const responce = await axios.get(
       `${BASE_URL}${TRENDING_URL}${API_KEY}&page=${this.page}`
     );
-    this.incrementPage();
+    // this.incrementPage();
     return responce.data;
   }
 
@@ -26,7 +26,7 @@ export default class ApiService {
     const responce = await axios.get(
       `${BASE_URL}${SEARCH}${API_KEY}&page=${this.page}&include_adult=false&query=${this.inputValue}`
     );
-    this.incrementPage();
+    // this.incrementPage();
     return responce.data;
   }
 
@@ -79,6 +79,14 @@ export default class ApiService {
 
   set value(newInputValue) {
     this.inputValue = newInputValue;
+  }
+
+  get currentPage() {
+    return this.page;
+  }
+
+  set currentPage(newPage) {
+    this.page = newPage;
   }
 }
 
