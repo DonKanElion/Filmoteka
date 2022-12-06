@@ -1,5 +1,4 @@
 .modal {
-	position: relative;
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -16,7 +15,7 @@
 	}
 
 	&__close {
-		height: 26;
+		height: 26px;
 		position: absolute;
 		top: 8px;
 		right: 8px;
@@ -110,7 +109,7 @@
 
 	&__about-text {
 		font-size: 12px;
-		line-height: 20px;
+		line-height: 1.67;
 		letter-spacing: 0.02em;
 
 		@media screen and (min-width: 1024px) {
@@ -127,7 +126,8 @@
 	&__btn {
 		border-radius: 5px;
 		border: 1px solid #000;
-		color: var(--primary-text-color);
+    color: #000000;
+    font-weight: bold;
 		text-transform: uppercase;
 		font-size: 12px;
 		width: 110px;
@@ -152,6 +152,7 @@
 
 .backdrop {
 	position: fixed;
+  display: none;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -166,4 +167,39 @@
 }
 .backdrop.is-hidden .modal {
 	transform: translate(-50%, -50%) scale(0.3);
+}
+
+
+.modal__movie-info {
+  width: 215px;
+
+  margin-bottom: 20px;
+}
+
+.modal__movie-info tr th {
+  text-align: left;
+  width: 50%;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8C8C8C;
+}
+
+.modal__movie-info tr td {
+  text-align: left;
+  width: 50%;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+}
+
+.modal__movie-bord {
+  display: inline-block;
+  text-align: center;
+  width: 36px;
+  border-radius: 5px;
+
+  background-color: var(--active-btn-color);
+  color: var(--secondary-text-color);
 }
