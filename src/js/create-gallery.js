@@ -47,7 +47,7 @@ newApiServiсe.fetchTrendingFilms().then(data => {
 setGenresNames(newApiServiсe);
 
 
-setGenresNames(newApiServiсe);
+// setGenresNames(newApiServiсe);
 
 
 export default function createGalleryMarkup(imagesArray) {
