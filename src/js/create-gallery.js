@@ -2,7 +2,7 @@ import ApiService from './apiService';
 
 // TUI Pagination import
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 import { paginationOptions } from './projectOptions';
 
 const newApiServiсe = new ApiService();

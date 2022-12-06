@@ -1,7 +1,7 @@
 import ApiService from './apiService';
 import createGalleryMarkup from './create-gallery';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 import { paginationOptions } from './projectOptions';
 
 // Refs
@@ -28,6 +28,7 @@ async function onSearch(e) {
   console.log('searching:', api.value);
 
   try {
+    api.resetPage();
     const serchResponse = await api.fetchSearchFilms();
     const serchData = await serchResponse.results;
 
@@ -74,10 +75,31 @@ async function onSearchError(showConditions) {
   if (showConditions) {
     refs.errorMessage.classList.remove('is-hidden');
 
+    api.resetPage();
     const trendingResponse = await api.fetchTrendingFilms();
     const trendingData = await trendingResponse.results;
     totalPages = await trendingResponse.total_pages;
+
     console.log('totalPages on error :>> ', totalPages);
+
+    if (totalPages > 1) {
+      console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+
+      const paginaton = new Pagination(refs.tuiContainer, {
+        ...paginationOptions,
+        totalItems: totalPages,
+      });
+
+      paginaton.on('afterMove', async ({ page }) => {
+        console.log(`Предать страницу ${page} в АПИ`);
+        console.log(`сделать запрос и отрендерить`);
+        api.currentPage = page;
+        const trendingResponse = await api.fetchTrendingFilms();
+        const trendingData = await trendingResponse.results;
+        totalPages = await trendingResponse.total_pages;
+        createGalleryMarkup(trendingData);
+      });
+    }
 
     createGalleryMarkup(trendingData);
   } else {
