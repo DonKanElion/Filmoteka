@@ -1,28 +1,38 @@
 .footer {
   background-color: var(--bg-footer);
-  padding: 30px 0px;
+  padding: 25px 0px;
+  
+  @include tablet() {
+    padding: 30px 0px;
+    }
 }
 
 .footer__list{
-display: block;
-text-align: center;
+display: flex;
+flex-direction: column;
 align-items: center;
+
+    @include tablet() {
+      flex-direction: row;      
+      justify-content: center;
+      align-items: center;
+    }
 }
 
 .footer__list__item{
-  // margin-bottom: 10px;
   margin-left: auto;
   margin-right: auto;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
-
   align-items: center;
   color: var(--footer-text-color);
-}
 
-.footer__list__item:last-child{
-  // margin-bottom: 0;
+  @include tablet() {
+    margin: 0px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
 }
 
 .footer__heart{
@@ -32,7 +42,7 @@ align-items: center;
 }
 
 .footer__btn-team {
-  padding: 10px 20px;
+  padding: 8px 20px;
   color: var(--footer-text-color);
   cursor: pointer;
   transition: color var(--transition-time) var(--trans-prop);
@@ -43,5 +53,9 @@ align-items: center;
       .footer__heart{
         color: red;
       }
+    }
+
+    @include tablet() {
+      padding: 10px 0px;
     }
 }

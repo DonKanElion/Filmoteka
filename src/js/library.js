@@ -1,62 +1,55 @@
 const refs = {
-  btnWatched: document.querySelector('.style'),
-  btnQueue: document.querySelector('.style'),
-  movieGallery: document.querySelector('.gallery'),
+  btnWatched: document.querySelector('.watched'),
+  btnQueue: document.querySelector('.queue'),
+  libraryGallery: document.querySelector('.gallery'),
+  loader: document.querySelector('.loader'),
 };
 
 const watchedMovies = JSON.parse(localStorage.getItem('watched'));
 const queueMovies = JSON.parse(localStorage.getItem('queue'));
-
+console.log(watchedMovies);
 // =====================================================================================
 
-// refs.movieGallery.addEventListener('click', onClickOpenModal);
 refs.btnWatched.addEventListener('click', onWatchedButtonClick);
 refs.btnQueue.addEventListener('click', onQueueButtonClick);
 
 // =====================================
 
 function onWatchedButtonClick(event) {
+  console.log(event);
   if (event.target.classList === 'watched') {
     refs.btnWatched.classList.add('selected');
     refs.btnQueue.classList.remove('selected');
-
-    renderMovies(watchedMovies);
   }
+  createLibraryGalleryMarkup(watchedMovies);
+  refs.loader.classList.add('is-hidden');
 }
 
 function onQueueButtonClick(event) {
   if (event.target.classList === 'queue') {
     refs.btnQueue.classList.add('selected');
     refs.btnWatched.classList.remove('selected');
-
-    renderMovies(watchedMovies);
   }
+  createLibraryGalleryMarkup(queueMovies);
+  refs.loader.classList.add('is-hidden');
 }
 
-function renderMovies(movies) {
-  refs.movieGallery.innerHTML = '';
-  refs.movieGallery.insertAdjacentHTML(
-    'beforeend',
-    createMovieGalleryMarkup(movies)
-  );
-}
-
-function createMovieGalleryMarkup(movies) {
-  return movies
-    .map(movie => {
-      const { id, posterSrc, title, genre, release_date, votes } = movie;
-      const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
+function createLibraryGalleryMarkup(imagesArray) {
+  console.log(imagesArray);
+  refs.libraryGallery.innerHTML = imagesArray
+    .map(image => {
+      const { poster_path, title, genre, year } = image;
       return `
-                <div class="card">
+               <div class="card">
                 
-                    <img class="card__poster" src="https://image.tmdb.org/t/p/w500${poster_path}" alt=""  loading="lazy" width="320px" height="210px"/>
+                    <img class="card__poster" src="${poster_path}" alt=""  loading="lazy" width="320px" height="210px"/>
                    
                     <div  class="card__info">
                         <p class="info__title"><b>${title}</b><br/>
                         </p>
-                        <p ><b class="info__genre">${genre_ids}</b>
+                        <p ><b class="info__genre">${genre}</b>
                        <span class="info__span"> | </span>
-                        <b class="info__release-date">${releaseYear}</b>
+                        <b class="info__release-date">${year}</b>
                         </p>
                         
                     </div>

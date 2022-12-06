@@ -1,11 +1,11 @@
 export default function onButtonWatchedClick() {
   const movie = {
-    // id: document.querySelector('.heder-images').dataset.id,
-    posterSrc: document.querySelector('.modal__movie-backdrop').src,
-    title: document.querySelector('.modal__movie-title').textContent,
-    genre: document.querySelector('.info__genre').textContent,
-    release_date: document.querySelector('.info__release-date').textContent,
-    // votes: document.querySelector('.vote').textContent,
+    id: document.querySelector('.content-card__title').dataset.id,
+    poster_path: document.querySelector('.content-card__img').src,
+    title: document.querySelector('.content-card__title').textContent,
+    genre: document.querySelector('.genre-modal').textContent,
+    year: document.querySelector('.content-card__title').dataset.year,
+    votes: document.querySelector('.content-card__vote').textContent,
   };
   // если вообще пустое хранилище, пишем
   if (localStorage.getItem('watched') === null) {
