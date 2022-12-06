@@ -1,14 +1,29 @@
-// (() => {
-// 	const refs = {
-// 		openModalBtn: document.querySelector("[data-modal-open]"),
-// 		closeModalBtn: document.querySelector("[data-modal-close]"),
-// 		modal: document.querySelector("[data-modal]"),
-// 	};
+function openModal() {
+  document.querySelector('.backdrop').style.display = "block";
+  document.querySelector('body').style.overflowY = 'hidden';
+}
 
-// 	refs.openModalBtn.addEventListener("click", toggleModal);
-// 	refs.closeModalBtn.addEventListener("click", toggleModal);
+function closeModal() {
+  // document.querySelector('.content-card__img>img').setAttribute('src', '#');
+  // document.querySelector('.content-card__title').innerText = '';
+  // document.querySelector('.content-card__about-text').innerText = '';
+  document.querySelector('.backdrop').style.display = "none";
+  document.querySelector('body').style.overflowY = 'visible';
+}
 
-// 	function toggleModal() {
-// 		refs.modal.classList.toggle("is-hidden-modal");
-// 	}
-// })();
+document.querySelector('.modal__close').addEventListener("click", closeModal);
+document.querySelector('.gallery').addEventListener("click", function(e) {
+  let targetItem = e.target;
+  if (targetItem.closest('.card')){
+    const movieId = targetItem.closest('.card').getAttribute('movie-id');
+
+
+    openModal();
+  }
+});
+
+window.addEventListener("click", function(event) {
+  if (event.target === document.querySelector('.backdrop')) {
+    closeModal();
+  }
+});
