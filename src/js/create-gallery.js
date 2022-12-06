@@ -29,8 +29,6 @@ newApiServiсe.fetchTrendingFilms().then(data => {
       totalItems: totalPages,
     });
     paginaton.on('afterMove', async ({ page }) => {
-      //   console.log(`Предать страницу ${page} в АПИ`);
-      //   console.log(`сделать запрос и отрендерить`);
       newApiServiсe.currentPage = page;
       const response = await newApiServiсe.fetchTrendingFilms();
       const imagesArray = await response.results;
