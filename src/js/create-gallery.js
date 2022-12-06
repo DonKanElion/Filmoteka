@@ -83,27 +83,27 @@ export default function createGalleryMarkup(imagesArray) {
  *
  */
 
-async function setGenresNames(apiService){
+// async function setGenresNames(apiService){
 
-    let promices;
+//     let promices;
 
-    const genre = {
-        id: 0,
-        name: "",
-    }
-    try {
-        promices = await apiService.dataMovies();
-        const genresArray = promices.genres;
-        let genresStr = "";
+//     const genre = {
+//         id: 0,
+//         name: "",
+//     }
+//     try {
+//         promices = await apiService.dataMovies();
+//         const genresArray = promices.genres;
+//         let genresStr = "";
 
-        genresStr += JSON.stringify(genresArray);    
+//         genresStr += JSON.stringify(genresArray);    
 
-        localStorage.setItem(locStorage.genres, JSON.stringify(genresArray)); 
-    }
-    catch(error){
-        console.log("setGenresNames() error: ", error.message);
-    }
-}
+//         localStorage.setItem(locStorage.genres, JSON.stringify(genresArray)); 
+//     }
+//     catch(error){
+//         console.log("setGenresNames() error: ", error.message);
+//     }
+// }
 
  function getGenreNames(genreIDs){
     let genres ;
