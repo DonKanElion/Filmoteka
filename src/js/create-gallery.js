@@ -1,6 +1,6 @@
 import ApiService from './apiService';
 
-// TUI Pagination import
+// TUI Pagination import after reinstall modules
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
 import { paginationOptions } from './projectOptions';
@@ -73,7 +73,7 @@ export default function createGalleryMarkup(imagesArray) {
                         
                     </div>
                 </div>
-            `
+            `;
     })
     .join('');
 }
