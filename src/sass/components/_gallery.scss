@@ -3,10 +3,8 @@
     flex-wrap: wrap;
     flex-basis: 100%;
     gap: 20px;
-    // justify-content: space-between;
     justify-content: center;
-    // align-items: center;
-
+    
         @include tablet() {
                 gap: 30px;   
             }
@@ -19,53 +17,46 @@
 
 .card {
     display: flex;
-        flex-direction: column;
-    // flex-grow: 1;
+    flex-direction: column;
     flex-basis: 100%;
     justify-content: center;
 
-    margin: 0;
-    padding: 0;
+    
+    padding: 2px;
     min-width: 280px;
     min-height: 440px; 
     @include tablet() {
-            // gap: 30px;
-            // width: 395px;
-            flex-basis: calc((100% - 30px)/2);
+            flex-basis: calc((100% - 32px)/2);
         }
     
         @include desktop() {
             // gap: 16px;
-    // width: 395px;
-            flex-basis: calc((100% - 32px)/3);
     
+    margin-bottom: 16px;
+            flex-basis: calc((100% - 32px)/3);
         }
    
 }
 .card__poster {
     margin: 0;
     box-sizing: border-box;
-        // min-width: 280px;
+        
         width: 100%;
         height: 100%;
-        // height: 402px;
+        
         border-radius: 5px;
-//  @include tablet() {
-//         width: 336px;
-//         height: 455px;
-//         }
-//                 @include desktop() {
-// // max-width: 100;
-//     max-height: 455px;
+
+                @include desktop() {
+
+    height: 574px;
                         
-//                 }
+                }
 }
 
 .card__info {
       
-    
     justify-content: flex-start; 
-    // flex-grow: 1;
+    flex-grow: 1;
     flex-wrap: wrap;
     margin-top: 10px;
     font-size: 12px;
@@ -79,11 +70,11 @@
 }
 
 .info__title {
-//     display: flex; 
-    margin-bottom: 5px;
+
+    
     justify-content: flex-start;
-    // flex-wrap: wrap;
-    flex-grow: 1;
+    
+    
        
    
     text-transform: uppercase;
@@ -92,7 +83,7 @@
 
 .info__genre, .info__release-date, .info__span {
 margin-top: 10px;
-    // line-height: 1.33;
+   
     color: var(--third-text-color);
 
 }
