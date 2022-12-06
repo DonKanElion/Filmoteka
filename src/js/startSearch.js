@@ -1,7 +1,6 @@
 import ApiService from './apiService';
 import createGalleryMarkup from './create-gallery';
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
 import { paginationOptions } from './projectOptions';
 
 // Refs

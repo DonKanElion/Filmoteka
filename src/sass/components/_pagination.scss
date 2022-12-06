@@ -3,6 +3,15 @@
 #tui-pagination-container {
   margin-top: 60px;
   height: 40px;
+
+  display: block;
+  margin-right: auto;
+  padding: 0;
+  text-align: left;
+
+  @include tablet() {
+    text-align: center;
+  }
 }
 
 .tui-pagination .tui-page-btn {
@@ -73,20 +82,47 @@
 }
 
 .tui-pagination .tui-first {
-  margin-right: 3px;
+  display: none;
+
+  @include tablet() {
+    display: inline-block;
+    margin-right: 3px;
+  }
 }
 .tui-pagination .tui-last {
-  margin-left: 3px;
+  display: none;
+
+  @include tablet() {
+    display: inline-block;
+    margin-left: 3px;
+  }
+}
+
+.tui-pagination .tui-prev-is-ellip,
+.tui-pagination .tui-next-is-ellip {
+  display: none;
+
+  @include tablet() {
+    display: inline-block;
+  }
 }
 
 .tui-pagination .tui-prev {
-  margin-left: 0;
-  margin-right: 10px;
+  margin-right: 0px;
+
+  @include tablet() {
+    margin-left: 0;
+    margin-right: 10px;
+  }
 }
 
 .tui-pagination .tui-next {
-  margin-left: 10px;
-  margin-right: 0;
+  margin-left: 0px;
+
+  @include tablet() {
+    margin-left: 10px;
+    margin-right: 0;
+  }
 }
 
 .tui-pagination .tui-ico-first,

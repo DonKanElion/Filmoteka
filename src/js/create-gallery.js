@@ -1,8 +1,7 @@
 import ApiService from './apiService';
 
-// TUI Pagination import
+// TUI Pagination import after reinstall modules
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
 import { paginationOptions } from './projectOptions';
 
 const newApiServiсe = new ApiService();
@@ -29,8 +28,6 @@ newApiServiсe.fetchTrendingFilms().then(data => {
       totalItems: totalPages,
     });
     paginaton.on('afterMove', async ({ page }) => {
-      //   console.log(`Предать страницу ${page} в АПИ`);
-      //   console.log(`сделать запрос и отрендерить`);
       newApiServiсe.currentPage = page;
       const response = await newApiServiсe.fetchTrendingFilms();
       const imagesArray = await response.results;
@@ -46,9 +43,7 @@ newApiServiсe.fetchTrendingFilms().then(data => {
 
 setGenresNames(newApiServiсe);
 
-
 // setGenresNames(newApiServiсe);
-
 
 export default function createGalleryMarkup(imagesArray) {
   const refs = {
@@ -75,7 +70,7 @@ export default function createGalleryMarkup(imagesArray) {
 
                     </div>
                 </div>
-            `
+            `;
     })
     .join('');
 }
@@ -83,52 +78,47 @@ export default function createGalleryMarkup(imagesArray) {
  *
  */
 
-// async function setGenresNames(apiService){
+async function setGenresNames(apiService) {
+  let promices;
 
-//     let promices;
+  const genre = {
+    id: 0,
+    name: '',
+  };
+  try {
+    promices = await apiService.dataMovies();
+    const genresArray = promices.genres;
+    let genresStr = '';
 
-//     const genre = {
-//         id: 0,
-//         name: "",
-//     }
-//     try {
-//         promices = await apiService.dataMovies();
-//         const genresArray = promices.genres;
-//         let genresStr = "";
+    genresStr += JSON.stringify(genresArray);
 
-//         genresStr += JSON.stringify(genresArray);
+    localStorage.setItem(locStorage.genres, JSON.stringify(genresArray));
+  } catch (error) {
+    console.log('setGenresNames() error: ', error.message);
+  }
+}
 
-//         localStorage.setItem(locStorage.genres, JSON.stringify(genresArray));
-//     }
-//     catch(error){
-//         console.log("setGenresNames() error: ", error.message);
-//     }
-// }
+function getGenreNames(genreIDs) {
+  let genres;
+  let parsedGenres;
+  try {
+    genres = localStorage.getItem(locStorage.genres);
+    parsedGenres = JSON.parse(genres);
+  } catch (error) {
+    console.log('getGenreNames() error: ', error.message);
+  }
 
- function getGenreNames(genreIDs){
-    let genres ;
-    let parsedGenres;
-    try {
-        genres = localStorage.getItem(locStorage.genres);
-        parsedGenres = JSON.parse(genres);
-    }
-    catch(error){
-        console.log("getGenreNames() error: ", error.message);
-    }
+  let genresNames = '';
+  for (let i = 0; i < genreIDs.length; i++) {
+    const genreID = genreIDs[i];
 
-    let genresNames = "";
-    for (let i = 0; i < genreIDs.length; i++) {
-        const genreID = genreIDs[i];
-
-        parsedGenres.map(genre =>{
-
-            if(genreID === genre.id){
-                genresNames += genre.name + ", ";
-            }
-        })
-    }
-    return genresNames.slice(0,-2);
-
+    parsedGenres.map(genre => {
+      if (genreID === genre.id) {
+        genresNames += genre.name + ', ';
+      }
+    });
+  }
+  return genresNames.slice(0, -2);
 }
 
 async function setGenresNames(apiService) {
@@ -171,6 +161,4 @@ function getGenreNames(genreIDs) {
     });
   }
   return genresNames.slice(0, -2);
-
 }
-
