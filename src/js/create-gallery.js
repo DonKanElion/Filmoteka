@@ -10,16 +10,33 @@ const locStorage = {
   genres: 'genres',
 };
 
-// const refs = {
-//   gallery: document.querySelector('.gallery'),
-// };
-// console.log(refs.gallery);
+const refs = {
+  tuiContainer: document.getElementById('tui-pagination-container'),
+};
 
 newApiServiсe.fetchTrendingFilms().then(data => {
   const imagesArray = data.results;
 
+  // Pagination
   const totalPages = data.total_pages;
   console.log('totalPages of Start Page:>> ', totalPages);
+
+  if (totalPages > 1) {
+    console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+
+    const paginaton = new Pagination(refs.tuiContainer, {
+      ...paginationOptions,
+      totalItems: totalPages,
+    });
+    paginaton.on('afterMove', async ({ page }) => {
+      //   console.log(`Предать страницу ${page} в АПИ`);
+      //   console.log(`сделать запрос и отрендерить`);
+      newApiServiсe.currentPage = page;
+      const response = await newApiServiсe.fetchTrendingFilms();
+      const imagesArray = await response.results;
+      createGalleryMarkup(imagesArray);
+    });
+  }
 
   //   const markup = createGalleryMarkup(imagesArray);
   //   refs.gallery.innerHTML = markup;
