@@ -73,7 +73,7 @@ export default function createGalleryMarkup(imagesArray) {
                         
                     </div>
                 </div>
-            `;
+            `
     })
     .join('');
 }
