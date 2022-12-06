@@ -17,6 +17,11 @@ newApiServiсe.fetchTrendingFilms().then(data => {
 });
 setGenresNames(newApiServiсe);
 
+<<<<<<< Updated upstream
+=======
+setGenresNames(newApiServiсe);
+
+>>>>>>> Stashed changes
 export default function createGalleryMarkup(imagesArray) {
   const refs = {
     gallery: document.querySelector('.gallery'),
@@ -48,7 +53,10 @@ export default function createGalleryMarkup(imagesArray) {
  *
  */
 async function setGenresNames(apiService){
+<<<<<<< Updated upstream
     let promices;
+=======
+>>>>>>> Stashed changes
     const genre = {
         id: 0,
         name: "",
@@ -90,4 +98,8 @@ async function setGenresNames(apiService){
         })
     }
     return genresNames.slice(0,-2);    
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
