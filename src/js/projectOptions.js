@@ -26,3 +26,13 @@ export const paginationOptions = {
       '</a>',
   },
 };
+
+// Your web app's Firebase configuration
+export const firebaseConfig = {
+  apiKey: 'AIzaSyAn297t6wFnJi_69pjCpLB-_9nu_ZR0ZSA',
+  authDomain: 'filmoteka-c2e3b.firebaseapp.com',
+  projectId: 'filmoteka-c2e3b',
+  storageBucket: 'filmoteka-c2e3b.appspot.com',
+  messagingSenderId: '416831022900',
+  appId: '1:416831022900:web:19ddd479599d46f227e761',
+};
