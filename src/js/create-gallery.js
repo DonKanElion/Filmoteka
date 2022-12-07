@@ -18,7 +18,7 @@ setMarkup();
 async function setMarkup(){
 
   await setGenreNames(newApiServiсe);
-  promice = await newApiServiсe.fetchTrendingFilms();
+ const promice = await newApiServiсe.fetchTrendingFilms();
 
     const imagesArray = promice.results;
     localStorage.setItem('movieData', JSON.stringify(promice.results));
