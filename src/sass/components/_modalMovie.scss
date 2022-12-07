@@ -1,3 +1,8 @@
+html {
+  margin-left: calc(100vw - 100%);
+  margin-right: 0;
+}
+
 .modal {
 	position: fixed;
 	top: 50%;
@@ -6,6 +11,11 @@
 	padding: 46px 20px;
 	background-color: #fff;
 	transition: transform 0.3s ease;
+
+  overflow: auto;
+  height: 100%;
+
+  margin-top: 20px;
 
 	@include tablet {
 		padding: 40px;
@@ -159,6 +169,9 @@
 	left: 0;
 	background-color: rgba(0, 0, 0, 0.2);
 	transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  overflow: hidden;
+
 }
 .is-hidden-modal {
 	opacity: 0;
