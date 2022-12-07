@@ -14,6 +14,8 @@ const refs = {
   tuiContainer: document.getElementById('tui-pagination-container'),
 };
 
+setGenreNames(newApiServiсe);
+
 newApiServiсe.fetchTrendingFilms().then(data => {
   const imagesArray = data.results;
 
@@ -44,12 +46,6 @@ newApiServiсe.fetchTrendingFilms().then(data => {
   createGalleryMarkup(imagesArray);
 });
 
-setGenresNames(newApiServiсe);
-
-
-// setGenresNames(newApiServiсe);
-
-
 export default function createGalleryMarkup(imagesArray) {
   const refs = {
     gallery: document.querySelector('.gallery'),
@@ -79,59 +75,9 @@ export default function createGalleryMarkup(imagesArray) {
     })
     .join('');
 }
-/** Функція записує жанри до локального сховища
- *
- */
+/** Записує жанри до локального сховища */
+async function setGenreNames(apiService) {
 
-// async function setGenresNames(apiService){
-
-//     let promices;
-
-//     const genre = {
-//         id: 0,
-//         name: "",
-//     }
-//     try {
-//         promices = await apiService.dataMovies();
-//         const genresArray = promices.genres;
-//         let genresStr = "";
-
-//         genresStr += JSON.stringify(genresArray);
-
-//         localStorage.setItem(locStorage.genres, JSON.stringify(genresArray));
-//     }
-//     catch(error){
-//         console.log("setGenresNames() error: ", error.message);
-//     }
-// }
-
- function getGenreNames(genreIDs){
-    let genres ;
-    let parsedGenres;
-    try {
-        genres = localStorage.getItem(locStorage.genres);
-        parsedGenres = JSON.parse(genres);
-    }
-    catch(error){
-        console.log("getGenreNames() error: ", error.message);
-    }
-
-    let genresNames = "";
-    for (let i = 0; i < genreIDs.length; i++) {
-        const genreID = genreIDs[i];
-
-        parsedGenres.map(genre =>{
-
-            if(genreID === genre.id){
-                genresNames += genre.name + ", ";
-            }
-        })
-    }
-    return genresNames.slice(0,-2);
-
-}
-
-async function setGenresNames(apiService) {
   let promices;
   const genre = {
     id: 0,
@@ -150,7 +96,9 @@ async function setGenresNames(apiService) {
   }
 }
 
+/**Повертає імена жанрів за вказаними номерами */
 function getGenreNames(genreIDs) {
+
   let genres;
   let parsedGenres;
   try {
@@ -171,6 +119,5 @@ function getGenreNames(genreIDs) {
     });
   }
   return genresNames.slice(0, -2);
-
 }
 
