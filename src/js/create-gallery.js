@@ -18,10 +18,10 @@ newApiServiсe.fetchTrendingFilms().then(data => {
 
   // Pagination
   const totalPages = data.total_pages;
-  console.log('totalPages of Start Page:>> ', totalPages);
+  // console.log('totalPages of Start Page:>> ', totalPages);
 
   if (totalPages > 1) {
-    console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+    // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
 
     const paginaton = new Pagination(refs.tuiContainer, {
       ...paginationOptions,
