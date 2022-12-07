@@ -1,7 +1,7 @@
 import ApiService from './apiService';
 import createGalleryMarkup from './create-gallery';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+import { paginationOptions } from './projectOptions';
 
 // Refs
 const refs = {
@@ -11,32 +11,7 @@ const refs = {
 };
 const api = new ApiService();
 let totalPages = 0;
-const paginationOptions = {
-  totalItems: 1,
-  itemsPerPage: 10,
-  visiblePages: 10,
-  page: 1,
-  centerAlign: true,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-  template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
-  },
-};
+
 //
 refs.form.addEventListener('submit', onSearch);
 
@@ -52,6 +27,7 @@ async function onSearch(e) {
   console.log('searching:', api.value);
 
   try {
+    api.resetPage();
     const serchResponse = await api.fetchSearchFilms();
     const serchData = await serchResponse.results;
 
@@ -84,7 +60,6 @@ async function onSearch(e) {
       });
     }
     //? Render films
-    //? Render films
 
     createGalleryMarkup(serchData);
 
@@ -99,10 +74,31 @@ async function onSearchError(showConditions) {
   if (showConditions) {
     refs.errorMessage.classList.remove('is-hidden');
 
+    api.resetPage();
     const trendingResponse = await api.fetchTrendingFilms();
     const trendingData = await trendingResponse.results;
     totalPages = await trendingResponse.total_pages;
+
     console.log('totalPages on error :>> ', totalPages);
+
+    if (totalPages > 1) {
+      console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+
+      const paginaton = new Pagination(refs.tuiContainer, {
+        ...paginationOptions,
+        totalItems: totalPages,
+      });
+
+      paginaton.on('afterMove', async ({ page }) => {
+        console.log(`Предать страницу ${page} в АПИ`);
+        console.log(`сделать запрос и отрендерить`);
+        api.currentPage = page;
+        const trendingResponse = await api.fetchTrendingFilms();
+        const trendingData = await trendingResponse.results;
+        totalPages = await trendingResponse.total_pages;
+        createGalleryMarkup(trendingData);
+      });
+    }
 
     createGalleryMarkup(trendingData);
   } else {
