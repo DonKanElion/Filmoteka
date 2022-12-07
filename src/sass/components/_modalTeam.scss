@@ -17,7 +17,7 @@
 
     margin-top: 50px;
     margin-bottom: 50px;
-    padding: 46px 26px;
+    padding: 25px;
 
     background-color: rgba(245, 244, 250, 1);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
@@ -64,24 +64,29 @@
     
     &__box{
         padding: 15px 7px;
+        text-align: center;
     }
 
     &__name{
+    font-size: 20px;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 1.187;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: var(--team-text-mg);
     }
     
-    &__skills{
+    &__job-title{
+    color: var(--footer-text-color);
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: var(--team-text-mg);
+    }
+
+    &__work{
     color: var(--modal-text-color);
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 400;
     line-height: 1.187;
-    text-align: center;
-    margin-bottom: 5px;
-    // padding-left: 10px;
-    // padding-right: 10px;
+    margin-bottom: var(--team-text-mg);
     }
 }
 
@@ -139,8 +144,8 @@
         align-items: center;
         justify-content: center;
     
-        width: 44px;
-        height: 44px;
+        width: 35px;
+        height: 35px;
       
         fill: var(--active-btn-color);
         
