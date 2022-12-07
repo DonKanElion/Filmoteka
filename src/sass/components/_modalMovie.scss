@@ -1,3 +1,6 @@
+
+@import "btnModal";
+
 html {
   margin-left: calc(100vw - 100%);
   margin-right: 0;
@@ -13,9 +16,15 @@ html {
 	transition: transform 0.3s ease;
 
   overflow: auto;
-  height: 100%;
 
   margin-top: 20px;
+
+  @media screen  and (max-width: 480px){
+    height: 100%;
+  }
+
+
+
 
 	@include tablet {
 		padding: 40px;
@@ -104,7 +113,7 @@ html {
 				color: var(--secondary-text-color);
 			}
 			&:last-child {
-				background-color: #f7f7f7;
+				background-color: var(--pagination-btn-control);
 			}
 		}
 	}
@@ -127,37 +136,6 @@ html {
 		}
 	}
 
-	&__btn-group {
-		display: flex;
-		column-gap: 16px;
-		margin-top: 20px;
-	}
-
-	&__btn {
-		border-radius: 5px;
-		border: 1px solid #000;
-    color: #000000;
-    font-weight: bold;
-		text-transform: uppercase;
-		font-size: 12px;
-		width: 110px;
-		height: 40px;
-
-		&:hover,
-		&:focus {
-			background-color: #ff6b01;
-			color: #fff;
-			border: none;
-		}
-
-		@include tablet {
-			width: 125px;
-		}
-		@media screen and (min-width: 1024px) {
-			width: 135px;
-			height: 45px;
-		}
-	}
 }
 
 .backdrop {
@@ -171,6 +149,7 @@ html {
 	transition: opacity 0.3s ease, visibility 0.3s ease;
 
   overflow: hidden;
+
 
 }
 .is-hidden-modal {
@@ -194,7 +173,7 @@ html {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color: #8C8C8C;
+  color: var(--inactiveUser);
 }
 
 .modal__movie-info tr td {
@@ -203,7 +182,7 @@ html {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color: #000000;
+  color:var( --mobile-btn-border);
 }
 
 .modal__movie-bord {
