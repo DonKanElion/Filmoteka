@@ -194,3 +194,17 @@ html {
   background-color: var(--active-btn-color);
   color: var(--secondary-text-color);
 }
+
+.modal__movie-number {
+  display: inline-block;
+  text-align: center;
+  width: 36px;
+  border-radius: 5px;
+
+  //padding: 4px 2px;
+
+  text-transform: uppercase;
+
+  color: var(--primary-text-color);
+  background-color: var( --pagination-btn-control);
+}
