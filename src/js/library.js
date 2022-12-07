@@ -3,11 +3,28 @@ const refs = {
   btnQueue: document.querySelector('.queue'),
   libraryGallery: document.querySelector('.gallery'),
   loader: document.querySelector('.loader'),
+  noItemsImg: document.querySelector('.library__no-items'),
 };
 
-const watchedMovies = JSON.parse(localStorage.getItem('watched'));
-const queueMovies = JSON.parse(localStorage.getItem('queue'));
-console.log(watchedMovies);
+refs.loader.classList.add('is-hidden');
+
+let watchedMovies = '';
+let queueMovies = '';
+
+if (localStorage.getItem('watched')) {
+  watchedMovies = JSON.parse(localStorage.getItem('watched'));
+} else {
+  btnWatched.disabled = true;
+}
+if (localStorage.getItem('queue')) {
+  queueMovies = JSON.parse(localStorage.getItem('queue'));
+} else {
+  btnQueue.disabled = true;
+}
+
+if (watchedMovies || queueMovies) {
+  refs.noItemsImg.style.display = 'none';
+}
 // =====================================================================================
 
 refs.btnWatched.addEventListener('click', onWatchedButtonClick);
@@ -16,20 +33,27 @@ refs.btnQueue.addEventListener('click', onQueueButtonClick);
 // =====================================
 
 function onWatchedButtonClick(event) {
+  event.preventDefault();
   console.log(event);
-  if (event.target.classList === 'watched') {
-    refs.btnWatched.classList.add('selected');
-    refs.btnQueue.classList.remove('selected');
+  if (event.target.classList.contains('watched')) {
+    console.log('WATCHED');
+    refs.btnQueue.classList.remove('user-lib-btn--active');
+    refs.btnWatched.classList.add('user-lib-btn--active');
   }
+  refs.noItemsImg.style.display = 'none';
   createLibraryGalleryMarkup(watchedMovies);
   refs.loader.classList.add('is-hidden');
 }
 
 function onQueueButtonClick(event) {
-  if (event.target.classList === 'queue') {
-    refs.btnQueue.classList.add('selected');
-    refs.btnWatched.classList.remove('selected');
+  event.preventDefault();
+  console.log(event);
+  if (event.target.classList.contains('queue')) {
+    console.log('queue');
+    refs.btnWatched.classList.remove('user-lib-btn--active');
+    refs.btnQueue.classList.add('user-lib-btn--active');
   }
+  refs.noItemsImg.style.display = 'none';
   createLibraryGalleryMarkup(queueMovies);
   refs.loader.classList.add('is-hidden');
 }
