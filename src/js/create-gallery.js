@@ -32,6 +32,7 @@ newApiServiсe.fetchTrendingFilms().then(data => {
     paginaton.on('afterMove', async ({ page }) => {
       newApiServiсe.currentPage = page;
       const response = await newApiServiсe.fetchTrendingFilms();
+      localStorage.setItem('movieData', JSON.stringify(response.data.results)); //запис данних про фільми в local storage
       const imagesArray = await response.results;
       createGalleryMarkup(imagesArray);
     });
@@ -94,7 +95,7 @@ async function setGenreNames(apiService) {
 }
 
 /**Повертає імена жанрів за вказаними номерами */
-function getGenreNames(genreIDs) {
+export function getGenreNames(genreIDs) {
 
   let genres;
   let parsedGenres;
