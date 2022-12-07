@@ -1,3 +1,11 @@
+
+@import "btnModal";
+
+html {
+  margin-left: calc(100vw - 100%);
+  margin-right: 0;
+}
+
 .modal {
 	position: fixed;
 	top: 50%;
@@ -6,6 +14,17 @@
 	padding: 46px 20px;
 	background-color: #fff;
 	transition: transform 0.3s ease;
+
+  overflow: auto;
+
+  margin-top: 20px;
+
+  @media screen  and (max-width: 480px){
+    height: 100%;
+  }
+
+
+
 
 	@include tablet {
 		padding: 40px;
@@ -94,7 +113,7 @@
 				color: var(--secondary-text-color);
 			}
 			&:last-child {
-				background-color: #f7f7f7;
+				background-color: var(--pagination-btn-control);
 			}
 		}
 	}
@@ -117,37 +136,6 @@
 		}
 	}
 
-	&__btn-group {
-		display: flex;
-		column-gap: 16px;
-		margin-top: 20px;
-	}
-
-	&__btn {
-		border-radius: 5px;
-		border: 1px solid #000;
-    color: #000000;
-    font-weight: bold;
-		text-transform: uppercase;
-		font-size: 12px;
-		width: 110px;
-		height: 40px;
-
-		&:hover,
-		&:focus {
-			background-color: #ff6b01;
-			color: #fff;
-			border: none;
-		}
-
-		@include tablet {
-			width: 125px;
-		}
-		@media screen and (min-width: 1024px) {
-			width: 135px;
-			height: 45px;
-		}
-	}
 }
 
 .backdrop {
@@ -159,6 +147,10 @@
 	left: 0;
 	background-color: rgba(0, 0, 0, 0.2);
 	transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  overflow: hidden;
+
+
 }
 .is-hidden-modal {
 	opacity: 0;
@@ -168,7 +160,6 @@
 .backdrop.is-hidden .modal {
 	transform: translate(-50%, -50%) scale(0.3);
 }
-
 
 .modal__movie-info {
   width: 215px;
@@ -182,7 +173,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color: #8C8C8C;
+  color: var(--inactiveUser);
 }
 
 .modal__movie-info tr td {
@@ -191,7 +182,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color: #000000;
+  color:var( --mobile-btn-border);
 }
 
 .modal__movie-bord {
@@ -202,4 +193,18 @@
 
   background-color: var(--active-btn-color);
   color: var(--secondary-text-color);
+}
+
+.modal__movie-number {
+  display: inline-block;
+  text-align: center;
+  width: 36px;
+  border-radius: 5px;
+
+  //padding: 4px 2px;
+
+  text-transform: uppercase;
+
+  color: var(--primary-text-color);
+  background-color: var( --pagination-btn-control);
 }
