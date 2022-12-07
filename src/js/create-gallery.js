@@ -1,8 +1,7 @@
 import ApiService from './apiService';
 
-// TUI Pagination import
+// TUI Pagination import after reinstall modules
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
 import { paginationOptions } from './projectOptions';
 
 const newApiServiсe = new ApiService();
@@ -31,8 +30,6 @@ newApiServiсe.fetchTrendingFilms().then(data => {
       totalItems: totalPages,
     });
     paginaton.on('afterMove', async ({ page }) => {
-      //   console.log(`Предать страницу ${page} в АПИ`);
-      //   console.log(`сделать запрос и отрендерить`);
       newApiServiсe.currentPage = page;
       const response = await newApiServiсe.fetchTrendingFilms();
       const imagesArray = await response.results;
@@ -71,14 +68,14 @@ export default function createGalleryMarkup(imagesArray) {
 
                     </div>
                 </div>
-            `
+            `;
     })
     .join('');
 }
 /** Записує жанри до локального сховища */
 async function setGenreNames(apiService) {
-
   let promices;
+
   const genre = {
     id: 0,
     name: '',
@@ -120,4 +117,3 @@ function getGenreNames(genreIDs) {
   }
   return genresNames.slice(0, -2);
 }
-

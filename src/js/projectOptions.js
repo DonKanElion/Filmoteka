@@ -1,3 +1,4 @@
+// Pagination options
 export const paginationOptions = {
   totalItems: 1,
   itemsPerPage: 5,
