@@ -4,3 +4,4 @@ import './js/scrollTop';
 import './js/modal';
 import './js/FirebaseApi';
 import './js/LocaleStorageApi';
+import './js/storage';
