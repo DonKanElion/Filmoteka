@@ -10,7 +10,7 @@
   &__btn {
     border-radius: 5px;
     border: 1px solid #000;
-    color: #000000;
+    color: var(--primary-text-color);
     font-weight: 500;
     text-transform: uppercase;
     font-size: 12px;
@@ -27,7 +27,7 @@
     &:hover,
     &:focus {
       background-color: var(--active-btn-color);
-      color: var(--heder-btn-border);
+      color: var(--secondary-text-color);
       border: none;
     }
 

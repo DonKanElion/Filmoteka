@@ -17,7 +17,7 @@ setGenreNames(newApiServiсe);
 
 newApiServiсe.fetchTrendingFilms().then(data => {
   const imagesArray = data.results;
-
+  localStorage.setItem('movieData', JSON.stringify(data.results));
   // Pagination
   const totalPages = data.total_pages;
   // console.log('totalPages of Start Page:>> ', totalPages);
@@ -32,7 +32,7 @@ newApiServiсe.fetchTrendingFilms().then(data => {
     paginaton.on('afterMove', async ({ page }) => {
       newApiServiсe.currentPage = page;
       const response = await newApiServiсe.fetchTrendingFilms();
-      localStorage.setItem('movieData', JSON.stringify(response.data.results)); //запис данних про фільми в local storage
+      localStorage.setItem('movieData', JSON.stringify(response.results));
       const imagesArray = await response.results;
       createGalleryMarkup(imagesArray);
     });
