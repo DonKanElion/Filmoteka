@@ -35,6 +35,9 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const lsAPI = new LocaleStorageApi();
 
+const QUEUE_KEY = 'QUEUE';
+const WATCHED_KEY = 'WATCHED';
+
 const TEST_USER1 = {
   email: 'filmoteka@gmail.com',
   password: '111111',
@@ -45,24 +48,24 @@ const TEST_USER2 = {
 };
 
 const TEST_DATA = {
-  queue: [
+  QUEUE: [
     { id: 1, name: 'Back to the future', genre: 'komedy', year: '1980' },
     { id: 2, name: 'Back to the future-2', genre: 'komedy', year: '1981' },
     { id: 3, name: 'Back to the future-3', genre: 'komedy', year: '1982' },
   ],
-  watched: [
+  WATCHED: [
     { id: 1, name: 'MIB', genre: 'action', year: '1995' },
     { id: 2, name: 'MIB-2', genre: 'action', year: '1997' },
     { id: 3, name: 'MIB-3', genre: 'action', year: '2001' },
   ],
 };
 const TEST_DATA2 = {
-  queue: [
+  QUEUE: [
     { id: 1, name: 'Star Wars', genre: 'komedy', year: '1980' },
     { id: 2, name: 'Star Wars-2', genre: 'komedy', year: '1981' },
     { id: 3, name: 'Star Wars-3', genre: 'komedy', year: '1982' },
   ],
-  watched: [
+  WATCHED: [
     { id: 1, name: 'Gallactika', genre: 'action', year: '1995' },
     { id: 2, name: 'Gallactika-2', genre: 'action', year: '1997' },
     { id: 3, name: 'Gallactika-3', genre: 'action', year: '2001' },
@@ -89,11 +92,17 @@ export default class FirebaseApi {
     this.email = email;
     this.password = password;
   };
-  registerUser = async () => {
-    this.signUp();
 
+  // Register New user
+  registerUser = () => {
+    console.log('Register Me');
+
+    this.signUp();
     // Getting current user
-    this.getUser();
+    // this.getUser();
+    // console.log('this.currentUser :>> ', this.currentUser);
+    // 2. read data drom firebase
+    // const data = await this.readData();
   };
   // existing user login
   init = async () => {
@@ -108,9 +117,10 @@ export default class FirebaseApi {
       console.log('User not authtorised');
       return;
     }
-
+    console.log('this.currentUser :>> ', this.currentUser);
     // 2. read data drom firebase
     const data = await this.readData();
+    console.log('data :>> ', data);
 
     // 3. write data to localStorage
     if (data) {
@@ -123,21 +133,30 @@ export default class FirebaseApi {
   };
 
   // Method create new user
-  signUp = e => {
-    // e.preventDefault();
-    // console.log(e);
-
-    // const {
-    //   elements: { userEmail, userPass },
-    // } = refs.loginForm;
-    const login = this.email;
-    const password = this.password;
+  signUp = async () => {
+    const login = await this.email;
+    const password = await this.password;
 
     createUserWithEmailAndPassword(this.auth, login, password)
       .then(userCredential => {
         const user = userCredential.user;
-        console.log('NEW user :>> ', user);
+
+        // console.log('NEW user :>> ', user);
+
+        const QUEUE = [];
+        const WATCHED = [];
+        const dataToBase = { QUEUE, WATCHED };
+        // console.log('dataToBase :>> ', dataToBase);
+        // this.getUser();
+
+        // write data to firebase
+        this.saveData(dataToBase);
         // createUserDataObj(getCurrentUserAuthData(user));
+
+        // 3. write data to localStorage
+        if (dataToBase) {
+          lsAPI.save(dataToBase);
+        }
       })
       .catch(error => {
         const errorCode = error.code;
@@ -186,10 +205,9 @@ export default class FirebaseApi {
   logOut = () => {
     // logOut
     // 4. read data from localStorage
-    const queueKey = 'queue';
-    const queue = lsAPI.read(queueKey);
-    const watchedKey = 'watched';
-    const watched = lsAPI.read(watchedKey);
+
+    const queue = lsAPI.read(QUEUE_KEY);
+    const watched = lsAPI.read(WATCHED_KEY);
 
     const dataToBase = { queue, watched };
     // console.log('dataToBase :>> ', dataToBase);
@@ -198,8 +216,8 @@ export default class FirebaseApi {
     this.saveData(dataToBase);
 
     // 6. clear localStorage
-    lsAPI.remove(queueKey);
-    lsAPI.remove(watchedKey);
+    lsAPI.remove(QUEUE_KEY);
+    lsAPI.remove(WATCHED_KEY);
 
     // 7. log out
     signOut(this.auth)
@@ -229,12 +247,13 @@ export default class FirebaseApi {
   // Method for saving data to Firebase
   saveData = async dataObj => {
     // const currentUser = this.getUser();
+    this.getUser();
 
     // console.log('dataObj :>> ', dataObj);
-    console.log('currentUser saveData :>> ', this.currentUser);
-    console.log('this.auth saveData :>> ', this.auth);
+    // console.log('currentUser saveData :>> ', this.currentUser);
+    // console.log('this.auth saveData :>> ', this.auth);
 
-    await set(ref(database, `users/${this.currentUser.uid}`), dataObj)
+    set(ref(database, `users/${this.currentUser.uid}`), dataObj)
       .then(() => {
         console.log('database is successfuly written.');
       })

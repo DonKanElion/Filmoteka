@@ -21,7 +21,13 @@
       <label class="form-login__field">
         <span class="form-login__label">e-mail</span>
 
-        <input type="email" class="form-login__input" name="email" required />
+        <input
+          type="email"
+          class="form-login__input"
+          name="email"
+          required
+          autocomplete="on"
+        />
       </label>
 
       <label class="form-login__field">
@@ -35,18 +41,19 @@
         />
       </label>
 
-      <label class="form-login__checkbox checkbox">
+      <label class="form-login__checkbox checkbox-login">
         <input
           type="checkbox"
           name="conditions"
-          class="checkbox__original visually-hidden"
+          class="checkbox-login__original visually-hidden"
         />
-        <svg class="checkbox__custom" width="14" height="14">
+        <svg class="checkbox-login__custom" width="14" height="14">
           <use href="./images/svg/sprite.svg#agree"></use>
         </svg>
-        <span class="checkbox__label"
+        <span class="checkbox-login__label"
           >i agree with
-          <a class="checkbox__link" href=""> terms of use </a> this site.
+          <a class="checkbox-login__link" href=""> terms of use </a> this site.
+          I want to register here.
         </span>
       </label>
       <ul class="form-login__buttons buttons">

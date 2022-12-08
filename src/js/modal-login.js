@@ -1,3 +1,5 @@
+import FirebaseApi from './FirebaseApi';
+
 const refs = {
   loginButton: document.querySelector('button[data-loginButton]'),
   closeButton: document.querySelector('button[data-closeModal]'),
@@ -5,34 +7,64 @@ const refs = {
   modalLogin: document.querySelector('.modal-login'),
   form: document.querySelector('.form-login'),
   docBody: document.querySelector('body'),
-  checkbox: document.querySelector('.checkbox__original'),
+  checkbox: document.querySelector('.checkbox-login__original'),
+  loginBtn: document.querySelector('.button-login'),
   registerBtn: document.querySelector('.button-register'),
 };
 
 // console.log('open docBody', refs.form);
 refs.loginButton.addEventListener('click', openLoginModal);
 refs.closeButton.addEventListener('click', closeLoginModal);
-refs.form.addEventListener('submit', onLogin);
 refs.checkbox.addEventListener('change', onCheckboxChange);
+
+refs.form.addEventListener('submit', onLogin);
+refs.registerBtn.addEventListener('click', () => onRegister(refs.form));
 
 function onCheckboxChange(e) {
   const checked = e.currentTarget.checked;
 
+  refs.loginBtn.disabled = checked;
   refs.registerBtn.disabled = !checked;
+}
+
+async function onRegister(form) {
+  const {
+    elements: { email, password },
+  } = form;
+  // console.log('email :>> ', email.value);
+  // console.log('password :>> ', password.value);
+
+  const userLoginAuth = {
+    email: email.value,
+    password: password.value,
+  };
+
+  const newFirebaseUser = new FirebaseApi(userLoginAuth);
+  // await firebaseUser.signUp();
+  newFirebaseUser.registerUser();
+
+  form.reset();
+  closeLoginModal();
 }
 
 function onLogin(e) {
   e.preventDefault();
 
   const {
-    elements: { email, password, conditions, registerBtn },
+    elements: { email, password },
   } = e.currentTarget;
-  console.log('email :>> ', email);
-  console.log('password :>> ', password);
-  console.log('conditions :>> ', conditions);
-  console.log('registerBtn :>> ', registerBtn);
+  console.log('email :>> ', email.value);
+  console.log('password :>> ', password.value);
+  const userLoginAuth = {
+    email: email.value,
+    password: password.value,
+  };
 
-  console.log('user login data :>> ');
+  const firebaseUser = new FirebaseApi(userLoginAuth);
+  firebaseUser.init();
+
+  e.currentTarget.reset();
+  closeLoginModal();
 }
 
 // open login modal

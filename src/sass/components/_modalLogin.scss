@@ -117,12 +117,13 @@
 
 .form-login__checkbox {
 }
-.checkbox {
+
+.checkbox-login {
   @include flex();
   margin-bottom: 50px;
 }
 
-.checkbox__custom {
+.checkbox-login__custom {
   cursor: pointer;
 
   min-width: 18px;
@@ -139,19 +140,19 @@
 
   @include projTransitions((background-color, border, color));
 
-  .checkbox__original:checked + & {
+  .checkbox-login__original:checked + & {
     color: var(--secondary-text-color);
     background-color: var(--active-btn-color);
     border: 2px solid var(--active-btn-color);
   }
 }
 
-.checkbox__label {
+.checkbox-login__label {
   @include font(12, 16, 500, 0);
   text-transform: uppercase;
 }
 
-.checkbox__link {
+.checkbox-login__link {
   color: var(--modal-text-color);
 
   @include projTransitions(color);
@@ -199,7 +200,8 @@
 .button-login {
 }
 
-.button-register:disabled {
+.button-register:disabled,
+.button-login:disabled {
   color: var(--modal-text-color);
   background-color: var(--pagination-btn-control);
   border: 1px solid var(--modal-text-color);
