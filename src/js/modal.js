@@ -1,26 +1,39 @@
 import { getGenreNames } from './create-gallery';
 import {storageKeys, buttonStates, storageHasMovie, addWatchedBtn, addQueueBtn} from './storage';
 
+/** Зберігається стан кнопок модального вікна */
+export let btnState = {
+  watched: false,
+  queue: false,
+}
 export let currentMovie;
 
 function openModal() {
   document.querySelector('.backdrop').style.display = "block";
   document.querySelector('body').style.overflowY = 'hidden';
 
-  //Встановлення тексту кнопки "ADD TO WATCHED"
+  //Встановлення стилю кнопки "ADD TO WATCHED"
   if(storageHasMovie(storageKeys.watched, currentMovie.id)){
     addWatchedBtn.textContent = buttonStates.on + " " + storageKeys.watched;
+    addWatchedBtn.classList.add("active");
+    btnState.watched = true;   
   }
   else{
     addWatchedBtn.textContent = buttonStates.off + " " + storageKeys.watched;
+    addWatchedBtn.classList.remove("active");
+    btnState.watched = false;
   }
 
-  //Встановлення тексту кнопки "ADD TO QUEUE"
+  //Встановлення стилю кнопки "ADD TO QUEUE"
   if(storageHasMovie(storageKeys.queue, currentMovie.id)){    
-    addQueueBtn.textContent = buttonStates.on + " " + storageKeys.queue;
+    addQueueBtn.textContent = buttonStates.on + " " + storageKeys.queue;    
+    addQueueBtn.classList.add("active");
+    btnState.queue = true;    
   }
   else{
     addQueueBtn.textContent = buttonStates.off + " " + storageKeys.queue;
+    addQueueBtn.classList.remove("active");
+    btnState.queue = false;
   }
 } 
 
@@ -70,7 +83,3 @@ window.addEventListener("keydown", (e) => {
     closeModal();
   }
 })
-
-
-
-
