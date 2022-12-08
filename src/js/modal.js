@@ -65,8 +65,9 @@ window.addEventListener("click", function(event) {
 });
 
 //закрытие модалки по esc
-window.addEventListener("keydown", (e) => {
-  if (e.keyCode === 27) {
-    closeModal();
-  }
-})
+// window.addEventListener("keydown", (e) => {
+//   if (e.keyCode === 27) {
+//     console.log('AddListener ECS -  не працює) ')
+//     closeModal();
+//   }
+// })
