@@ -221,6 +221,7 @@
 // .navigation__link--active {
 // }
 .login {
+  position: relative;
   // display: none;
   @include flex($justify: right);
   flex-direction: row-reverse;
@@ -236,6 +237,10 @@
     color: var(--activeUser);
   }
   &--is-logined > .login__user-name {
+    @include mobile() {
+      opacity: 1;
+    }
+
     @include tablet() {
       opacity: 1;
     }
@@ -261,17 +266,19 @@
 }
 
 .login__user-name {
-  display: none;
+  // display: none;
+  position: absolute;
+  top: 150%;
+  opacity: 0;
+
+  @include font(12, 14, 500, 0);
+  color: var(--secondary-text-color);
 
   @include tablet() {
     display: inline-block;
     opacity: 0;
 
-    @include font(12, 14, 500, 0);
-
     margin-right: 10px;
-
-    color: var(--secondary-text-color);
   }
 
   @include projTransitions(opacity);
