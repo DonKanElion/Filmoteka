@@ -61,7 +61,6 @@ export default function createGalleryMarkup(imagesArray) {
                <div class="card" movie-id="${id}">
                <img class="card__poster"  src="https://image.tmdb.org/t/p/w500${poster_path}" alt
                ="poster movie ${title}"  loading="lazy" width="320px" height="210px" />
-
                     <div  class="card__info">
                         <p class="info__title"><b>${title}</b><br/>
                         </p>
@@ -71,7 +70,6 @@ export default function createGalleryMarkup(imagesArray) {
                        <span class="info__span"> | </span>
                         <b class="info__release-date">${releaseYear}</b>
                         </p>
-
                     </div>
                 </div>
             `;
@@ -101,7 +99,6 @@ async function setGenreNames(apiService) {
 
 /**Повертає імена жанрів за вказаними номерами */
 export function getGenreNames(genreIDs) {
-
   let genres;
   let parsedGenres;
   try {

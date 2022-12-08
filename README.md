@@ -35,6 +35,7 @@
 <a align="center" href="https://github.com/djbob2000">![GitHub](https://img.shields.io/badge/-VladimirPeretyatko-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/1leha">![GitHub](https://img.shields.io/badge/-AlexeyLisovoy-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/Dmitriy-Tyukh">![GitHub](https://img.shields.io/badge/-DmitriyTyukh-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/bmv000">![GitHub](https://img.shields.io/badge/-MarinaBelousova-05122A?style=flat&logo=github)</a><a align="center" href="https://github.com/DonKanElion">![GitHub](https://img.shields.io/badge/-AntonPalienko-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/bmv000">![GitHub](https://img.shields.io/badge/-MarinaBelousova-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/DonKanElion">![GitHub](https://img.shields.io/badge/-AntonPalienko-05122A?style=flat&logo=github)</a>
 </span>
 
