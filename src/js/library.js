@@ -17,12 +17,12 @@ let queueMovies = '';
 if (localStorage.getItem('watched')) {
   watchedMovies = JSON.parse(localStorage.getItem('watched'));
 } else {
-  btnWatched.disabled = true;
+  refs.btnWatched.disabled = true;
 }
 if (localStorage.getItem('queue')) {
   queueMovies = JSON.parse(localStorage.getItem('queue'));
 } else {
-  btnQueue.disabled = true;
+  refs.btnQueue.disabled = true;
 }
 
 if (watchedMovies || queueMovies) {
