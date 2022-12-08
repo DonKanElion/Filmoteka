@@ -1,4 +1,4 @@
-$color: #FF6B08;
+$color: #ff6b08;
 
 @mixin anim($i) {
   $y: ($i + 5) * 10;
@@ -14,9 +14,14 @@ $color: #FF6B08;
 }
 
 .loader {
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   // height: 100vh; (ТімЛід - тимчасово приховав, щоб не заважало)
   // overflow: hidden;
 }
@@ -41,8 +46,8 @@ $color: #FF6B08;
 }
 
 .loader__icon {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    fill: #ffffff;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  fill: #ffffff;
 }
