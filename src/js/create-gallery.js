@@ -126,3 +126,5 @@ export function getGenreNames(genreIDs) {
   }
   return genresNames.slice(0, -2);
 }
+
+document.querySelector('.loader').classList.add('is-hidden');
