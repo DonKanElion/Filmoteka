@@ -1,5 +1,5 @@
 .is-hidden {
+  visibility: hidden;
   opacity: 0;
-
-  color: transparent;
+  pointer-events: none;
 }
