@@ -1,7 +1,3 @@
-.user-lib-btn--active {
-  background-color: var(--active-btn-color);
-}
-
 .user-lib-btn {
   position: relative;
   display: inline-block;
@@ -48,6 +44,10 @@
   &:active {
     top: 1px;
   }
+}
+
+.user-lib-btn--active {
+  background-color: var(--active-btn-color);
 }
 
 @include mobile {

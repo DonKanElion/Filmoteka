@@ -13,36 +13,41 @@ const refs = {
   tuiContainer: document.getElementById('tui-pagination-container'),
 };
 
-setGenreNames(newApiServiсe);
+setMarkup();
 
-newApiServiсe.fetchTrendingFilms().then(data => {
-  const imagesArray = data.results;
-  localStorage.setItem('movieData', JSON.stringify(data.results));
-  // Pagination
-  const totalPages = data.total_pages;
-  // console.log('totalPages of Start Page:>> ', totalPages);
+async function setMarkup(){
 
-  if (totalPages > 1) {
-    // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+  await setGenreNames(newApiServiсe);
+ const promice = await newApiServiсe.fetchTrendingFilms();
 
-    const paginaton = new Pagination(refs.tuiContainer, {
-      ...paginationOptions,
-      totalItems: totalPages,
-    });
-    paginaton.on('afterMove', async ({ page }) => {
-      newApiServiсe.currentPage = page;
-      const response = await newApiServiсe.fetchTrendingFilms();
-      localStorage.setItem('movieData', JSON.stringify(response.results));
-      const imagesArray = await response.results;
-      createGalleryMarkup(imagesArray);
-    });
-  }
-
-  //   const markup = createGalleryMarkup(imagesArray);
-  //   refs.gallery.innerHTML = markup;
-
-  createGalleryMarkup(imagesArray);
-});
+    const imagesArray = promice.results;
+    localStorage.setItem('movieData', JSON.stringify(promice.results));
+    // Pagination
+    const totalPages = promice.total_pages;
+    // console.log('totalPages of Start Page:>> ', totalPages);
+  
+    if (totalPages > 1) {
+      // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+  
+      const paginaton = new Pagination(refs.tuiContainer, {
+        ...paginationOptions,
+        totalItems: totalPages,
+      });
+      paginaton.on('afterMove', async ({ page }) => {
+        newApiServiсe.currentPage = page;
+        const response = await newApiServiсe.fetchTrendingFilms();
+        localStorage.setItem('movieData', JSON.stringify(response.results));
+        const imagesArray = await response.results;
+        
+        createGalleryMarkup(imagesArray);
+      });
+    }
+  
+    //   const markup = createGalleryMarkup(imagesArray);
+    //   refs.gallery.innerHTML = markup;
+    
+    createGalleryMarkup(imagesArray);  
+}
 
 export default function createGalleryMarkup(imagesArray) {
   const refs = {
@@ -54,9 +59,8 @@ export default function createGalleryMarkup(imagesArray) {
       const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
       return `
                <div class="card" movie-id="${id}">
-
-                    <img class="card__poster" src="https://image.tmdb.org/t/p/w500${poster_path}" alt=""  loading="lazy" width="320px" height="210px"/>
-
+               <img class="card__poster"  src="https://image.tmdb.org/t/p/w500${poster_path}" alt
+               ="poster movie ${title}"  loading="lazy" width="320px" height="210px" />
                     <div  class="card__info">
                         <p class="info__title"><b>${title}</b><br/>
                         </p>
@@ -66,7 +70,6 @@ export default function createGalleryMarkup(imagesArray) {
                        <span class="info__span"> | </span>
                         <b class="info__release-date">${releaseYear}</b>
                         </p>
-
                     </div>
                 </div>
             `;
@@ -96,7 +99,6 @@ async function setGenreNames(apiService) {
 
 /**Повертає імена жанрів за вказаними номерами */
 export function getGenreNames(genreIDs) {
-
   let genres;
   let parsedGenres;
   try {
@@ -109,6 +111,12 @@ export function getGenreNames(genreIDs) {
   let genresNames = '';
   for (let i = 0; i < genreIDs.length; i++) {
     const genreID = genreIDs[i];
+
+    if(i>1)
+    {
+      genresNames += "Other";
+      return genresNames;
+    }
 
     parsedGenres.map(genre => {
       if (genreID === genre.id) {

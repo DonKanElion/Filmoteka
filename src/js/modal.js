@@ -1,9 +1,28 @@
 import { getGenreNames } from './create-gallery';
+import {storageKeys, buttonStates, storageHasMovie, addWatchedBtn, addQueueBtn} from './storage';
+
+export let currentMovie;
 
 function openModal() {
   document.querySelector('.backdrop').style.display = "block";
   document.querySelector('body').style.overflowY = 'hidden';
-}
+
+  //Встановлення тексту кнопки "ADD TO WATCHED"
+  if(storageHasMovie(storageKeys.watched, currentMovie.id)){
+    addWatchedBtn.textContent = buttonStates.on + " " + storageKeys.watched;
+  }
+  else{
+    addWatchedBtn.textContent = buttonStates.off + " " + storageKeys.watched;
+  }
+
+  //Встановлення тексту кнопки "ADD TO QUEUE"
+  if(storageHasMovie(storageKeys.queue, currentMovie.id)){    
+    addQueueBtn.textContent = buttonStates.on + " " + storageKeys.queue;
+  }
+  else{
+    addQueueBtn.textContent = buttonStates.off + " " + storageKeys.queue;
+  }
+} 
 
 function closeModal() {
   document.querySelector('.backdrop').style.display = "none";
@@ -22,6 +41,7 @@ document.querySelector('.gallery').addEventListener("click", function(e) {
         return true;
       }
     })
+    currentMovie = movie;
 
     document.querySelector('.content-card__img>img').setAttribute('src', 'https://image.tmdb.org/t/p/w500' + movie.poster_path);
     document.querySelector('.content-card__title').innerText = movie.title;

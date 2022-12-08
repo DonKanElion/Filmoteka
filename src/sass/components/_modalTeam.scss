@@ -1,49 +1,30 @@
 .backdrop__team {
-    background-color: rgb(33, 181, 214);
-
     z-index: 10;
-  position: fixed;
-  overflow: auto;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+
+    position: fixed;
+    overflow: auto;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-color: rgba(0, 0, 0, 0.5);
 }
+
 .modal__team{
-
     z-index: 5;
-//   margin: 0 auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  padding: 46px 26px;
-  background-color: rgba(245, 244, 250, 1);
-//   width: 540px;
-//   max-width: 100%;
-//   max-height: 100%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
 
-    // z-index: 1000;
-    // position: fixed;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
-    // overflow: hidden;
-    // background-color: #fff;
-    // width: 540px;
-    // max-width: 100%;
-    // padding: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 25px;
+
+    background-color: rgba(245, 244, 250, 1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
 }
-
-// .content-card__info{
-   
-// }
 
 .team{
-    // background-color: var(--accent-color);
-    // background-color: rgba(245, 244, 250, 1);
-    outline: 1px dashed green;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -52,15 +33,13 @@
 }
 
 .team__title { 
-        margin-bottom: 5px;
+        margin-bottom: 20px;
         text-align: center;
         text-transform: uppercase;
         color: var(--primary-text-color);
     }
+
 .team{
-    // padding-top: var(--padd-section);
-    // padding-bottom: var(--padd-section);   
-    // background-color: var(--bgc-grey);
 
     &__list{
         display: flex;
@@ -69,12 +48,10 @@
 
         margin-top: calc(-1 * var(--card-set-grid-team));
         margin-left: calc(-1 * var(--card-set-grid-team));
+        padding: 2px 2px;
         }
     
     &__item{
-        width: 280px;
-        height: 398px;
-
         margin-top: var(--card-set-grid-team);
         margin-left: var(--card-set-grid-team);
 
@@ -83,57 +60,66 @@
         background-color: var(--card-set-grid-bgc);
         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
         border-radius: 0px 0px 4px 4px;
-        outline: 2px dashed goldenrod;
     }
     
-    
     &__box{
-        padding-top: 15px;
-        padding-bottom: 20px;
+        padding: 15px 7px;
+        text-align: center;
     }
 
     &__name{
+    font-size: 20px;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 1.187;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: var(--team-text-mg);
     }
     
-    &__skills{
+    &__job-title{
+    color: var(--footer-text-color);
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: var(--team-text-mg);
+    }
+
+    &__work{
     color: var(--modal-text-color);
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 400;
     line-height: 1.187;
-    text-align: center;
-    // margin-bottom: 16px;
-    outline: 1px dashed darkcyan;
+    margin-bottom: var(--team-text-mg);
     }
 }
 
 // 768px
-@media screen and (min-width: 768px) {
+@include tablet() {
+    .modal__team{
+        width: 768px;
+    }
+
     .team{
 
         &__list{            
             flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         &__item{ 
-            flex-basis: calc(100% / 2 - var(--card-set-grid-team));
+            flex-basis: calc(100% / 3 - var(--card-set-grid-team));
         }
     }
 }
 
 // 1200px
-@media screen and (min-width: 1170px) {
+@include desktop() {
+
+    .modal__team{
+        width: 1024px;
+    }
     .team{
 
-        &__list{
-            flex-wrap: nowrap;
-        }
-
         &__item{
-            flex-basis: calc(100% / 1 - var(--card-set-grid-team));
+            flex-basis: calc(100% / 4 - var(--card-set-grid-team));
         }
     }
 }
@@ -144,10 +130,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    outline: 1px dashed forestgreen;
 
     &__item{
-        
         margin-right: 10px;
     
         &:last-child{
@@ -160,8 +144,8 @@
         align-items: center;
         justify-content: center;
     
-        width: 44px;
-        height: 44px;
+        width: 35px;
+        height: 35px;
       
         fill: var(--active-btn-color);
         
@@ -172,38 +156,22 @@
 
         &:hover,
         &:focus {
-          background-color: var(--active-btn-color);
-           fill: var(--secondary-text-color);
-
+            background-color: var(--active-btn-color);
+            fill: var(--secondary-text-color);
         }
     }
 
     &__link-footer{
-        
         fill: var(--card-set-grid-bgc);
         background-color: rgba(255, 255, 255, 0.1);
         
         transition: background-color 250ms var(--trans-prop) 0ms,
         fill 250ms var(--trans-prop) 0ms;
+
           &:hover,
           &:focus {
-            // background-color: var(--accent-color);
             fill: var(--active-btn-color);
             color: red;
           }
-    }
-}
-
-@media screen and (min-width: 1170px){
-    .social-list{
-          
-      &__link{
-          
-          &:hover,
-          &:focus {
-            background-color: var(--accent-color);
-            fill: var(--card-set-grid-bgc);
-          }
-      }
     }
 }
