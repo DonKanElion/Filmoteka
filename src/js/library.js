@@ -39,8 +39,8 @@ function onWatchedButtonClick(event) {
   event.preventDefault();
   console.log(event);
   if (event.target.classList.contains('watched')) {
-    refs.btnQueue.classList.remove('user-lib-btn--active');
-    refs.btnWatched.classList.add('user-lib-btn--active');
+    refs.btnQueue.classList.remove('library-header__button--active');
+    refs.btnWatched.classList.add('library-header__button--active');
   }
   refs.noItemsImg.style.display = 'none';
   createGalleryMarkup(watchedMovies);
@@ -52,8 +52,8 @@ function onQueueButtonClick(event) {
 
   if (event.target.classList.contains('queue')) {
     console.log('queue');
-    refs.btnWatched.classList.remove('user-lib-btn--active');
-    refs.btnQueue.classList.add('user-lib-btn--active');
+    refs.btnWatched.classList.remove('library-header__button--active');
+    refs.btnQueue.classList.add('library-header__button--active');
   }
   refs.noItemsImg.style.display = 'none';
   createGalleryMarkup(queueMovies);
