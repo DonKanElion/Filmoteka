@@ -54,8 +54,8 @@ export default function createGalleryMarkup(imagesArray) {
       const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
       return `
                <div class="card" movie-id="${id}">
-
-                    <img class="card__poster" src="https://image.tmdb.org/t/p/w500${poster_path}" alt=""  loading="lazy" width="320px" height="210px"/>
+               <img class="card__poster"  src="https://image.tmdb.org/t/p/w500${poster_path}" alt
+               ="poster movie ${title}"  loading="lazy" width="320px" height="210px" />
 
                     <div  class="card__info">
                         <p class="info__title"><b>${title}</b><br/>
