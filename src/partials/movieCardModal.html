@@ -1,67 +1,48 @@
-<div class="backdrop is-hidden-modal" data-modal>
-  <div class="modal">
-    <button class="modal__close" type="button" data-modal-close>
-      <svg class="modal__close-icon" width="26" height="26">
-        <use href="./images/sprite-filmoteka.svg#icon-close"></use>
-      </svg>
-    </button>
-    <div class="modal__content content-card">
-      <div class="content-card__img">
-        <img
-          src="./images/testMovie-desk.jpg"
-          width="375"
-          height="478"
-          alt="Movie"
-        />
-      </div>
-      <div class="content-card__info">
-        <h3 class="content-card__title" data-id="${id}" data-year="${year}">
-          A FISTFUL OF LEAD
-        </h3>
-        <ul class="content-card__characteristics">
-          <li>
-            <p class="content-card__category">Vote / Votes</p>
-            <p class="content-card__meaning">
-              <span class="content-card__vote">7.3</span> / <span>1260</span>
-            </p>
-          </li>
-          <li>
-            <p class="content-card__category">Popularity</p>
-            <p class="content-card__meaning">100.2</p>
-          </li>
-          <li>
-            <p class="content-card__category">Original Title</p>
-            <p class="content-card__meaning">A FISTFUL OF LEAD</p>
-          </li>
-          <li>
-            <p class="content-card__category">Genre</p>
-            <p class="content-card__meaning genre-modal">Western</p>
-          </li>
-        </ul>
-        <b class="content-card__about">About</b>
-        <p class="content-card__about-text">
-          Four of the West’s most infamous outlaws assemble to steal a huge
-          stash of gold from the most corrupt settlement of the gold rush towns.
-          But not all goes to plan one is killed and the other three escapes
-          with bags of gold hide out in the abandoned gold mine where they
-          happen across another gang of three – who themselves were planning to
-          hit the very same bank! As tensions rise, things go from bad to worse
-          as they realise the bags of gold are filled with lead... they’ve been
-          double crossed – but by who and how?
+
+
+<div data-modal class="backdrop ">
+	<div class="modal">
+		<button data-modal-close class="modal__close" type="button">
+			<svg class="modal__close-icon" width="26" height="26">
+				<use href="./images/sprite-filmoteka.svg#icon-close"></use>
+			</svg>
+		</button>
+		<div class="modal__content content-card">
+			<div class="content-card__img">
+				<img src="https://image.tmdb.org/t/p/w500/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg" width="375" height="478" alt="Movie">
+			</div>
+			<div class="content-card__info">
+				<h3 class="content-card__title">Заголовок</h3>
+        <table class='modal__movie-info'>
+          <tr>
+            <th>Vote / Votes</th>
+            <td class='modal__movie-votes'><span class="modal__movie-bord">7.3</span> / <span class='modal__movie-number'>1260</span></td>
+          </tr>
+          <tr>
+            <th>Popularity</th>
+            <td class='modal__movie-popularity'>100.2</td>
+          </tr>
+          <tr>
+            <th>Original Title</th>
+            <td class='modal__movie-original'>A FISTFUL OF LEAD</td>
+          </tr>
+          <tr>
+            <th>Genre</th>
+            <td class='modal__movie-genres'>Western</td>
+          </tr>
+        </table>
+				<b class="content-card__about">About</b>
+				<p class="content-card__about-text">Тут может быть ваша реклама
         </p>
-        <ul class="content-card__btn-group">
-          <li>
-            <button class="content-card__btn" type="button">
-              add to Watched
-            </button>
-          </li>
-          <li>
-            <button class="content-card__btn" type="button">
-              add to queue
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+				<ul class="content-card__btn-group">
+					<li>
+						<button class="content-card__btn watched-btn" type="button">add to Watched</button>
+					</li>
+					<li>
+						<button class="content-card__btn queue-btn" type="button">add to queue</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>

@@ -18,6 +18,7 @@
     "url": "https://github.com/DonKanElion/Filmoteka/issues"
   },
   "dependencies": {
+    "firebase": "^9.14.0",
     "modern-normalize": "^1.1.0",
     "tui-pagination": "^3.4.1"
   },
@@ -29,7 +30,8 @@
     "buffer": "^6.0.3",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "posthtml-include": "^1.7.4",
+    "process": "^0.11.10"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }

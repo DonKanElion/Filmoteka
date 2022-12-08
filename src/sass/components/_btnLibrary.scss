@@ -1,39 +1,72 @@
 .user-lib-btn {
-    cursor: pointer;
+  position: relative;
+  display: inline-block;
 
-    background-color: transparent;
-    border-color: #ffffff;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1, 33;
+  color: #ffffff;
+
+  border-radius: 5px;
+  background: transparent;
+  border-color: #ffffff;
+  border-radius: 5px;
+  border-style: solid;
+
+  transition: var(--transition-time) var(--trans-prop);
+
+  z-index: 1;
+  cursor: pointer;
+
+  &:after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    background-color: var(--active-btn-color);
     border-radius: 5px;
-    border-style: solid;
+    transition: var(--transition-time) var(--trans-prop);
+  }
 
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 12px;
-    line-height: 1, 33;
+  &:hover {
+    border: none;
+    transition: var(--transition-time) var(--trans-prop);
+  }
 
-    &:hover, &:focus {
-        background-color: #ff6b01;
-        border: none;
-    }
+  &:hover:after {
+    width: 100%;
+  }
+
+  &:active {
+    top: 1px;
+  }
+}
+
+.user-lib-btn--active {
+  background-color: var(--active-btn-color);
 }
 
 @include mobile {
-    .user-lib-btn{
+  .user-lib-btn {
     width: 130px;
     height: 45px;
-    }
+  }
 }
 
 @include tablet {
-    .user-lib-btn {
-        width: 150px;
-        height: 45px;
-    }
+  .user-lib-btn {
+    width: 150px;
+    height: 45px;
+  }
 }
 
 @include desktop {
-    .user-lib-btn{
-        width: 150px;
-        height: 40px;
-    }
+  .user-lib-btn {
+    width: 150px;
+    height: 40px;
+  }
 }

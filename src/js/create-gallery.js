@@ -15,37 +15,38 @@ const refs = {
 
 setMarkup();
 
-async function setMarkup() {
+async function setMarkup(){
+
   await setGenreNames(newApiServiсe);
-  const promice = await newApiServiсe.fetchTrendingFilms();
+ const promice = await newApiServiсe.fetchTrendingFilms();
 
-  const imagesArray = promice.results;
-  localStorage.setItem('movieData', JSON.stringify(promice.results));
-  // Pagination
-  const totalPages = promice.total_pages;
-  // console.log('totalPages of Start Page:>> ', totalPages);
-
-  if (totalPages > 1) {
-    // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
-
-    const paginaton = new Pagination(refs.tuiContainer, {
-      ...paginationOptions,
-      totalItems: totalPages,
-    });
-    paginaton.on('afterMove', async ({ page }) => {
-      newApiServiсe.currentPage = page;
-      const response = await newApiServiсe.fetchTrendingFilms();
-      localStorage.setItem('movieData', JSON.stringify(response.results));
-      const imagesArray = await response.results;
-
-      createGalleryMarkup(imagesArray);
-    });
-  }
-
-  //   const markup = createGalleryMarkup(imagesArray);
-  //   refs.gallery.innerHTML = markup;
-
-  createGalleryMarkup(imagesArray);
+    const imagesArray = promice.results;
+    localStorage.setItem('movieData', JSON.stringify(promice.results));
+    // Pagination
+    const totalPages = promice.total_pages;
+    // console.log('totalPages of Start Page:>> ', totalPages);
+  
+    if (totalPages > 1) {
+      // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+  
+      const paginaton = new Pagination(refs.tuiContainer, {
+        ...paginationOptions,
+        totalItems: totalPages,
+      });
+      paginaton.on('afterMove', async ({ page }) => {
+        newApiServiсe.currentPage = page;
+        const response = await newApiServiсe.fetchTrendingFilms();
+        localStorage.setItem('movieData', JSON.stringify(response.results));
+        const imagesArray = await response.results;
+        
+        createGalleryMarkup(imagesArray);
+      });
+    }
+  
+    //   const markup = createGalleryMarkup(imagesArray);
+    //   refs.gallery.innerHTML = markup;
+    
+    createGalleryMarkup(imagesArray);  
 }
 
 export default function createGalleryMarkup(imagesArray) {
@@ -111,8 +112,9 @@ export function getGenreNames(genreIDs) {
   for (let i = 0; i < genreIDs.length; i++) {
     const genreID = genreIDs[i];
 
-    if (i > 1) {
-      genresNames += 'Other';
+    if(i>1)
+    {
+      genresNames += "Other";
       return genresNames;
     }
 
