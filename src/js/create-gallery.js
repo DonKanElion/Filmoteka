@@ -4,7 +4,7 @@ import ApiService from './apiService';
 import Pagination from 'tui-pagination';
 import { paginationOptions } from './projectOptions';
 
-const defaulImg = './images/Filmoteka-dummy.jpg';
+export const defaulPosterImg = "https://i.ibb.co/1dYzZxK/Filmoteka-dummy.jpg";
 const newApiServiсe = new ApiService();
 const locStorage = {
   genres: 'genres',
@@ -61,7 +61,7 @@ export default function createGalleryMarkup(imagesArray) {
       const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
 
       //Встановлення заглушки для постеру
-      const srcPath = poster_path === undefined ? defaulImg : `https://image.tmdb.org/t/p/w500${poster_path}`;      
+      const srcPath = poster_path === null ? defaulPosterImg : `https://image.tmdb.org/t/p/w500${poster_path}`;      
       
       return `
                <div class="card" movie-id="${id}">
