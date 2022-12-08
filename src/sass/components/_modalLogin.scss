@@ -1,0 +1,183 @@
+.backdrop-login {
+  position: fixed;
+  padding: 10px;
+
+  //   display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  overflow: hidden;
+
+  &--is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+// .is-hidden-modal {
+//   opacity: 0;
+//   visibility: hidden;
+//   pointer-events: none;
+// }
+
+// .backdrop-login--is-hidden {
+// }
+
+.modal-login {
+  position: fixed;
+  min-width: 280px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  padding: 50px 15px;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+
+  overflow: auto;
+
+  .backdrop-login--is-hidden & {
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+}
+
+.modal-login__close-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.close-button {
+  @include flex();
+  padding: 0;
+  margin: 0;
+
+  @include projTransitions(fill);
+  &:hover,
+  &:focus {
+    fill: var(--active-btn-color);
+  }
+}
+
+.close-button__icon {
+  color: inherit;
+}
+// .modal-login__form-login {
+// }
+
+// .form-login {
+// }
+.form-login__title {
+  @include font(24, 28, 500, 0);
+  text-transform: uppercase;
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+.form-login__field {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.form-login__label {
+  display: inline-block;
+  @include font(12, 16, 500, 0);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.form-login__input {
+  display: block;
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--primary-text-color);
+
+  @include projTransitions(border);
+
+  &:focus {
+    border-bottom: 1px solid var(--active-btn-color);
+  }
+}
+
+.form-login__checkbox {
+}
+.checkbox {
+}
+.checkbox__original {
+}
+.visually-hidden {
+}
+.checkbox__custom {
+}
+.checkbox__label {
+}
+.checkbox__link {
+}
+.form-login__button-login {
+}
+.button {
+}
+.form-login__button-register {
+}
+
+//!_______________________________________________________________
+// @import "btnModal";
+
+// .modal__movie-info {
+//   width: 215px;
+
+//   margin-bottom: 20px;
+// }
+
+// .modal__movie-info tr th {
+//   text-align: left;
+//   width: 50%;
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: 1.33;
+//   color: var(--inactiveUser);
+// }
+
+// .modal__movie-info tr td {
+//   text-align: left;
+//   width: 50%;
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: 1.33;
+//   color:var( --mobile-btn-border);
+// }
+
+// .modal__movie-bord {
+//   display: inline-block;
+//   text-align: center;
+//   width: 36px;
+//   border-radius: 5px;
+
+//   background-color: var(--active-btn-color);
+//   color: var(--secondary-text-color);
+// }
+
+// .modal__movie-number {
+//   display: inline-block;
+//   text-align: center;
+//   width: 36px;
+//   border-radius: 5px;
+
+//   //padding: 4px 2px;
+
+//   text-transform: uppercase;
+
+//   color: var(--primary-text-color);
+//   background-color: var( --pagination-btn-control);
+// }

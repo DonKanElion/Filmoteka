@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmoteka</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- favIcon -->
     <link
       rel="apple-touch-icon"
@@ -43,29 +46,28 @@
     <!-- favIcon -->
 
     <link rel="stylesheet" href="./sass/index.scss" />
-
   </head>
 
   <body>
-    
-      <include src="./partials/header.html"></include>
-      <!-- <include src="./partials/modal-form.html"></include> -->
+    <include src="./partials/header.html"></include>
+    <!-- <include src="./partials/modal-form.html"></include> -->
 
-     <div class="container">
+    <div class="container">
       <main>
         <h2 class="visually-hidden">Filmoteka</h2>
-        
-        <div class="gallery"></div>
+
+        <!-- <div class="gallery"></div> -->
         <include src="./partials/pagination.html"></include>
 
         <include src="./partials/loader.html"></include>
         <include src="./partials/movieCardModal.html"></include>
-       <!-- <include src="./partials/modal-team.html"></include> -->
+        <include src="./partials/modal-login.html"></include>
+        <!-- <include src="./partials/modal-team.html"></include> -->
       </main>
-     </div>    
+    </div>
 
-         <include src="./partials/footer.html"></include>
-         <include src="./partials/scrollTop.html"></include>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/scrollTop.html"></include>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

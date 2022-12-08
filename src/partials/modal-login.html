@@ -1,0 +1,73 @@
+<!-- Модалка -->
+<div class="backdrop-login backdrop-login--is-hidden1" data-loginModal>
+  <div class="modal-login">
+    <button
+      class="modal-login__close-button close-button"
+      aria-label="Close"
+      data-modal-close
+    >
+      <svg width="26" height="26">
+        <use class="close-button__icon" href="./images/sprite.svg#close"></use>
+      </svg>
+    </button>
+
+    <form
+      class="modal-login__form-login form-login"
+      name="login-form"
+      autocomplete="off"
+    >
+      <p class="form-login__title">Login or register, please!</p>
+
+      <label class="form-login__field">
+        <span class="form-login__label">e-mail</span>
+
+        <input type="email" class="form-login__input" name="input-email" />
+      </label>
+
+      <label class="form-login__field">
+        <span class="form-login__label">Password</span>
+
+        <input
+          type="password"
+          class="form-login__input"
+          name="input-password"
+        />
+      </label>
+
+      <label class="form-login__checkbox checkbox">
+        <input
+          type="checkbox"
+          name="checkbox-conditions"
+          class="checkbox__original visually-hidden"
+        />
+        <svg class="checkbox__custom" width="10" height="10">
+          <use href="./images/sprite.svg#agree"></use>
+        </svg>
+        <span class="checkbox__label">
+          i agree with
+          <a class="checkbox__link" href=""> terms of use </a> this site.
+        </span>
+      </label>
+      <ul class="form-login__buttons buttons">
+        <li class="buttons__item">
+          <button
+            class="form-login__button-login button"
+            type="submit"
+            name="button-send"
+          >
+            login
+          </button>
+        </li>
+        <li class="buttons__item">
+          <button
+            class="form-login__button-register button"
+            type="button"
+            name="button-send"
+          >
+            register
+          </button>
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>
