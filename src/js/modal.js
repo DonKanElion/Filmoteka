@@ -46,6 +46,7 @@ document.querySelector('.gallery').addEventListener("click", function(e) {
     document.querySelector('.content-card__img>img').setAttribute('src', 'https://image.tmdb.org/t/p/w500' + movie.poster_path);
     document.querySelector('.content-card__title').innerText = movie.title;
     document.querySelector('.content-card__about-text').innerText = movie.overview;
+
     document.querySelector('.modal__movie-bord').innerText = movie.vote_average.toFixed(1);
     document.querySelector('.modal__movie-number').innerText = movie.vote_count;
     document.querySelector('.modal__movie-popularity').innerText = movie.popularity.toFixed(1);
@@ -69,7 +70,6 @@ window.addEventListener("keydown", (e) => {
     closeModal();
   }
 })
-
 
 
 
