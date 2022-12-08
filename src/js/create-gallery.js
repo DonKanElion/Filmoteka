@@ -53,6 +53,7 @@ export default function createGalleryMarkup(imagesArray) {
   const refs = {
     gallery: document.querySelector('.gallery'),
   };
+  
   refs.gallery.innerHTML = imagesArray
     .map(image => {
       const { poster_path, title, genre_ids, release_date, id } = image;
