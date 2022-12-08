@@ -81,8 +81,9 @@ function onAddQueueBtn(event) {
     addMovieToStorage(storageKeys.queue, currentMovie, addQueueBtn);    
 }
 
-/** Виконує пошук фільма в localStorage 
- * 
+/** Виконує пошук фільма в localStorage
+ *  
+ * @param {*} storageKey ключ сховища
  * @param {*} movieID ідентифікатор фільма
  * @return повертає true якщо фільм знайдено
  */
@@ -91,27 +92,20 @@ export function storageHasMovie(storageKey, movieID){
     let storageMoviesStr;
     try{
         storageMoviesStr = localStorage.getItem(storageKey);
-        
-        let storageMoviesObj = JSON.parse(storageMoviesStr);
-        
-        for(let i = 0; i< storageMoviesObj.length; i++){
-            if(storageMoviesObj[i].id === movieID){
-                                
-                return true;
-            }
-        }         
+        //Якщо сховище не пусте
+        if(storageMoviesStr){
+            let storageMoviesObj = JSON.parse(storageMoviesStr);
+            
+            for(let i = 0; i< storageMoviesObj.length; i++){
+                if(storageMoviesObj[i].id === movieID){
+                                    
+                    return true;
+                }
+            } 
+        }        
     }
     catch(error){
         console.log("storageHasMovie() error: " + error)
     }
-    return false;
-    
+    return false;    
 }
-
-export function setButtonText(buttonElement, text){
-
-        
-    buttonElement.textContent = text;    
-}
-
-
