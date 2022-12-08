@@ -1,4 +1,5 @@
 import {currentMovie} from './modal'
+import { btnState } from './modal';
 //********************************************
 //Видалити цей об'єкт після злиття,
 //його замінить об'єкт фільму
@@ -73,12 +74,33 @@ addQueueBtn.addEventListener("click", onAddQueueBtn);
 function onAddWatchedBtn(event) {
        
     addMovieToStorage(storageKeys.watched, currentMovie, addWatchedBtn);
+
+    if(btnState.watched){
+        btnState.watched = false;
+        addWatchedBtn.classList.remove("active");        
+        addWatchedBtn.blur();
+    }
+    else{
+        btnState.watched = true;
+        addWatchedBtn.classList.add("active");
+    }
+
 }
 
 /** Обробка натискання "ADD TO QUEUE" */
 function onAddQueueBtn(event) {
 
-    addMovieToStorage(storageKeys.queue, currentMovie, addQueueBtn);    
+    addMovieToStorage(storageKeys.queue, currentMovie, addQueueBtn); 
+    
+    if(btnState.queue){
+        btnState.queue = false;
+        addQueueBtn.classList.remove("active");        
+        addQueueBtn.blur();
+    }
+    else{
+        btnState.queue = true;
+        addQueueBtn.classList.add("active");
+    }
 }
 
 /** Виконує пошук фільма в localStorage
