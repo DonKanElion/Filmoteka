@@ -1,10 +1,14 @@
 
 @import "btnModal";
 
-html {
-  margin-left: calc(100vw - 100%);
-  margin-right: 0;
-}
+
+  //html {
+  //  margin-left: calc(100vw - 100%);
+  //  margin-right: 0;
+  //}
+
+
+
 
 .modal {
 	position: fixed;
@@ -16,15 +20,22 @@ html {
 	transition: transform 0.3s ease;
 
   overflow: auto;
+  height: 100%;
+  width: 280px;
 
   margin-top: 20px;
 
-  @media screen  and (max-width: 480px){
-    height: 100%;
+  @media screen  and (min-width: 768px){
+    width: 704px;
+    height: 552px;
+    margin-top: 80px;
   }
 
-
-
+  @media screen  and (min-width: 1024px){
+    width: 806px;
+    height: 558px;
+    margin-top: 0;
+  }
 
 	@include tablet {
 		padding: 40px;
@@ -62,15 +73,29 @@ html {
 .content-card {
 	&__img {
 		max-width: 100%;
-	}
+  }
 
-	&__info {
+	&__movie {
+    border-radius: 5px;
+
+    @media  (min-width: 768px) and (max-width: 1023px) {
+      width: 264px;
+      height: 374px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 375px;
+      height: 478px
+    }
+
 	}
 
 	&__title {
 		text-transform: uppercase;
 		font-size: 20px;
 		margin-bottom: 20px;
+    font-weight: 500;
+
 
 		@media screen and (min-width: 1024px) {
 			font-size: 30px;
@@ -123,13 +148,14 @@ html {
 		text-transform: uppercase;
 		font-size: 12px;
 		margin-bottom: 8px;
-		letter-spacing: 0.02em;
+    font-weight: 500;
+    line-height: 1.33;
 	}
 
 	&__about-text {
 		font-size: 12px;
 		line-height: 1.67;
-		letter-spacing: 0.02em;
+		letter-spacing: 0;
 
 		@media screen and (min-width: 1024px) {
 			width: 390px;
@@ -149,6 +175,8 @@ html {
 	transition: opacity 0.3s ease, visibility 0.3s ease;
 
   overflow: hidden;
+
+  //padding-right: 20px;
 
 
 }
@@ -173,15 +201,16 @@ html {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+  letter-spacing: 0;
   color: var(--inactiveUser);
 }
 
 .modal__movie-info tr td {
   text-align: left;
   width: 50%;
-  font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+  letter-spacing: 0;
   color:var( --mobile-btn-border);
 }
 
