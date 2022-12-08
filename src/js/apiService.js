@@ -10,6 +10,7 @@ export default class ApiService {
   constructor() {
     this.inputValue = ' ';
     this.page = 1;
+    this.genresId = null;
   }
 
   // колекція популярних фільмів
@@ -27,6 +28,12 @@ export default class ApiService {
       `${BASE_URL}${SEARCH}${API_KEY}&page=${this.page}&include_adult=false&query=${this.inputValue}`
     );
     // this.incrementPage();
+    return responce.data;
+  }
+  async searchGanreFilms() {
+    const responce = await axios.get(
+      `${BASE_URL}discover/movie?${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&with_watch_monetization_types=flatrate&include_video=false&with_genres=${this.genresId}&page=${this.page}`
+    );
     return responce.data;
   }
 

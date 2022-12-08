@@ -31,14 +31,31 @@
         <span class="login__user-name">User Name</span>
       </div>
     </div>
-
-    <ul class="user-lib-btns">
-      <li class="header__user-item">
-        <button class="user-lib-btn watched" type="button">Watched</button>
-      </li>
-      <li class="header__user-item">
-        <button class="user-lib-btn queue" type="button">Queue</button>
-      </li>
-    </ul>
+    <div class="library-header__btns-and-theme">
+      <ul class="library-header__buttons">
+        <li class="header__user-item">
+          <button class="library-header__button watched" type="button">
+            Watched
+          </button>
+        </li>
+        <li class="header__user-item">
+          <button class="library-header__button queue" type="button">
+            Queue
+          </button>
+        </li>
+      </ul>
+      <div class="library-header__theme">
+        <input type="checkbox" class="checkbox" id="checkbox" />
+        <label for="checkbox" class="label">
+          <svg class="icon-sun" width="20" height="20">
+            <use href="/src/images/darkTheme.svg#icon-sun"></use>
+          </svg>
+          <svg class="icon-moon" width="20" height="20">
+            <use href="/src/images/darkTheme.svg#icon-moon"></use>
+          </svg>
+          <span class="ball"></span>
+        </label>
+      </div>
+    </div>
   </div>
 </header>

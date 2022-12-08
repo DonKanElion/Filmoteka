@@ -29,6 +29,7 @@ async function onSearch(e) {
   try {
     api.resetPage();
     const serchResponse = await api.fetchSearchFilms();
+    localStorage.setItem('movieData', JSON.stringify(serchResponse.results));
     const serchData = await serchResponse.results;
 
     totalPages = await serchResponse.total_pages;
@@ -55,6 +56,7 @@ async function onSearch(e) {
         console.log(`сделать запрос и отрендерить`);
         api.currentPage = page;
         const serchResponse = await api.fetchSearchFilms();
+        localStorage.setItem('movieData', JSON.stringify(serchResponse.results));
         const serchData = await serchResponse.results;
         createGalleryMarkup(serchData);
       });
