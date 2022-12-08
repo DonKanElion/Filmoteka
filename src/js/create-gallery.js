@@ -1,8 +1,7 @@
 import ApiService from './apiService';
 
-// TUI Pagination import
+// TUI Pagination import after reinstall modules
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
 import { paginationOptions } from './projectOptions';
 
 const newApiServiсe = new ApiService();
@@ -14,26 +13,31 @@ const refs = {
   tuiContainer: document.getElementById('tui-pagination-container'),
 };
 
-newApiServiсe.fetchTrendingFilms().then(data => {
-  const imagesArray = data.results;
+setMarkup();
 
+async function setMarkup() {
+  await setGenreNames(newApiServiсe);
+  const promice = await newApiServiсe.fetchTrendingFilms();
+
+  const imagesArray = promice.results;
+  localStorage.setItem('movieData', JSON.stringify(promice.results));
   // Pagination
-  const totalPages = data.total_pages;
-  console.log('totalPages of Start Page:>> ', totalPages);
+  const totalPages = promice.total_pages;
+  // console.log('totalPages of Start Page:>> ', totalPages);
 
   if (totalPages > 1) {
-    console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+    // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
 
     const paginaton = new Pagination(refs.tuiContainer, {
       ...paginationOptions,
       totalItems: totalPages,
     });
     paginaton.on('afterMove', async ({ page }) => {
-      //   console.log(`Предать страницу ${page} в АПИ`);
-      //   console.log(`сделать запрос и отрендерить`);
       newApiServiсe.currentPage = page;
       const response = await newApiServiсe.fetchTrendingFilms();
+      localStorage.setItem('movieData', JSON.stringify(response.results));
       const imagesArray = await response.results;
+
       createGalleryMarkup(imagesArray);
     });
   }
@@ -42,13 +46,7 @@ newApiServiсe.fetchTrendingFilms().then(data => {
   //   refs.gallery.innerHTML = markup;
 
   createGalleryMarkup(imagesArray);
-});
-
-setGenresNames(newApiServiсe);
-
-
-setGenresNames(newApiServiсe);
-
+}
 
 export default function createGalleryMarkup(imagesArray) {
   const refs = {
@@ -56,13 +54,12 @@ export default function createGalleryMarkup(imagesArray) {
   };
   refs.gallery.innerHTML = imagesArray
     .map(image => {
-      const { poster_path, title, genre_ids, release_date } = image;
+      const { poster_path, title, genre_ids, release_date, id } = image;
       const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
       return `
-               <div class="card">
-                
-                    <img class="card__poster" src="https://image.tmdb.org/t/p/w500${poster_path}" alt=""  loading="lazy" width="320px" height="210px"/>
-                   
+               <div class="card" movie-id="${id}">
+               <img class="card__poster"  src="https://image.tmdb.org/t/p/w500${poster_path}" alt
+               ="poster movie ${title}"  loading="lazy" width="320px" height="210px" />
                     <div  class="card__info">
                         <p class="info__title"><b>${title}</b><br/>
                         </p>
@@ -72,67 +69,16 @@ export default function createGalleryMarkup(imagesArray) {
                        <span class="info__span"> | </span>
                         <b class="info__release-date">${releaseYear}</b>
                         </p>
-                        
                     </div>
                 </div>
             `;
     })
     .join('');
 }
-/** Функція записує жанри до локального сховища
- *
- */
-
-async function setGenresNames(apiService){
-
-    let promices;
-
-    const genre = {
-        id: 0,
-        name: "",
-    }
-    try {
-        promices = await apiService.dataMovies();
-        const genresArray = promices.genres;
-        let genresStr = "";
-
-        genresStr += JSON.stringify(genresArray);    
-
-        localStorage.setItem(locStorage.genres, JSON.stringify(genresArray)); 
-    }
-    catch(error){
-        console.log("setGenresNames() error: ", error.message);
-    }
-}
-
- function getGenreNames(genreIDs){
-    let genres ;
-    let parsedGenres;
-    try {
-        genres = localStorage.getItem(locStorage.genres);
-        parsedGenres = JSON.parse(genres);        
-    }
-    catch(error){
-        console.log("getGenreNames() error: ", error.message);
-    }
-    
-    let genresNames = "";
-    for (let i = 0; i < genreIDs.length; i++) {
-        const genreID = genreIDs[i];
-               
-        parsedGenres.map(genre =>{
-           
-            if(genreID === genre.id){
-                genresNames += genre.name + ", ";
-            }
-        })
-    }
-    return genresNames.slice(0,-2);    
-
-}
-
-async function setGenresNames(apiService) {
+/** Записує жанри до локального сховища */
+async function setGenreNames(apiService) {
   let promices;
+
   const genre = {
     id: 0,
     name: '',
@@ -150,7 +96,8 @@ async function setGenresNames(apiService) {
   }
 }
 
-function getGenreNames(genreIDs) {
+/**Повертає імена жанрів за вказаними номерами */
+export function getGenreNames(genreIDs) {
   let genres;
   let parsedGenres;
   try {
@@ -164,6 +111,11 @@ function getGenreNames(genreIDs) {
   for (let i = 0; i < genreIDs.length; i++) {
     const genreID = genreIDs[i];
 
+    if (i > 1) {
+      genresNames += 'Other';
+      return genresNames;
+    }
+
     parsedGenres.map(genre => {
       if (genreID === genre.id) {
         genresNames += genre.name + ', ';
@@ -171,6 +123,4 @@ function getGenreNames(genreIDs) {
     });
   }
   return genresNames.slice(0, -2);
-
 }
-
