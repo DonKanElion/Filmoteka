@@ -14,13 +14,13 @@ refs.loader.classList.add('is-hidden');
 let watchedMovies = '';
 let queueMovies = '';
 
-if (localStorage.getItem('watched')) {
-  watchedMovies = JSON.parse(localStorage.getItem('watched'));
+if (localStorage.getItem('WATCHED')) {
+  watchedMovies = JSON.parse(localStorage.getItem('WATCHED'));
 } else {
   refs.btnWatched.disabled = true;
 }
-if (localStorage.getItem('queue')) {
-  queueMovies = JSON.parse(localStorage.getItem('queue'));
+if (localStorage.getItem('QUEUE')) {
+  queueMovies = JSON.parse(localStorage.getItem('QUEUE'));
 } else {
   refs.btnQueue.disabled = true;
 }
@@ -39,7 +39,6 @@ function onWatchedButtonClick(event) {
   event.preventDefault();
   console.log(event);
   if (event.target.classList.contains('watched')) {
-    console.log('WATCHED');
     refs.btnQueue.classList.remove('user-lib-btn--active');
     refs.btnWatched.classList.add('user-lib-btn--active');
   }
@@ -50,7 +49,7 @@ function onWatchedButtonClick(event) {
 
 function onQueueButtonClick(event) {
   event.preventDefault();
-  console.log(event);
+
   if (event.target.classList.contains('queue')) {
     console.log('queue');
     refs.btnWatched.classList.remove('user-lib-btn--active');
