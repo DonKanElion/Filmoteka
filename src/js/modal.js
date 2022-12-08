@@ -78,9 +78,11 @@ window.addEventListener("click", function(event) {
 });
 
 //закрытие модалки по esc
-window.addEventListener("keydown", (e) => {
-  if (e.keyCode === 27) {
-    closeModal();
-  }
-});
+ modalTeam/fix-bags-bntClose
+// window.addEventListener("keydown", (e) => {
+//   if (e.keyCode === 27) {
+//     console.log('AddListener ECS -  не працює) ')
+//     closeModal();
+//   }
+// })
 

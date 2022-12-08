@@ -1,6 +1,5 @@
 .backdrop__team {
     z-index: 10;
-
     position: fixed;
     opacity: 1;
     visibility: visible;
@@ -13,11 +12,6 @@
     background-color: rgba(0, 0, 0, 0.8);
 
     // transition: opacity 250ms var(--trans-prop), backround 250ms var(--trans-prop);
-          &.is-hidden {
-          visibility: hidden;
-          opacity: 0;
-          pointer-events: none;
-        }
 }
 
 .modal__team{
