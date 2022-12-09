@@ -1,4 +1,4 @@
-import { ref } from 'firebase/database';
+// import { ref } from 'firebase/database';
 import FirebaseApi from './FirebaseApi';
 
 const refs = {
@@ -73,6 +73,7 @@ function onLogin(e) {
   newFirebaseUser.setUser(userLoginAuth);
   // const firebaseUser = new FirebaseApi(userLoginAuth);
   newFirebaseUser.init();
+  // checkLoginedUser();
 
   e.currentTarget.reset();
   closeLoginModal();
