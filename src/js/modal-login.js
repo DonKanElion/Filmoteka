@@ -61,6 +61,9 @@ async function onRegister(form) {
 
   checkLoginedUser();
 
+  refs.loginBtn.disabled = false;
+  refs.registerBtn.disabled = true;
+
   form.reset();
   closeLoginModal();
 }
@@ -116,7 +119,11 @@ function onEscape(e) {
 }
 
 async function checkLoginedUser() {
-  console.log('check');
+  // console.log('check');
+
+  // refs.loginBtn.disabled = false;
+  // refs.registerBtn.disabled = true;
+
   const userAuth = newFirebaseUser.auth;
   const user = newFirebaseUser.authHandler(userAuth, userObj => {
     // console.log('status :>> ', newFirebaseUser.getUserStatus());
