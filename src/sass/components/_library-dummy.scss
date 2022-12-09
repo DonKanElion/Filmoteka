@@ -1,7 +1,12 @@
 .library__no-items {
-  height: 300px;
+  height: 250px;
+  width: 250px;
   margin-top: 50px;
-  display: block;
+  display: none;
   margin-left: auto;
   margin-right: auto;
+  @include tablet {
+    width: 500px;
+    height: 500px;
+  }
 }
