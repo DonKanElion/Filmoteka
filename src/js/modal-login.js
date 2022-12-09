@@ -48,18 +48,11 @@ async function onRegister(form) {
   // await firebaseUser.signUp();
   newFirebaseUser.setUser(userLoginAuth);
   await newFirebaseUser.registerUser();
-  const userStatus = newFirebaseUser.getUserStatus();
-
-  console.log('userStatus :>> ', userStatus);
-  if (userStatus) {
-    console.log('красим кнопку');
-    // refs.loginBox.classList.add('login--is-logined');
-    // refs.loginButton.dataset.button = 'logout';
-
-    // const logOutBtn = document.querySelector('button[data-button="logout"]');
-  }
 
   checkLoginedUser();
+
+  refs.loginBtn.disabled = false;
+  refs.registerBtn.disabled = true;
 
   form.reset();
   closeLoginModal();
@@ -116,7 +109,11 @@ function onEscape(e) {
 }
 
 async function checkLoginedUser() {
-  console.log('check');
+  // console.log('check');
+
+  // refs.loginBtn.disabled = false;
+  // refs.registerBtn.disabled = true;
+
   const userAuth = newFirebaseUser.auth;
   const user = newFirebaseUser.authHandler(userAuth, userObj => {
     // console.log('status :>> ', newFirebaseUser.getUserStatus());
