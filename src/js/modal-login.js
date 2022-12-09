@@ -15,7 +15,6 @@ const refs = {
   userName: document.querySelector('.login__user-name'),
 };
 
-// console.log('open docBody', refs.form);
 refs.loginButton.addEventListener('click', openLoginModal);
 refs.closeButton.addEventListener('click', closeLoginModal);
 refs.checkbox.addEventListener('change', onCheckboxChange);
