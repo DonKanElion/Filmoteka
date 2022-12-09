@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 import LocaleStorageApi from './LocaleStorageApi';
@@ -73,15 +74,26 @@ const TEST_DATA2 = {
 };
 
 export default class FirebaseApi {
-  constructor({ email, password }, refs) {
+  constructor(refs) {
     this.currentUser = '';
     this.auth = getAuth();
-    this.email = email;
-    this.password = password;
+    this.email = '';
+    this.password = '';
+    this.isLogined = false;
+    this.authHandler = onAuthStateChanged;
 
     // Refs from interface
     this.refs = refs;
   }
+
+  toggleUserStatus = () => {
+    this.isLogined = !this.isLogined;
+  };
+
+  getUserStatus = () => this.isLogined;
+  setUserStatus = status => {
+    this.isLogined = status;
+  };
 
   getUser = () => {
     const auth = getAuth();
@@ -94,16 +106,16 @@ export default class FirebaseApi {
   };
 
   // Register New user
-  registerUser = () => {
-    console.log('Register Me');
+  registerUser = async () => {
+    return await this.signUp();
 
-    this.signUp();
     // Getting current user
     // this.getUser();
     // console.log('this.currentUser :>> ', this.currentUser);
     // 2. read data drom firebase
     // const data = await this.readData();
   };
+
   // existing user login
   init = async () => {
     // 1. await login
@@ -117,14 +129,19 @@ export default class FirebaseApi {
       console.log('User not authtorised');
       return;
     }
-    console.log('this.currentUser :>> ', this.currentUser);
+    // console.log('this.currentUser :>> ', this.currentUser);
     // 2. read data drom firebase
     const data = await this.readData();
     console.log('data :>> ', data);
 
+    const QUEUE = data.queue;
+    const WATCHED = data.watched;
+    const dataToBase = { QUEUE, WATCHED };
+    console.log('dataToBase :>> ', dataToBase);
+
     // 3. write data to localStorage
-    if (data) {
-      lsAPI.save(data);
+    if (dataToBase) {
+      lsAPI.save(dataToBase);
     }
 
     // await this.signIn();
@@ -137,7 +154,7 @@ export default class FirebaseApi {
     const login = await this.email;
     const password = await this.password;
 
-    createUserWithEmailAndPassword(this.auth, login, password)
+    return createUserWithEmailAndPassword(this.auth, login, password)
       .then(userCredential => {
         const user = userCredential.user;
 
@@ -157,6 +174,9 @@ export default class FirebaseApi {
         if (dataToBase) {
           lsAPI.save(dataToBase);
         }
+
+        this.setUserStatus(true);
+        return this.getUserStatus();
       })
       .catch(error => {
         const errorCode = error.code;
@@ -169,27 +189,13 @@ export default class FirebaseApi {
 
   // Method for User login
   signIn = async e => {
-    // e.preventDefault();
-
-    // const {
-    //   elements: { userEmail, userPass },
-    // } = e.currentTarget;
-
     const login = this.email;
     const password = this.password;
-
-    // try {
-    //   signInWithEmailAndPassword(this.auth, login, password);
-    // } catch (error) {
-    //   const errorCode = error.code;
-    //   const errorMessage = error.message;
-    //   console.log('errorCode :>> ', errorCode);
-    //   console.log('errorMessage :>> ', errorMessage);
-    // }
 
     await signInWithEmailAndPassword(this.auth, login, password)
       .then(user => {
         // console.log('user>>', user);
+        this.setUserStatus(true);
       })
       .catch(error => {
         const errorCode = error.code;
@@ -197,8 +203,6 @@ export default class FirebaseApi {
         console.log('errorCode :>> ', errorCode);
         console.log('errorMessage :>> ', errorMessage);
       });
-
-    // e.currentTarget.reset();
   };
 
   // Method for User logout
