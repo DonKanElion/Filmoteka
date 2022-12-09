@@ -16,7 +16,7 @@ const refs = {
 
 setMarkup();
 
-export async function setMarkup() {
+async function setMarkup() {
   await setGenreNames(newApiServiсe);
   const promice = await newApiServiсe.fetchTrendingFilms();
 

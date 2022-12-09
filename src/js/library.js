@@ -1,8 +1,13 @@
 import createGalleryMarkup from './create-gallery';
-import { setMarkup } from './create-gallery';
-import getGenreNames from './create-gallery';
+// import { setMarkup } from './create-gallery';
+// import getGenreNames from './create-gallery';
+
+import Pagination from 'tui-pagination';
+import { paginationOptions } from './projectOptions';
 
 import './modal-login';
+
+console.log('START');
 
 const refs = {
   btnWatched: document.querySelector('.watched'),
@@ -40,13 +45,54 @@ refs.btnQueue.addEventListener('click', onQueueButtonClick);
 
 function onWatchedButtonClick(event) {
   event.preventDefault();
-  console.log(event);
+  // console.log(event);
   if (event.target.classList.contains('watched')) {
     refs.btnQueue.classList.remove('library-header__button--active');
     refs.btnWatched.classList.add('library-header__button--active');
   }
   refs.noItemsImg.style.display = 'none';
+
+  //--------------------------------------
+  // Pagination Lisovoy Alexey
+  //--------------------------------------
+  console.log('watchedMovies :>> ', watchedMovies);
+  const cardsPerPade = 10;
+  const totalCards = watchedMovies.length;
+  const totalPages = Math.ceil(totalCards / cardsPerPade);
+  console.log('totalPages :>> ', totalPages);
+
+  const dataByPages = watchedMovies.reduce((acc, card, idx, arr) => {
+    // console.log('acc :>> ', acc);
+    // console.log('page :>> ', page);
+    const pageArr = arr.filter(card, idx => idx < cardsPerPade);
+
+    // return acc;
+  }, []);
+
+  console.log('dataByPages :>> ', dataByPages);
+
+  // if (totalPages > 1) {
+  //   // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+
+  //   const paginaton = new Pagination(refs.tuiContainer, {
+  //     ...paginationOptions,
+  //     totalItems: totalPages,
+  //   });
+  //   paginaton.on('afterMove', async ({ page }) => {
+  //     newApiServiсe.currentPage = page;
+  //     const response = await newApiServiсe.fetchTrendingFilms();
+  //     localStorage.setItem('movieData', JSON.stringify(response.results));
+  //     const imagesArray = await response.results;
+
+  //     createGalleryMarkup(watchedMovies);
+  //   });
+  // }
+
   createGalleryMarkup(watchedMovies);
+
+  //
+  //--------------------------------------
+
   refs.loader.classList.add('is-hidden');
 }
 
