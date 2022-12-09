@@ -2,7 +2,7 @@ import createGalleryMarkup from './create-gallery';
 import { setMarkup } from './create-gallery';
 import getGenreNames from './create-gallery';
 
-import './modal-login';
+// import './modal-login';
 
 const refs = {
   btnWatched: document.querySelector('.watched'),
@@ -52,7 +52,6 @@ function onWatchedButtonClick(event) {
 
 function onQueueButtonClick(event) {
   event.preventDefault();
-
   if (event.target.classList.contains('queue')) {
     console.log('queue');
     refs.btnWatched.classList.remove('library-header__button--active');

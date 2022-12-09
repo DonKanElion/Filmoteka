@@ -2,6 +2,7 @@ import ApiService from './apiService';
 import createGalleryMarkup from './create-gallery';
 import Pagination from 'tui-pagination';
 import { paginationOptions } from './projectOptions';
+import Notiflix from 'notiflix';
 
 // Refs
 const refs = {
@@ -74,7 +75,13 @@ async function onSearch(e) {
 
 async function onSearchError(showConditions) {
   if (showConditions) {
-    refs.errorMessage.classList.remove('is-hidden');
+    // refs.errorMessage.classList.remove('is-hidden');
+
+    Notiflix.Notify.failure(`Search result not successful. Enter the correct movie name and try again...`, {
+      // width: "280px", mobile version
+      width: "420px", // tabl, desk  version
+      timeout: 2500,
+    });
 
     api.resetPage();
     const trendingResponse = await api.fetchTrendingFilms();
@@ -104,8 +111,15 @@ async function onSearchError(showConditions) {
 
     createGalleryMarkup(trendingData);
   } else {
-    refs.errorMessage.classList.contains('is-hidden') ||
-      refs.errorMessage.classList.add('is-hidden');
+    // refs.errorMessage.classList.contains('is-hidden') ||
+    //   refs.errorMessage.classList.add('is-hidden');
+
+    Notiflix.Notify.failure(`Search result not successful. Enter the correct movie name and try again...`, {
+      // width: "280px", mobile version
+      width: "420px", // tabl, desk  version
+      timeout: 2500,
+    });
+
   }
 }
 
