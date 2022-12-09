@@ -12,7 +12,7 @@
     if (e.target === document.querySelector('.backdrop__team')) {
       toggleModal();
       }
-  }); 
+  });
 
   function toggleModal() {
     refs.modalTeam.classList.toggle("is-hidden");
