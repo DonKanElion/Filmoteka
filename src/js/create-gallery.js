@@ -16,7 +16,7 @@ const refs = {
 
 setMarkup();
 
-async function setMarkup() {
+export async function setMarkup() {
   await setGenreNames(newApiServiсe);
   const promice = await newApiServiсe.fetchTrendingFilms();
 
@@ -49,7 +49,7 @@ async function setMarkup() {
   createGalleryMarkup(imagesArray);
 }
 
-export function createGalleryMarkup(imagesArray) {
+export default function createGalleryMarkup(imagesArray) {
   const refs = {
     gallery: document.querySelector('.gallery'),
   };
