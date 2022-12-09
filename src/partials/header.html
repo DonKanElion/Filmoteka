@@ -31,46 +31,47 @@
         <span class="login__user-name">filmoteka@gmail.com</span>
       </div>
     </div>
-  </div>
 
-  <!-- Search form -->
-  <form class="header__form form">
-    <input
-      class="form__input input"
-      type="text"
-      name="searchQuery"
-      placeholder="Movie search"
-      autocomplete="off"
-    />
-    <button class="form__button" type="submit">
-      <svg width="12" height="12">
-        <use href="./images/svg/sprite.svg#search"></use>
-      </svg>
-    </button>
-  </form>
-  <div id="errorMessage" class="header__error-message is-hidden">
-    Search result not successful. Enter the correct movie name and try again...
-  </div>
-
-  <div class="filterBtn">
-    <div class="genre-btn">
-      <div class="dropdown">
-        <button class="dropbtn">Genres</button>
-        <ul id="myDropdown" class="dropdown-content"></ul>
-      </div>
+    <!-- Search form -->
+    <form class="header__form form">
+      <input
+        class="form__input input"
+        type="text"
+        name="searchQuery"
+        placeholder="Movie search"
+        autocomplete="off"
+      />
+      <button class="form__button" type="submit">
+        <svg width="12" height="12">
+          <use href="./images/svg/sprite.svg#search"></use>
+        </svg>
+      </button>
+    </form>
+    <div id="errorMessage" class="header__error-message is-hidden">
+      Search result not successful. Enter the correct movie name and try
+      again...
     </div>
-    <div class="setting-box">
-      <div class="chenge-theme-togle">
-        <input type="checkbox" class="checkbox" id="checkbox" />
-        <label for="checkbox" class="label">
-          <svg class="icon-sun" width="20" height="20">
-            <use href="/src/images/darkTheme.svg#icon-sun"></use>
-          </svg>
-          <svg class="icon-moon" width="20" height="20">
-            <use href="/src/images/darkTheme.svg#icon-moon"></use>
-          </svg>
-          <span class="ball"></span>
-        </label>
+
+    <div class="filterBtn">
+      <div class="genre-btn">
+        <div class="dropdown">
+          <button class="dropbtn">Genres</button>
+          <ul id="myDropdown" class="dropdown-content"></ul>
+        </div>
+      </div>
+      <div class="setting-box">
+        <div class="chenge-theme-togle">
+          <input type="checkbox" class="checkbox" id="checkbox" />
+          <label for="checkbox" class="label">
+            <svg class="icon-sun" width="20" height="20">
+              <use href="/src/images/darkTheme.svg#icon-sun"></use>
+            </svg>
+            <svg class="icon-moon" width="20" height="20">
+              <use href="/src/images/darkTheme.svg#icon-moon"></use>
+            </svg>
+            <span class="ball"></span>
+          </label>
+        </div>
       </div>
     </div>
   </div>

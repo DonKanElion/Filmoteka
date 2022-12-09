@@ -16,7 +16,7 @@ function openModal() {
   if(storageHasMovie(storageKeys.watched, currentMovie.id)){
     addWatchedBtn.textContent = buttonStates.on + " " + storageKeys.watched;
     addWatchedBtn.classList.add("active");
-    btnState.watched = true;   
+    btnState.watched = true;
   }
   else{
     addWatchedBtn.textContent = buttonStates.off + " " + storageKeys.watched;
@@ -25,20 +25,21 @@ function openModal() {
   }
 
   //Встановлення стилю кнопки "ADD TO QUEUE"
-  if(storageHasMovie(storageKeys.queue, currentMovie.id)){    
-    addQueueBtn.textContent = buttonStates.on + " " + storageKeys.queue;    
+  if(storageHasMovie(storageKeys.queue, currentMovie.id)){
+    addQueueBtn.textContent = buttonStates.on + " " + storageKeys.queue;
     addQueueBtn.classList.add("active");
-    btnState.queue = true;    
+    btnState.queue = true;
   }
   else{
     addQueueBtn.textContent = buttonStates.off + " " + storageKeys.queue;
     addQueueBtn.classList.remove("active");
     btnState.queue = false;
   }
-} 
+}
 
 function closeModal() {
   document.querySelector('.backdrop').style.display = "none";
+  document.querySelector('.backdrop__team').style.display = "none";
   document.querySelector('body').style.overflowY = 'visible';
 }
 
@@ -78,11 +79,10 @@ window.addEventListener("click", function(event) {
 });
 
 //закрытие модалки по esc
- modalTeam/fix-bags-bntClose
-// window.addEventListener("keydown", (e) => {
-//   if (e.keyCode === 27) {
-//     console.log('AddListener ECS -  не працює) ')
-//     closeModal();
-//   }
-// })
 
+ window.addEventListener("keydown", (e) => {
+  if (e.keyCode === 27) {
+     console.log('AddListener ECS -  не працює) ')
+     closeModal();
+   }
+ })
