@@ -63,8 +63,8 @@ function onQueueButtonClick(event) {
   refs.loader.classList.add('is-hidden');
 }
 
-// Да что не так с этими пушами!!!!!
-// Не пуштся! :)
+const wtf = 'Да что не так с этими пушами!!!!!';
+
 //!---------------------------------------
 //!  WARNING!!! NOT WORKING CODE BELOW
 //!---------------------------------------
