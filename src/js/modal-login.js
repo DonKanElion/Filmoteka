@@ -48,16 +48,6 @@ async function onRegister(form) {
   // await firebaseUser.signUp();
   newFirebaseUser.setUser(userLoginAuth);
   await newFirebaseUser.registerUser();
-  const userStatus = newFirebaseUser.getUserStatus();
-
-  console.log('userStatus :>> ', userStatus);
-  if (userStatus) {
-    console.log('красим кнопку');
-    // refs.loginBox.classList.add('login--is-logined');
-    // refs.loginButton.dataset.button = 'logout';
-
-    // const logOutBtn = document.querySelector('button[data-button="logout"]');
-  }
 
   checkLoginedUser();
 
