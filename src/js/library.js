@@ -1,6 +1,4 @@
 import createGalleryMarkup from './create-gallery';
-// import { setMarkup } from './create-gallery';
-// import getGenreNames from './create-gallery';
 
 // Да что не так с этими пушами!!!!!
 import './modal-login';
