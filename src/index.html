@@ -50,13 +50,13 @@
 
   <body>
     <include src="./partials/header.html"></include>
-    <!-- <include src="./partials/modal-form.html"></include> -->
 
     <div class="container">
       <main>
         <h2 class="visually-hidden">Filmoteka</h2>
 
-        <div class="gallery"></div>
+        <section class="gallery"></section>
+
         <include src="./partials/pagination.html"></include>
 
         <include src="./partials/loader.html"></include>
@@ -66,8 +66,12 @@
       </main>
     </div>
 
+    <include src="./partials/modal-team.html"></include>
     <include src="./partials/footer.html"></include>
+
     <include src="./partials/scrollTop.html"></include>
+
+    <script type="module" src="./js/modalTeam.js"></script>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

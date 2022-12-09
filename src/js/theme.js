@@ -20,7 +20,6 @@ function onTheme() {
     checkbox.checked
   ) {
         document.body.classList.add('dark', 'gallery__item-title--isDarkTheme');
-        titleDark.classList.add('titleDark');
   }
   if (
     document.body.classList.contains(

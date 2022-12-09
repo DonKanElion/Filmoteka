@@ -50,11 +50,10 @@
 
   <body>
     <include src="./partials/library-header.html"></include>
-    <!-- <include src="./partials/modal-form.html"></include> -->
 
     <div class="container">
       <main>
-        <h2 class="is-hidden">Library page</h2>
+        <h2 class="visually-hidden">Library</h2>
 
         <svg class="library__no-items">
           <use href="./images/sprite-filmoteka.svg#icon-no-items"></use>
@@ -62,11 +61,17 @@
 
         <div class="gallery"></div>
         <include src="./partials/loader.html"></include>
+        <include src="./partials/movieCardModal.html"></include>
+        
       </main>
     </div>
 
+    <include src="./partials/modal-team.html"></include>
     <include src="./partials/footer.html"></include>
 
+    <include src="./partials/scrollTop.html"></include>
+
     <script src="./js/library.js" type="module"></script>
+    
   </body>
 </html>

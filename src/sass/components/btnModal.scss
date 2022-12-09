@@ -39,4 +39,10 @@
       height: 45px;
     }
   }
+
+  .active {
+    background-color: var(--active-btn-color);
+    color: var(--secondary-text-color);
+    border: none;
+  }
 }
