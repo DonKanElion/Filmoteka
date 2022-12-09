@@ -12,8 +12,6 @@ import {
 import LocaleStorageApi from './LocaleStorageApi';
 
 import { firebaseConfig } from './projectOptions';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // 1. await login
 
@@ -39,39 +37,39 @@ const lsAPI = new LocaleStorageApi();
 const QUEUE_KEY = 'QUEUE';
 const WATCHED_KEY = 'WATCHED';
 
-const TEST_USER1 = {
-  email: 'filmoteka@gmail.com',
-  password: '111111',
-};
-const TEST_USER2 = {
-  email: 'KinaNeBudet@gmail.com',
-  password: '111111',
-};
+// const TEST_USER1 = {
+//   email: 'filmoteka@gmail.com',
+//   password: '111111',
+// };
+// const TEST_USER2 = {
+//   email: 'KinaNeBudet@gmail.com',
+//   password: '111111',
+// };
 
-const TEST_DATA = {
-  QUEUE: [
-    { id: 1, name: 'Back to the future', genre: 'komedy', year: '1980' },
-    { id: 2, name: 'Back to the future-2', genre: 'komedy', year: '1981' },
-    { id: 3, name: 'Back to the future-3', genre: 'komedy', year: '1982' },
-  ],
-  WATCHED: [
-    { id: 1, name: 'MIB', genre: 'action', year: '1995' },
-    { id: 2, name: 'MIB-2', genre: 'action', year: '1997' },
-    { id: 3, name: 'MIB-3', genre: 'action', year: '2001' },
-  ],
-};
-const TEST_DATA2 = {
-  QUEUE: [
-    { id: 1, name: 'Star Wars', genre: 'komedy', year: '1980' },
-    { id: 2, name: 'Star Wars-2', genre: 'komedy', year: '1981' },
-    { id: 3, name: 'Star Wars-3', genre: 'komedy', year: '1982' },
-  ],
-  WATCHED: [
-    { id: 1, name: 'Gallactika', genre: 'action', year: '1995' },
-    { id: 2, name: 'Gallactika-2', genre: 'action', year: '1997' },
-    { id: 3, name: 'Gallactika-3', genre: 'action', year: '2001' },
-  ],
-};
+// const TEST_DATA = {
+//   QUEUE: [
+//     { id: 1, name: 'Back to the future', genre: 'komedy', year: '1980' },
+//     { id: 2, name: 'Back to the future-2', genre: 'komedy', year: '1981' },
+//     { id: 3, name: 'Back to the future-3', genre: 'komedy', year: '1982' },
+//   ],
+//   WATCHED: [
+//     { id: 1, name: 'MIB', genre: 'action', year: '1995' },
+//     { id: 2, name: 'MIB-2', genre: 'action', year: '1997' },
+//     { id: 3, name: 'MIB-3', genre: 'action', year: '2001' },
+//   ],
+// };
+// const TEST_DATA2 = {
+//   QUEUE: [
+//     { id: 1, name: 'Star Wars', genre: 'komedy', year: '1980' },
+//     { id: 2, name: 'Star Wars-2', genre: 'komedy', year: '1981' },
+//     { id: 3, name: 'Star Wars-3', genre: 'komedy', year: '1982' },
+//   ],
+//   WATCHED: [
+//     { id: 1, name: 'Gallactika', genre: 'action', year: '1995' },
+//     { id: 2, name: 'Gallactika-2', genre: 'action', year: '1997' },
+//     { id: 3, name: 'Gallactika-3', genre: 'action', year: '2001' },
+//   ],
+// };
 
 export default class FirebaseApi {
   constructor(refs) {
