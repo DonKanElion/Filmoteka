@@ -1,7 +1,8 @@
 import createGalleryMarkup from './create-gallery';
-import { setMarkup } from './create-gallery';
-import getGenreNames from './create-gallery';
+// import { setMarkup } from './create-gallery';
+// import getGenreNames from './create-gallery';
 
+// Да что не так с этими пушами!!!!!
 import './modal-login';
 
 const refs = {
@@ -62,6 +63,8 @@ function onQueueButtonClick(event) {
   refs.loader.classList.add('is-hidden');
 }
 
+// Да что не так с этими пушами!!!!!
+// Не пуштся! :)
 //!---------------------------------------
 //!  WARNING!!! NOT WORKING CODE BELOW
 //!---------------------------------------
