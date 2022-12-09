@@ -39,6 +39,7 @@ function openModal() {
 
 function closeModal() {
   document.querySelector('.backdrop').style.display = "none";
+  document.querySelector('.backdrop__team').style.display = "none";
   document.querySelector('body').style.overflowY = 'visible';
 }
 
@@ -78,11 +79,10 @@ window.addEventListener("click", function(event) {
 });
 
 //закрытие модалки по esc
- modalTeam/fix-bags-bntClose
-// window.addEventListener("keydown", (e) => {
-//   if (e.keyCode === 27) {
-//     console.log('AddListener ECS -  не працює) ')
-//     closeModal();
-//   }
-// })
 
+ window.addEventListener("keydown", (e) => {
+  if (e.keyCode === 27) {
+     console.log('AddListener ECS -  не працює) ')
+     closeModal();
+   }
+ })
