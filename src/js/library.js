@@ -1,23 +1,23 @@
 // import './modal-login';
 
-import createGalleryMarkup from './create-gallery';
-// import { getGenreNames } from './create-gallery';
-import {
-  storageKeys,
-  buttonStates,
-  storageHasMovie,
-  addWatchedBtn,
-  addQueueBtn,
-} from './storage';
-import { setMarkup } from './create-gallery';
+import { createGalleryMarkup } from './create-gallery';
+// // import { getGenreNames } from './create-gallery';
+// import {
+//   storageKeys,
+//   buttonStates,
+//   storageHasMovie,
+//   addWatchedBtn,
+//   addQueueBtn,
+// } from './storage';
+// // import { setMarkup } from './create-gallery';
 // import getGenreNames from './create-gallery';
 
-import Pagination from 'tui-pagination';
-import { paginationOptions } from './projectOptions';
+// import Pagination from 'tui-pagination';
+// import { paginationOptions } from './projectOptions';
 
 import './modal-login';
 
-console.log('START');
+// console.log('START');
 
 const refs = {
   btnWatched: document.querySelector('.watched'),
@@ -36,6 +36,8 @@ export let queueMovies = '';
 // Генерация галереи при первом старте
 if (localStorage.getItem('WATCHED')) {
   watchedMovies = JSON.parse(localStorage.getItem('WATCHED'));
+  console.log('watchedMovies :>> ', watchedMovies.length);
+
   if (!!watchedMovies.length) {
     currentState = 'watched';
     refs.loader.classList.add('is-hidden');
@@ -95,7 +97,7 @@ function onWatchedButtonClick(event) {
   currentState = 'watched';
 
   //--------------------------------------
-  // Pagination Lisovoy Alexey
+  // Pagination Lisovoy Alexe
   //--------------------------------------
   console.log('watchedMovies :>> ', watchedMovies);
   const cardsPerPade = 10;
@@ -103,15 +105,15 @@ function onWatchedButtonClick(event) {
   const totalPages = Math.ceil(totalCards / cardsPerPade);
   console.log('totalPages :>> ', totalPages);
 
-  const dataByPages = watchedMovies.reduce((acc, card, idx, arr) => {
-    // console.log('acc :>> ', acc);
-    // console.log('page :>> ', page);
-    const pageArr = arr.filter(card, idx => idx < cardsPerPade);
+  // const dataByPages = watchedMovies.reduce((acc, card, idx, arr) => {
+  //   // console.log('acc :>> ', acc);
+  //   // console.log('page :>> ', page);
+  //   const pageArr = arr.filter(card, idx => idx < cardsPerPade);
 
-    // return acc;
-  }, []);
+  //   // return acc;
+  // }, []);
 
-  console.log('dataByPages :>> ', dataByPages);
+  // console.log('dataByPages :>> ', dataByPages);
 
   // if (totalPages > 1) {
   //   // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
@@ -139,6 +141,7 @@ function onWatchedButtonClick(event) {
 }
 
 function onQueueButtonClick(event) {
+  // console.log('QQQQQ');
   event.preventDefault();
   if (event.target.classList.contains('queue')) {
     refs.btnWatched.classList.remove('library-header__button--active');
@@ -159,7 +162,7 @@ function closeModal() {
 document.querySelector('.modal__close').addEventListener('click', closeModal);
 
 CURRENTSTATE = currentState.toUpperCase();
-console.log('currentState==', currentState);
+console.log('currentState==', CURRENTSTATE);
 // ========================================
 // открытие модалки
 document.querySelector('.gallery').addEventListener('click', function (e) {

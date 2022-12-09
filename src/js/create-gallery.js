@@ -49,7 +49,7 @@ async function setMarkup() {
   createGalleryMarkup(imagesArray);
 }
 
-export default function createGalleryMarkup(imagesArray) {
+export function createGalleryMarkup(imagesArray) {
   const refs = {
     gallery: document.querySelector('.gallery'),
   };
