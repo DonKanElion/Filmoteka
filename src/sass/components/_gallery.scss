@@ -51,6 +51,9 @@
     height: 100%;
         
     border-radius: 5px;
+    @include tablet() {
+        height: 455px;
+    }
 
      @include desktop() {
 
