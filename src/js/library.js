@@ -1,7 +1,7 @@
 // import './modal-login';
 
-import createGalleryMarkup from './create-gallery';
-import { getGenreNames } from './create-gallery';
+import createGalleryMarkup from './create-gallery-library';
+import { getGenreNames } from './create-gallery-library';
 import {
   storageKeys,
   buttonStates,
@@ -9,10 +9,10 @@ import {
   addWatchedBtn,
   addQueueBtn,
 } from './storage';
-import { setMarkup } from './create-gallery';
-import getGenreNames from './create-gallery';
+// import { setMarkup } from './create-gallery';
+// import getGenreNames from './create-gallery';
 
-import './modal-login';
+// import './modal-login';
 
 const refs = {
   btnWatched: document.querySelector('.watched'),
@@ -31,8 +31,10 @@ export let queueMovies = '';
 // Генерация галереи при первом старте
 if (localStorage.getItem('WATCHED')) {
   watchedMovies = JSON.parse(localStorage.getItem('WATCHED'));
+  console.log('parse watchedMovies DONE');
   if (!!watchedMovies.length) {
     currentState = 'watched';
+    console.log('currentState==>', currentState);
     refs.loader.classList.add('is-hidden');
     createGalleryMarkup(watchedMovies);
     refs.btnQueue.classList.remove('library-header__button--active');
@@ -41,15 +43,17 @@ if (localStorage.getItem('WATCHED')) {
 }
 if (localStorage.getItem('QUEUE')) {
   queueMovies = JSON.parse(localStorage.getItem('QUEUE'));
+  console.log('parse queueMovies DONE');
   if (!!queueMovies.length) {
-    refs.btnWatched.disabled = true;
     currentState = 'queue';
+    console.log('currentState==>', currentState);
     refs.loader.classList.add('is-hidden');
     createGalleryMarkup(queueMovies);
     refs.btnWatched.classList.remove('library-header__button--active');
     refs.btnQueue.classList.add('library-header__button--active');
   }
 }
+
 if (currentState === 'empty') {
   refs.btnQueue.disabled = true;
   refs.btnWatched.disabled = true;
@@ -69,9 +73,6 @@ function refreshLibrary() {
       break;
   }
 }
-// if (refs.btnQueue.disabled && refs.btnWatched.disabled) {
-//   refs.noItemsImg.style.display = 'block';
-// }
 
 // =====================================================================================
 
@@ -82,6 +83,7 @@ refs.btnQueue.addEventListener('click', onQueueButtonClick);
 
 function onWatchedButtonClick(event) {
   event.preventDefault();
+  console.log('==>Click onWatchedButtonClick');
   if (event.target.classList.contains('watched')) {
     refs.btnQueue.classList.remove('library-header__button--active');
     refs.btnWatched.classList.add('library-header__button--active');
@@ -93,6 +95,7 @@ function onWatchedButtonClick(event) {
 
 function onQueueButtonClick(event) {
   event.preventDefault();
+  console.log('==>Click onQueueButtonClick');
   if (event.target.classList.contains('queue')) {
     refs.btnWatched.classList.remove('library-header__button--active');
     refs.btnQueue.classList.add('library-header__button--active');
@@ -111,10 +114,11 @@ function closeModal() {
 
 document.querySelector('.modal__close').addEventListener('click', closeModal);
 
-CURRENTSTATE = currentState.toUpperCase();
-console.log('currentState==', currentState);
+const CURRENTSTATE = currentState.toUpperCase();
+console.log('currentState before open modal ==>', currentState);
+console.log('currentState uppercase ==>', CURRENTSTATE);
 // ========================================
-// открытие модалки
+// открытие модалки по клику на галерее
 document.querySelector('.gallery').addEventListener('click', function (e) {
   let targetItem = e.target;
   if (targetItem.closest('.card')) {
