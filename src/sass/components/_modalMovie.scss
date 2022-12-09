@@ -1,13 +1,4 @@
-
 @import "btnModal";
-
-
-  //html {
-  //  margin-left: calc(100vw - 100%);
-  //  margin-right: 0;
-  //}
-
-
 
 
 .modal {
@@ -190,9 +181,11 @@
 }
 
 .modal__movie-info {
-  width: 215px;
-
   margin-bottom: 20px;
+
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .modal__movie-info tr th {
@@ -212,7 +205,10 @@
   line-height: 1.33;
   letter-spacing: 0;
   color:var( --mobile-btn-border);
+
+   padding-bottom: 8px
 }
+
 
 .modal__movie-bord {
   display: inline-block;
@@ -237,3 +233,16 @@
   color: var(--primary-text-color);
   background-color: var( --pagination-btn-control);
 }
+
+.modal__movie-info  tr {
+  display: flex;
+
+}
+//.modal__movie-info  td {
+//  display: block;
+//  margin-left: 41px;
+//
+//  @media screen and (min-width: 1200px) {
+//    margin-left: 85px;
+//  }
+//}

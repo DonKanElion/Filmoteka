@@ -5,7 +5,7 @@ export let currentMovie;
 
 function openModal() {
   document.querySelector('.backdrop').style.display = "block";
-  document.querySelector('body').style.overflowY = 'hidden';
+  document.querySelector('body').style.overflowY = 'hidden';//скрываю прокрутку
 
   //Встановлення тексту кнопки "ADD TO WATCHED"
   if(storageHasMovie(storageKeys.watched, currentMovie.id)){
@@ -16,13 +16,13 @@ function openModal() {
   }
 
   //Встановлення тексту кнопки "ADD TO QUEUE"
-  if(storageHasMovie(storageKeys.queue, currentMovie.id)){    
+  if(storageHasMovie(storageKeys.queue, currentMovie.id)){
     addQueueBtn.textContent = buttonStates.on + " " + storageKeys.queue;
   }
   else{
     addQueueBtn.textContent = buttonStates.off + " " + storageKeys.queue;
   }
-} 
+}
 
 function closeModal() {
   document.querySelector('.backdrop').style.display = "none";
