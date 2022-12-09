@@ -5,5 +5,6 @@ import './js/modal';
 import './js/FirebaseApi';
 import './js/LocaleStorageApi';
 import './js/storage';
+import './js/modal-login';
 import './js/filterGanres';
 import './js/theme';

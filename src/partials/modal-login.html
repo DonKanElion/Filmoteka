@@ -1,0 +1,82 @@
+<!-- Модалка -->
+<div class="backdrop-login backdrop-login--is-hidden" data-loginModal>
+  <div class="modal-login">
+    <button
+      class="modal-login__close-button close-button"
+      aria-label="Close"
+      data-closeModal
+    >
+      <svg width="26" height="26">
+        <use class="close-button__icon" href="./images/sprite.svg#close"></use>
+      </svg>
+    </button>
+
+    <form
+      class="modal-login__form-login form-login"
+      name="login-form"
+      autocomplete="off"
+    >
+      <p class="form-login__title">Login or register, please!</p>
+
+      <label class="form-login__field">
+        <span class="form-login__label">e-mail</span>
+
+        <input
+          type="email"
+          class="form-login__input"
+          name="email"
+          required
+          autocomplete="on"
+        />
+      </label>
+
+      <label class="form-login__field">
+        <span class="form-login__label">Password</span>
+
+        <input
+          type="password"
+          class="form-login__input"
+          name="password"
+          required
+        />
+      </label>
+
+      <label class="form-login__checkbox checkbox-login">
+        <input
+          type="checkbox"
+          name="conditions"
+          class="checkbox-login__original visually-hidden"
+        />
+        <svg class="checkbox-login__custom" width="14" height="14">
+          <use href="./images/svg/sprite.svg#agree"></use>
+        </svg>
+        <span class="checkbox-login__label"
+          >i agree with
+          <a class="checkbox-login__link" href=""> terms of use </a> this site.
+          I want to register here.
+        </span>
+      </label>
+      <ul class="form-login__buttons buttons">
+        <li class="buttons__item">
+          <button
+            class="form-login__button button-login"
+            type="submit"
+            name="button-login"
+          >
+            login
+          </button>
+        </li>
+        <li class="buttons__item">
+          <button
+            class="form-login__button button-register"
+            type="button"
+            name="registerBtn"
+            disabled
+          >
+            register
+          </button>
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>
