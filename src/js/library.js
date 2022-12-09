@@ -1,6 +1,6 @@
 import createGalleryMarkup from './create-gallery';
-import { setMarkup } from './create-gallery';
-import getGenreNames from './create-gallery';
+// import { setMarkup } from './create-gallery';
+// import getGenreNames from './create-gallery';
 
 // import './modal-login';
 
