@@ -9,6 +9,10 @@ import {
   addWatchedBtn,
   addQueueBtn,
 } from './storage';
+import { setMarkup } from './create-gallery';
+import getGenreNames from './create-gallery';
+
+import './modal-login';
 
 const refs = {
   btnWatched: document.querySelector('.watched'),

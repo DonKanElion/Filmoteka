@@ -4,7 +4,7 @@ import ApiService from './apiService';
 import Pagination from 'tui-pagination';
 import { paginationOptions } from './projectOptions';
 
-export const defaulPosterImg = "https://i.ibb.co/1dYzZxK/Filmoteka-dummy.jpg";
+export const defaulPosterImg = 'https://i.ibb.co/1dYzZxK/Filmoteka-dummy.jpg';
 const newApiServiсe = new ApiService();
 const locStorage = {
   genres: 'genres',
@@ -16,53 +16,55 @@ const refs = {
 
 setMarkup();
 
-async function setMarkup(){
-
+export async function setMarkup() {
   await setGenreNames(newApiServiсe);
- const promice = await newApiServiсe.fetchTrendingFilms();
+  const promice = await newApiServiсe.fetchTrendingFilms();
 
-    const imagesArray = promice.results;
-    localStorage.setItem('movieData', JSON.stringify(promice.results));
-    // Pagination
-    const totalPages = promice.total_pages;
-    // console.log('totalPages of Start Page:>> ', totalPages);
-  
-    if (totalPages > 1) {
-      // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
-  
-      const paginaton = new Pagination(refs.tuiContainer, {
-        ...paginationOptions,
-        totalItems: totalPages,
-      });
-      paginaton.on('afterMove', async ({ page }) => {
-        newApiServiсe.currentPage = page;
-        const response = await newApiServiсe.fetchTrendingFilms();
-        localStorage.setItem('movieData', JSON.stringify(response.results));
-        const imagesArray = await response.results;
-        
-        createGalleryMarkup(imagesArray);
-      });
-    }
-  
-    //   const markup = createGalleryMarkup(imagesArray);
-    //   refs.gallery.innerHTML = markup;
-    
-    createGalleryMarkup(imagesArray);  
+  const imagesArray = promice.results;
+  localStorage.setItem('movieData', JSON.stringify(promice.results));
+  // Pagination
+  const totalPages = promice.total_pages;
+  // console.log('totalPages of Start Page:>> ', totalPages);
+
+  if (totalPages > 1) {
+    // console.log(`Рендерим Пагинацию на ${totalPages} страниц`);
+
+    const paginaton = new Pagination(refs.tuiContainer, {
+      ...paginationOptions,
+      totalItems: totalPages,
+    });
+    paginaton.on('afterMove', async ({ page }) => {
+      newApiServiсe.currentPage = page;
+      const response = await newApiServiсe.fetchTrendingFilms();
+      localStorage.setItem('movieData', JSON.stringify(response.results));
+      const imagesArray = await response.results;
+
+      createGalleryMarkup(imagesArray);
+    });
+  }
+
+  //   const markup = createGalleryMarkup(imagesArray);
+  //   refs.gallery.innerHTML = markup;
+
+  createGalleryMarkup(imagesArray);
 }
 
 export default function createGalleryMarkup(imagesArray) {
   const refs = {
     gallery: document.querySelector('.gallery'),
   };
-  
+
   refs.gallery.innerHTML = imagesArray
     .map(image => {
       const { poster_path, title, genre_ids, release_date, id } = image;
       const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
 
       //Встановлення заглушки для постеру
-      const srcPath = poster_path === null ? defaulPosterImg : `https://image.tmdb.org/t/p/w500${poster_path}`;      
-      
+      const srcPath =
+        poster_path === null
+          ? defaulPosterImg
+          : `https://image.tmdb.org/t/p/w500${poster_path}`;
+
       return `
                <div class="card" movie-id="${id}">
                <img class="card__poster"  src=${srcPath} alt
@@ -118,9 +120,8 @@ export function getGenreNames(genreIDs) {
   for (let i = 0; i < genreIDs.length; i++) {
     const genreID = genreIDs[i];
 
-    if(i>1)
-    {
-      genresNames += "Other";
+    if (i > 1) {
+      genresNames += 'Other';
       return genresNames;
     }
 

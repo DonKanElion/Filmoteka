@@ -298,6 +298,8 @@
   color: var(--secondary-text-color);
 
   @include tablet() {
+    position: static;
+
     display: inline-block;
     opacity: 0;
 
