@@ -114,11 +114,11 @@ async function onSearchError(showConditions) {
     // refs.errorMessage.classList.contains('is-hidden') ||
     //   refs.errorMessage.classList.add('is-hidden');
 
-    Notiflix.Notify.failure(`Search result not successful. Enter the correct movie name and try again...`, {
-      // width: "280px", mobile version
-      width: "420px", // tabl, desk  version
-      timeout: 2500,
-    });
+    // Notiflix.Notify.failure(`Search result not successful. Enter the correct movie name and try again...`, {
+    //   // width: "280px", mobile version
+    //   width: "420px", // tabl, desk  version
+    //   timeout: 2500,
+    // });
 
   }
 }
