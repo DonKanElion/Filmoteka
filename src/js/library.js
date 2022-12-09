@@ -1,8 +1,15 @@
 import createGalleryMarkup from './create-gallery';
-// import { setMarkup } from './create-gallery';
-import getGenreNames from './create-gallery';
 
-// import './modal-login';
+
+// Да что не так с этими пушами!!!!!
+// Да что не так с этими пушами!!!!!
+// Да что не так с этими пушами!!!!!
+// Да что не так с этими пушами!!!!!
+// Да что не так с этими пушами!!!!!
+// Да что не так с этими пушами!!!!!
+// Да что не так с этими пушами!!!!!
+// Да что не так с этими пушами!!!!!
+import './modal-login';
 
 const refs = {
   btnWatched: document.querySelector('.watched'),
@@ -61,6 +68,8 @@ function onQueueButtonClick(event) {
   createGalleryMarkup(queueMovies);
   refs.loader.classList.add('is-hidden');
 }
+
+const wtf = 'Да что не так с этими пушами!!!!!';
 
 //!---------------------------------------
 //!  WARNING!!! NOT WORKING CODE BELOW

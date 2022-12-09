@@ -24,9 +24,6 @@ export default class LocaleStorageApi {
   };
 
   remove = key => {
-    // const key = auth.currentUser.uid;
-    // console.log('key :>> ', key);
-
     localStorage.removeItem(key);
   };
 }
