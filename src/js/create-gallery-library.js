@@ -1,12 +1,10 @@
-const locStorage = {
+export const locStorage = {
   genres: 'genres',
 };
 
 export const defaulPosterImg = 'https://i.ibb.co/1dYzZxK/Filmoteka-dummy.jpg';
 
-export default function createGalleryMarkup(imagesArray) {
-  console.log('===>start function createGalleryMarkup');
-  console.log('imagesArray::::', imagesArray);
+export function createGalleryMarkupLibrary(imagesArray) {
   const refs = {
     gallery: document.querySelector('.gallery'),
   };
