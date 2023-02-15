@@ -8,10 +8,11 @@
   refs.openModalBtn.addEventListener("click", toggleModal); // Відкриває модалку
   refs.closeModalBtn.addEventListener("click", toggleModal); // Закриває модалку
 
-  window.addEventListener("click", function(e) {  // закриває мод кліком за межами
-    if (e.target === document.querySelector('.backdrop__team')) {
+  window.addEventListener("click", function (e) {
+    // закриває мод кліком за межами
+    if (e.target === document.querySelector(".backdrop__team")) {
       toggleModal();
-      }
+    }
   });
 
   function toggleModal() {

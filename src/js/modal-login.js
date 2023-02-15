@@ -1,26 +1,26 @@
 // import { ref } from 'firebase/database';
-import FirebaseApi from './FirebaseApi';
+import FirebaseApi from "./FirebaseApi";
 
 const refs = {
   loginButton: document.querySelector('button[data-button="login"]'),
-  closeButton: document.querySelector('button[data-closeModal]'),
-  backdrop: document.querySelector('.backdrop-login'),
-  modalLogin: document.querySelector('.modal-login'),
-  form: document.querySelector('.form-login'),
-  docBody: document.querySelector('body'),
-  checkbox: document.querySelector('.checkbox-login__original'),
-  loginBtn: document.querySelector('.button-login'),
-  registerBtn: document.querySelector('.button-register'),
-  loginBox: document.querySelector('.login'),
-  userName: document.querySelector('.login__user-name'),
+  closeButton: document.querySelector("button[data-closeModal]"),
+  backdrop: document.querySelector(".backdrop-login"),
+  modalLogin: document.querySelector(".modal-login"),
+  form: document.querySelector(".form-login"),
+  docBody: document.querySelector("body"),
+  checkbox: document.querySelector(".checkbox-login__original"),
+  loginBtn: document.querySelector(".button-login"),
+  registerBtn: document.querySelector(".button-register"),
+  loginBox: document.querySelector(".login"),
+  userName: document.querySelector(".login__user-name"),
 };
 
-refs.loginButton.addEventListener('click', openLoginModal);
-refs.closeButton.addEventListener('click', closeLoginModal);
-refs.checkbox.addEventListener('change', onCheckboxChange);
+refs.loginButton.addEventListener("click", openLoginModal);
+refs.closeButton.addEventListener("click", closeLoginModal);
+refs.checkbox.addEventListener("change", onCheckboxChange);
 
-refs.form.addEventListener('submit', onLogin);
-refs.registerBtn.addEventListener('click', () => onRegister(refs.form));
+refs.form.addEventListener("submit", onLogin);
+refs.registerBtn.addEventListener("click", () => onRegister(refs.form));
 
 const newFirebaseUser = new FirebaseApi();
 checkLoginedUser();
@@ -80,30 +80,30 @@ function onLogin(e) {
 
 // open login modal
 function openLoginModal() {
-  if (refs.loginButton.dataset.button === 'login') {
+  if (refs.loginButton.dataset.button === "login") {
     // console.log('кнопка логин есть', refs.loginButton);
-    refs.backdrop.classList.remove('backdrop-login--is-hidden');
-    refs.docBody.style.overflowY = 'hidden';
+    refs.backdrop.classList.remove("backdrop-login--is-hidden");
+    refs.docBody.style.overflowY = "hidden";
     //закрытие модалки по esc
-    window.addEventListener('keydown', onEscape);
+    window.addEventListener("keydown", onEscape);
   }
 }
 // close login modal
 function closeLoginModal() {
-  refs.backdrop.classList.add('backdrop-login--is-hidden');
-  refs.docBody.style.overflowY = 'visible';
+  refs.backdrop.classList.add("backdrop-login--is-hidden");
+  refs.docBody.style.overflowY = "visible";
 
-  window.removeEventListener('keydown', onEscape);
+  window.removeEventListener("keydown", onEscape);
 }
 // close by backdrop
-window.addEventListener('click', e => {
+window.addEventListener("click", e => {
   if (e.target === refs.backdrop) {
     closeLoginModal();
   }
 });
 // close by Esc
 function onEscape(e) {
-  if (e.key === 'Escape') {
+  if (e.key === "Escape") {
     closeLoginModal();
   }
 }
@@ -121,12 +121,12 @@ async function checkLoginedUser() {
 
     // const status = newFirebaseUser.getUserStatus();
     if (userObj !== null) {
-      console.log('mail :>> ', userObj.email);
-      refs.loginBox.classList.add('login--is-logined');
-      refs.loginButton.dataset.button = 'logout';
+      console.log("mail :>> ", userObj.email);
+      refs.loginBox.classList.add("login--is-logined");
+      refs.loginButton.dataset.button = "logout";
       refs.userName.innerHTML = userObj.email;
       const logOutBtn = document.querySelector('button[data-button="logout"]');
-      logOutBtn.addEventListener('click', onLogout);
+      logOutBtn.addEventListener("click", onLogout);
     }
   });
 
@@ -135,9 +135,9 @@ async function checkLoginedUser() {
 }
 
 function onLogout() {
-  if (refs.loginButton.dataset.button !== 'login') {
-    refs.loginButton.dataset.button = 'login';
-    refs.loginBox.classList.remove('login--is-logined');
+  if (refs.loginButton.dataset.button !== "login") {
+    refs.loginButton.dataset.button = "login";
+    refs.loginBox.classList.remove("login--is-logined");
     // newFirebaseUser.setUserStatus(false);
     newFirebaseUser.logOut();
   }

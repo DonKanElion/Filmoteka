@@ -1,17 +1,17 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, child, get } from 'firebase/database';
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set, child, get } from "firebase/database";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-} from 'firebase/auth';
+} from "firebase/auth";
 
-import LocaleStorageApi from './LocaleStorageApi';
+import LocaleStorageApi from "./LocaleStorageApi";
 
-import { firebaseConfig } from './projectOptions';
+import { firebaseConfig } from "./projectOptions";
 
 // 1. await login
 
@@ -34,8 +34,8 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const lsAPI = new LocaleStorageApi();
 
-const QUEUE_KEY = 'QUEUE';
-const WATCHED_KEY = 'WATCHED';
+const QUEUE_KEY = "QUEUE";
+const WATCHED_KEY = "WATCHED";
 
 // const TEST_USER1 = {
 //   email: 'filmoteka@gmail.com',
@@ -73,10 +73,10 @@ const WATCHED_KEY = 'WATCHED';
 
 export default class FirebaseApi {
   constructor(refs) {
-    this.currentUser = '';
+    this.currentUser = "";
     this.auth = getAuth();
-    this.email = '';
-    this.password = '';
+    this.email = "";
+    this.password = "";
     this.isLogined = false;
     this.authHandler = onAuthStateChanged;
 
@@ -124,18 +124,18 @@ export default class FirebaseApi {
 
     if (!this.currentUser) {
       // user not exist MSG
-      console.log('User not authtorised');
+      console.log("User not authtorised");
       return;
     }
     // console.log('this.currentUser :>> ', this.currentUser);
     // 2. read data drom firebase
     const data = await this.readData();
-    console.log('data :>> ', data);
+    console.log("data :>> ", data);
 
     const QUEUE = data.queue;
     const WATCHED = data.watched;
     const dataToBase = { QUEUE, WATCHED };
-    console.log('dataToBase :>> ', dataToBase);
+    console.log("dataToBase :>> ", dataToBase);
 
     // 3. write data to localStorage
     if (dataToBase) {
@@ -179,8 +179,8 @@ export default class FirebaseApi {
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('errorCode :>> ', errorCode);
-        console.log('errorMessage :>> ', errorMessage);
+        console.log("errorCode :>> ", errorCode);
+        console.log("errorMessage :>> ", errorMessage);
       });
     // refs.loginForm.reset();
   };
@@ -198,8 +198,8 @@ export default class FirebaseApi {
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('errorCode :>> ', errorCode);
-        console.log('errorMessage :>> ', errorMessage);
+        console.log("errorCode :>> ", errorCode);
+        console.log("errorMessage :>> ", errorMessage);
       });
   };
 
@@ -225,13 +225,13 @@ export default class FirebaseApi {
     signOut(this.auth)
       .then(() => {
         // Sign-out successful.
-        console.log('Sign-out successful.', this.auth);
+        console.log("Sign-out successful.", this.auth);
 
         //   localeStorage.remove(this.currentUser.uid);
       })
       .catch(error => {
         // An error happened.
-        console.log('Sign-out error happened:', error);
+        console.log("Sign-out error happened:", error);
       });
   };
 
@@ -242,7 +242,7 @@ export default class FirebaseApi {
 
     const snapshot = await get(child(dbRef, `users/${this.currentUser.uid}`));
     const data = await snapshot.val();
-    console.log('data from Base :>> ', data);
+    console.log("data from Base :>> ", data);
     return data;
   };
 
@@ -257,10 +257,10 @@ export default class FirebaseApi {
 
     set(ref(database, `users/${this.currentUser.uid}`), dataObj)
       .then(() => {
-        console.log('database is successfuly written.');
+        console.log("database is successfuly written.");
       })
       .catch(error => {
-        console.log('Write error :>> ', error);
+        console.log("Write error :>> ", error);
       });
   };
 }

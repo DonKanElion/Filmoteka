@@ -1,5 +1,6 @@
 export default class LocaleStorageApi {
   save = data => {
+    console.log("LocaleStorageApi  save:>> ", data);
     try {
       const keys = Object.keys(data);
       keys.forEach(key => {
@@ -10,34 +11,38 @@ export default class LocaleStorageApi {
         localStorage.setItem(key, queuiedData);
       });
     } catch (error) {
-      console.log('Error during save JSON :>> ', error);
+      console.log("Error during save JSON :>> ", error);
     }
   };
 
   read = key => {
+    console.log("LocaleStorageApi  read:>> ", key);
     try {
       const obj = localStorage.getItem(key);
       return obj === null ? [] : JSON.parse(obj);
     } catch (error) {
-      console.log('Error JSON parse  :>> ', error);
+      console.log("Error JSON parse  :>> ", error);
     }
   };
 
   remove = key => {
+    console.log("remove:>> ", key);
     localStorage.removeItem(key);
   };
 }
 
 export const setLocalStorage = (key, value) => {
+  console.log("setLocalStorage:>> ", value);
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
   } catch (error) {
-    console.error('Set state error: ', error.message);
+    console.error("Set state error: ", error.message);
   }
 };
 
 export const getLocalStorage = key => {
+  console.log("getLocalStorage:>> ", key);
   try {
     const obj = localStorage.getItem(key);
     return obj === null ? [] : JSON.parse(obj);
@@ -48,6 +53,6 @@ export const removeLocalStorage = key => {
   try {
     localStorage.removeItem(key);
   } catch (error) {
-    console.error('Get state error: ', error.message);
+    console.error("Get state error: ", error.message);
   }
 };
