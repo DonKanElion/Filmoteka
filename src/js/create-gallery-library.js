@@ -1,19 +1,19 @@
 export const locStorage = {
-  genres: 'genres',
+  genres: "genres",
 };
 
-export const defaulPosterImg = 'https://i.ibb.co/1dYzZxK/Filmoteka-dummy.jpg';
+export const defaulPosterImg = "https://i.ibb.co/1dYzZxK/Filmoteka-dummy.jpg";
 
 export function createGalleryMarkupLibrary(imagesArray) {
   const refs = {
-    gallery: document.querySelector('.gallery'),
+    gallery: document.querySelector(".gallery"),
   };
 
   refs.gallery.innerHTML = imagesArray
     .map(image => {
       const { poster_path, title, genre_ids, release_date, id, vote_average } =
         image;
-      const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
+      const releaseYear = release_date ? release_date.slice(0, 4) : " No year";
 
       //Встановлення заглушки для постеру
       const srcPath =
@@ -36,12 +36,12 @@ export function createGalleryMarkupLibrary(imagesArray) {
                       <span class="info__vote_average">${vote_average.toFixed(
                         1
                       )}</span>
-                                              </p>
+                        </p>
                     </div>
                 </div>
             `;
     })
-    .join('');
+    .join("");
 }
 
 /**Повертає імена жанрів за вказаними номерами */
@@ -52,21 +52,21 @@ export function getGenreNames(genreIDs) {
     genres = localStorage.getItem(locStorage.genres);
     parsedGenres = JSON.parse(genres);
   } catch (error) {
-    console.log('getGenreNames() error: ', error.message);
+    console.log("getGenreNames() error: ", error.message);
   }
 
-  let genresNames = '';
+  let genresNames = "";
   for (let i = 0; i < genreIDs.length; i++) {
     const genreID = genreIDs[i];
 
     if (i > 1) {
-      genresNames += 'Other';
+      genresNames += "Other";
       return genresNames;
     }
 
     parsedGenres.map(genre => {
       if (genreID === genre.id) {
-        genresNames += genre.name + ', ';
+        genresNames += genre.name + ", ";
       }
     });
   }

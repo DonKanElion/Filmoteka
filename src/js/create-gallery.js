@@ -1,17 +1,17 @@
-import ApiService from './apiService';
+import ApiService from "./apiService";
 
 // TUI Pagination import after reinstall modules
-import Pagination from 'tui-pagination';
-import { paginationOptions } from './projectOptions';
+import Pagination from "tui-pagination";
+import { paginationOptions } from "./projectOptions";
 
-export const defaulPosterImg = 'https://i.ibb.co/1dYzZxK/Filmoteka-dummy.jpg';
+export const defaulPosterImg = "https://i.ibb.co/1dYzZxK/Filmoteka-dummy.jpg";
 const newApiServiсe = new ApiService();
 const locStorage = {
-  genres: 'genres',
+  genres: "genres",
 };
 
 const refs = {
-  tuiContainer: document.getElementById('tui-pagination-container'),
+  tuiContainer: document.getElementById("tui-pagination-container"),
 };
 
 setMarkup();
@@ -21,7 +21,7 @@ export async function setMarkup() {
   const promice = await newApiServiсe.fetchTrendingFilms();
 
   const imagesArray = promice.results;
-  localStorage.setItem('movieData', JSON.stringify(promice.results));
+  localStorage.setItem("movieData", JSON.stringify(promice.results));
   // Pagination
   const totalPages = promice.total_pages;
   // console.log('totalPages of Start Page:>> ', totalPages);
@@ -33,10 +33,10 @@ export async function setMarkup() {
       ...paginationOptions,
       totalItems: totalPages,
     });
-    paginaton.on('afterMove', async ({ page }) => {
+    paginaton.on("afterMove", async ({ page }) => {
       newApiServiсe.currentPage = page;
       const response = await newApiServiсe.fetchTrendingFilms();
-      localStorage.setItem('movieData', JSON.stringify(response.results));
+      localStorage.setItem("movieData", JSON.stringify(response.results));
       const imagesArray = await response.results;
 
       createGalleryMarkup(imagesArray);
@@ -51,13 +51,13 @@ export async function setMarkup() {
 
 export default function createGalleryMarkup(imagesArray) {
   const refs = {
-    gallery: document.querySelector('.gallery'),
+    gallery: document.querySelector(".gallery"),
   };
 
   refs.gallery.innerHTML = imagesArray
     .map(image => {
       const { poster_path, title, genre_ids, release_date, id } = image;
-      const releaseYear = release_date ? release_date.slice(0, 4) : ' No year';
+      const releaseYear = release_date ? release_date.slice(0, 4) : " No year";
 
       //Встановлення заглушки для постеру
       const srcPath =
@@ -82,7 +82,7 @@ export default function createGalleryMarkup(imagesArray) {
                 </div>
             `;
     })
-    .join('');
+    .join("");
 }
 /** Записує жанри до локального сховища */
 async function setGenreNames(apiService) {
@@ -90,18 +90,18 @@ async function setGenreNames(apiService) {
 
   const genre = {
     id: 0,
-    name: '',
+    name: "",
   };
   try {
     promices = await apiService.dataMovies();
     const genresArray = promices.genres;
-    let genresStr = '';
+    let genresStr = "";
 
     genresStr += JSON.stringify(genresArray);
 
     localStorage.setItem(locStorage.genres, JSON.stringify(genresArray));
   } catch (error) {
-    console.log('setGenresNames() error: ', error.message);
+    console.log("setGenresNames() error: ", error.message);
   }
 }
 
@@ -113,25 +113,25 @@ export function getGenreNames(genreIDs) {
     genres = localStorage.getItem(locStorage.genres);
     parsedGenres = JSON.parse(genres);
   } catch (error) {
-    console.log('getGenreNames() error: ', error.message);
+    console.log("getGenreNames() error: ", error.message);
   }
 
-  let genresNames = '';
+  let genresNames = "";
   for (let i = 0; i < genreIDs.length; i++) {
     const genreID = genreIDs[i];
 
     if (i > 1) {
-      genresNames += 'Other';
+      genresNames += "Other";
       return genresNames;
     }
 
     parsedGenres.map(genre => {
       if (genreID === genre.id) {
-        genresNames += genre.name + ', ';
+        genresNames += genre.name + ", ";
       }
     });
   }
   return genresNames.slice(0, -2);
 }
 
-document.querySelector('.loader').classList.add('is-hidden');
+document.querySelector(".loader").classList.add("is-hidden");

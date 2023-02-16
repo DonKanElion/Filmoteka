@@ -1,14 +1,14 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_KEY = 'api_key=9790c9e061754f8ee983e30effe6feec';
-const BASE_URL = 'https://api.themoviedb.org/3/';
-const TRENDING_URL = 'trending/movie/week?';
+const API_KEY = "api_key=9790c9e061754f8ee983e30effe6feec";
+const BASE_URL = "https://api.themoviedb.org/3/";
+const TRENDING_URL = "trending/movie/week?";
 const SEARCH = `search/movie?`;
 const GENRES_LIST = `genre/movie/list?`;
 
 export default class ApiService {
   constructor() {
-    this.inputValue = ' ';
+    this.inputValue = " ";
     this.page = 1;
     this.genresId = null;
   }
